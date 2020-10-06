@@ -1,3 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/75dacb4d-dd75-4b6a-8964-a303ca3b8035/deploy-status)](https://app.netlify.com/sites/susam-ya-messenger/deploys)
+
+## Netlify
+https://susam-ya-messenger.netlify.app/
+
 Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.
 
 README — первое, что прочитает пользователь, когда попадёт в репозиторий на «Гитхабе». Хороший REAMDE отвечает на четыре вопроса:
