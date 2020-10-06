@@ -1,0 +1,27 @@
+{
+  "name": "mf.messenger.praktikum.yandex",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node ./server/server.js",
+    "server": "node ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/susam-projects/mf.messenger.praktikum.yandex.git"
+  },
+  "author": "Susam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/susam-projects/mf.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/susam-projects/mf.messenger.praktikum.yandex#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  }
+}
