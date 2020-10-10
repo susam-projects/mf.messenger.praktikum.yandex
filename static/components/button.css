@@ -1,0 +1,32 @@
+button {
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  padding: 0 16px;
+  background-color: transparent;
+  transition: all 0.2s ease 0s;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.button_primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.button_primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.text-button_primary {
+  color: var(--color-primary);
+}
+
+.text-button_primary:hover {
+  color: var(--color-primary-dark);
+}

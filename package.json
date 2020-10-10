@@ -18,10 +18,9 @@
     "url": "https://github.com/susam-projects/mf.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/susam-projects/mf.messenger.praktikum.yandex#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "express": "^4.17.1",
     "prettier": "^2.1.2"
   }
 }
