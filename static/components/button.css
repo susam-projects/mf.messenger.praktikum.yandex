@@ -7,6 +7,11 @@ button {
   border-radius: 20px;
   padding: 0 16px;
   background-color: transparent;
+}
+
+button:hover,
+button:active,
+button:focus {
   transition: all 0.2s ease 0s;
 }
 
@@ -19,6 +24,7 @@ button:active {
   color: var(--color-primary-contrast);
 }
 
+.button_primary:focus,
 .button_primary:hover {
   background-color: var(--color-primary-dark);
 }
@@ -27,6 +33,7 @@ button:active {
   color: var(--color-primary);
 }
 
+.text-button_primary:focus,
 .text-button_primary:hover {
   color: var(--color-primary-dark);
 }

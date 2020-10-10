@@ -1,13 +1,13 @@
-.login-page {
+.registration-page {
   align-items: center;
   justify-content: center;
 }
 
-.login-page__title {
+.registration-page__title {
   text-align: center;
 }
 
-.login-page__buttons {
+.registration-page__buttons {
   margin-top: 80px;
   display: flex;
   flex-direction: column;
