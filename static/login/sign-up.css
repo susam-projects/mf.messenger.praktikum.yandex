@@ -1,13 +1,13 @@
-.registration-page {
+.sign-up-page {
   align-items: center;
   justify-content: center;
 }
 
-.registration-page__title {
+.sign-up-page__title {
   text-align: center;
 }
 
-.registration-page__buttons {
+.sign-up-page__buttons {
   margin-top: 80px;
   display: flex;
   flex-direction: column;
