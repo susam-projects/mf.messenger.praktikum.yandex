@@ -1,0 +1,25 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e3e5ed;
+}
+
+.avatar-24 {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.avatar-32 {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+}
+
+.avatar-48 {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  font-size: 24px;
+}

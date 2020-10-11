@@ -1,0 +1,41 @@
+.chats-page {
+  align-items: stretch;
+}
+
+.chats-page__left-menu {
+  width: 350px;
+  background-color: #f4f6f9;
+  padding: 0 16px;
+}
+
+.chats-page__chat {
+  flex-grow: 1;
+  background-color: #eff1f7;
+}
+
+.chats-page__left-menu__user-info {
+}
+
+.chats-page__left-menu__user-info__user-name {
+}
+
+.chats-page__left-menu__chat-list__chat-selected,
+.chats-page__left-menu__chat-list__chat:hover {
+  background-color: #eceef6;
+}
+
+@media screen and (max-width: 750px) {
+  .chats-page__left-menu,
+  .chats-page__chat {
+    display: none;
+    width: 100%;
+  }
+
+  .prefer-menu .chats-page__left-menu {
+    display: block;
+  }
+
+  .prefer-chat .chats-page__chat {
+    display: block;
+  }
+}

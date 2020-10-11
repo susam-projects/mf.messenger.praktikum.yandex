@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Список чатов</title>
+    <link rel="stylesheet" href="../fonts/latofonts.css" />
+    <link rel="stylesheet" href="../utils/reset.css" />
+    <link rel="stylesheet" href="../components/layout.css" />
+    <link rel="stylesheet" href="../components/container.css" />
+    <link rel="stylesheet" href="../components/avatar.css" />
+    <link rel="stylesheet" href="../components/user-info.css" />
+    <link rel="stylesheet" href="../components/divider.css" />
+    <link rel="stylesheet" href="../components/chat-info.css" />
+    <link rel="stylesheet" href="../components/card.css" />
+    <link rel="stylesheet" href="../components/text-field.css" />
+    <link rel="stylesheet" href="chats.css" />
+  </head>
+  <body>
+    <main class="chats-page prefer-menu">
+      <div class="chats-page__left-menu">
+        <div class="user-info">
+          <div class="user-info__name">Василий Тёркин</div>
+          <div class="user-info__avatar avatar avatar-48">ВТ</div>
+        </div>
+
+        <div class="text-field margin-top-16">
+          <input class="text-field__input" placeholder="searchish" />
+        </div>
+
+        <hr class="divider margin-top-16" />
+
+        <nav class="margin-top-16">
+          <ul>
+            <li>
+              <div class="chat-info">
+                <div class="chat-info__image-section">
+                  <div class="avatar avatar-24">&nbsp;</div>
+                </div>
+                <div class="chat-info__text-section">
+                  <div class="chat-info__text-section__first-line">
+                    <div class="chat-info__title">Название чата</div>
+                    <div class="chat-info__title">15:32</div>
+                  </div>
+                  <div class="chat-info__text-section__last-message">
+                    Текст какого-то сообщения, которое было последним в этом чате
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="chats-page__chat"></div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 64px;
+}
+
+.user-info:hover {
+  background-color: #eceef6;
+}
+
+.user-info__name {
+  flex-grow: 1;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-info__avatar {
+}
