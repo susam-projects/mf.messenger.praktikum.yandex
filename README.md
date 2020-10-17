@@ -13,3 +13,6 @@ https://susam-ya-messenger.netlify.app/
 сервер запустится на порту 4000
 
 http://localhost:4000
+
+## Макеты
+https://www.figma.com/file/Dh9jt0lumRSAkBrvIhAPcs/YaMessenger?node-id=6%3A2
