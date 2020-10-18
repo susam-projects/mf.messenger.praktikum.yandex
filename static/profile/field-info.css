@@ -1,0 +1,10 @@
+.field-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field-info__value {
+  margin-top: 8px;
+  color: var(--color-input-border);
+}

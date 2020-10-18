@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit profile</title>
+    <link rel="stylesheet" href="../fonts/latofonts.css" />
+    <link rel="stylesheet" href="../utils/reset.css" />
+    <link rel="stylesheet" href="../components/layout.css" />
+    <link rel="stylesheet" href="../components/container.css" />
+    <link rel="stylesheet" href="../components/button.css" />
+    <link rel="stylesheet" href="../components/card.css" />
+    <link rel="stylesheet" href="../components/avatar.css" />
+    <link rel="stylesheet" href="../components/icon.css" />
+    <link rel="stylesheet" href="../components/text-field.css" />
+    <link rel="stylesheet" href="./edit-profile.css" />
+  </head>
+  <body>
+    <main class="edit-profile-page">
+      <article class="card edit-profile-page__content-wrapper">
+        <article class="avatar avatar-empty avatar-120 margin-top-40 edit-profile-page__avatar">
+          <article class="icon icon-96 icon-upload">&nbsp;</article>
+        </article>
+
+        <section class="edit-profile-page__inputs margin-top-24">
+          <article class="text-field">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Логин
+            </label>
+            <input class="text-field__input" placeholder="username" value="username" name="login" />
+            <div class="text-field__error-text">Неправильный логин</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Отображаемое имя
+            </label>
+            <input class="text-field__input" placeholder="username" value="Василий Тёркин" name="display_name" />
+            <div class="text-field__error-text">Неправильное имя</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Имя
+            </label>
+            <input class="text-field__input" placeholder="Михаил" name="display_name" />
+            <div class="text-field__error-text">Неправильное имя</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Фамилия
+            </label>
+            <input class="text-field__input" placeholder="Нестеров" name="display_name" />
+            <div class="text-field__error-text">Неправильное имя</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Телефон
+            </label>
+            <input class="text-field__input" placeholder="+7 111 111 11 11" name="display_name" />
+            <div class="text-field__error-text">Неправильное имя</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Почта
+            </label>
+            <input class="text-field__input" placeholder="email@example.com" name="display_name" />
+            <div class="text-field__error-text">Неправильное имя</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Пароль
+            </label>
+            <input class="text-field__input" placeholder="●●●●●●●●●●●" type="password" name="password" />
+            <div class="text-field__error-text">Неправильный пароль</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Новый Пароль
+            </label>
+            <input class="text-field__input" placeholder="Буквы и цифры" type="password" name="confirm-password" />
+            <div class="text-field__error-text">Неправильный пароль</div>
+          </article>
+
+          <article class="text-field margin-top-8">
+            <label class="text-field__label">
+              <span class="text-field__required-mark">*</span>
+              Новый Пароль (ещё раз)
+            </label>
+            <input class="text-field__input" placeholder="Подтвердите пароль" type="password" name="confirm-password" />
+            <div class="text-field__error-text">Неправильный пароль</div>
+          </article>
+        </section>
+
+        <section class="edit-profile-page__buttons margin-top-40 margin-bottom-8">
+          <button class="button_primary">Сохранить</button>
+          <button class="button_neutral">Отменить</button>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

@@ -29,6 +29,16 @@ button:active {
   background-color: var(--color-primary-dark);
 }
 
+.button_neutral {
+  color: var(--color-primary);
+  border: 1px solid var(--color-input-border);
+}
+
+.button_neutral:focus,
+.button_neutral:hover {
+  background-color: var(--color-item-active);
+}
+
 .text-button_primary {
   color: var(--color-primary);
 }
@@ -36,6 +46,15 @@ button:active {
 .text-button_primary:focus,
 .text-button_primary:hover {
   color: var(--color-primary-dark);
+}
+
+.text-button_danger {
+  color: var(--color-danger);
+}
+
+.text-button_danger:focus,
+.text-button_danger:hover {
+  color: var(--color-danger-dark);
 }
 
 .icon-button {
