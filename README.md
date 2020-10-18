@@ -7,8 +7,7 @@ https://susam-ya-messenger.netlify.app/
 `npm install`
 
 ## Запуск
-- `npm server` — запуск локального сервера,
-- `npm start` — алиас для npm server,
+- `npm start` — запуск локального сервера,
 
 сервер запустится на порту 4000
 
