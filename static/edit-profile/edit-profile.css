@@ -7,6 +7,9 @@
 .edit-profile-page__content-wrapper {
   background-color: white;
   width: 600px;
+}
+
+.edit-profile-page__form-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +17,10 @@
 
 .edit-profile-page__avatar {
   cursor: pointer;
+}
+
+.edit-profile-page__avatar-input {
+  display: none;
 }
 
 .edit-profile-page__inputs {

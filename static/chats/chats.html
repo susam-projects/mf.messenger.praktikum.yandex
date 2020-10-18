@@ -30,9 +30,9 @@
       <article class="chats-page__left-menu chat-list">
         <header class="chat-list__header">
           <section class="chat-list__header__controls">
-            <article class="text-field-with-icon search-field">
-              <input class="text-field-with-icon__input" placeholder="Поиск" />
-              <div class="text-field-with-icon__icon-container">
+            <article id="search-field" class="text-field-with-icon search-field">
+              <input class="text-field-with-icon__input" placeholder="Поиск" name="search" />
+              <div id="search" class="text-field-with-icon__icon-container">
                 <div class="text-field-with-icon__icon search-field__icon"></div>
               </div>
             </article>
@@ -306,9 +306,9 @@
             </button>
           </section>
           <section class="margin-top-16">
-            <article class="text-field-with-icon message-field">
+            <article id="message-field" class="text-field-with-icon message-field">
               <input class="text-field-with-icon__input" placeholder="Введите сообщение..." name="message" />
-              <div class="text-field-with-icon__icon-container">
+              <div id="send-message" class="text-field-with-icon__icon-container">
                 <div class="text-field-with-icon__icon message-field__icon"></div>
               </div>
             </article>
@@ -316,5 +316,7 @@
         </section>
       </article>
     </main>
+    <script src="../utils/serialize.js"></script>
+    <script src="./chats.js"></script>
   </body>
 </html>
