@@ -1,0 +1,78 @@
+.message-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 24px;
+  --color-my-message: #081832;
+  --color-my-message-contrast: #fff;
+  --color-other-message: #fff;
+  --color-other-message-border: var(--color-input-border);
+  --color-other-message-contrast: var(--color-text-primary);
+}
+
+.message-list li {
+  margin-top: 8px;
+}
+.message-list li:first-child {
+  margin-top: unset;
+}
+
+.message-list li {
+  position: relative;
+}
+.message-list .avatar {
+  position: absolute;
+  bottom: 0;
+}
+.message-list .message,
+.message-list .message-footer {
+  margin-left: 30px;
+}
+
+.message-container-my .message__bubble {
+  background: var(--color-my-message);
+}
+.message-container-my .message__bubble:after {
+  border-right-color: var(--color-my-message);
+}
+.message-container-my .message__text {
+  color: var(--color-my-message-contrast);
+}
+
+.message-container-other .message__bubble {
+  background: var(--color-other-message);
+}
+.message-container-other .message__bubble:after {
+  border-right-color: var(--color-other-message);
+}
+.message-container-other .message__text {
+  color: var(--color-other-message-contrast);
+}
+
+.message-container-my .message-footer .right {
+  display: none;
+}
+.message-container-other .message-footer .left {
+  display: none;
+}
+
+.message-list__date {
+  color: #dadada;
+}
+
+.message-list__date__text {
+  font-size: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .message-container-other .message,
+  .message-container-other .message-footer {
+    justify-content: flex-end;
+    margin-left: unset;
+    margin-right: 30px;
+  }
+  .message-container-other .avatar {
+    right: 0;
+  }
+}

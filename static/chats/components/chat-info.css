@@ -1,13 +1,13 @@
 .chat-info {
+  cursor: pointer;
   display: flex;
-  border: 1px solid red;
   padding: 8px 16px;
   border-radius: 80px;
 }
 
-.chat-info .selected,
+.chat-info.selected,
 .chat-info:hover {
-  background-color: #eceef6;
+  background-color: var(--color-item-active);
 }
 
 .chat-info__image-section {
@@ -24,15 +24,17 @@
   justify-content: space-between;
 }
 
-.chat-info__title {
+.chat-info__time {
   font-size: 14px;
-  line-height: 18px;
-  color: #061c3f;
+  line-height: 19px;
+  color: var(--color-text-tretiary);
 }
 
-.chat-info__text-section__last-message {
-  font-size: 10px;
-  line-height: 14px;
+.chat-info__last-message {
+  font-size: 12px;
+  line-height: 15px;
+  margin: 4px 0;
+  color: var(--color-text-secondary);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

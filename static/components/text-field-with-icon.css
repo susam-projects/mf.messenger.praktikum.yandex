@@ -1,0 +1,43 @@
+.text-field-with-icon {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-input-border);
+  border-radius: 20px;
+  height: 40px;
+}
+
+.text-field-with-icon__input {
+  background-color: transparent;
+  margin-left: 16px;
+  flex-grow: 1;
+  color: var(--color-text-primary);
+}
+
+.text-field-with-icon__input::placeholder {
+  color: var(--color-input-border);
+}
+
+.text-field-with-icon__icon-container {
+  cursor: pointer;
+  margin: 0 8px 0 8px;
+  height: 36px;
+  width: 36px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-field-with-icon__icon-container:hover {
+  background-color: var(--color-item-active);
+}
+
+.text-field-with-icon__icon-container:active {
+  transform: scale(0.95);
+}
+
+.text-field-with-icon__icon {
+  height: 24px;
+  width: 24px;
+  background: transparent no-repeat center / contain;
+}

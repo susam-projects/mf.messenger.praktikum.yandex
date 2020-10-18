@@ -1,27 +1,22 @@
 .chats-page {
   align-items: stretch;
+  --color-chat-list-bg: #f4f6f9;
+  --color-chat-bg: #eff1f7;
+  --color-chat-bg-item: #e6e9ef;
 }
 
 .chats-page__left-menu {
   width: 350px;
-  background-color: #f4f6f9;
-  padding: 0 16px;
+  background-color: var(--color-chat-list-bg);
 }
 
 .chats-page__chat {
   flex-grow: 1;
-  background-color: #eff1f7;
+  background-color: var(--color-chat-bg);
 }
 
-.chats-page__left-menu__user-info {
-}
-
-.chats-page__left-menu__user-info__user-name {
-}
-
-.chats-page__left-menu__chat-list__chat-selected,
-.chats-page__left-menu__chat-list__chat:hover {
-  background-color: #eceef6;
+.chats-page__chat .divider {
+  background-color: var(--color-chat-bg-item);
 }
 
 @media screen and (max-width: 750px) {

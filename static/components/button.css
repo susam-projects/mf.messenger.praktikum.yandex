@@ -37,3 +37,22 @@ button:active {
 .text-button_primary:hover {
   color: var(--color-primary-dark);
 }
+
+.icon-button {
+  width: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-input-border);
+}
+
+.icon-button:hover {
+  background-color: var(--color-item-active);
+}
+
+.icon-button__icon {
+  width: 24px;
+  height: 24px;
+  background: transparent no-repeat center / contain;
+}

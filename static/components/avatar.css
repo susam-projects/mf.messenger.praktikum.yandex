@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e3e5ed;
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
 }
 
 .avatar-24 {

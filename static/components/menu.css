@@ -1,0 +1,35 @@
+.menu {
+  z-index: 1000;
+}
+
+.menu .card {
+  width: 100%;
+  background-color: white;
+  padding: 16px 0;
+}
+
+.menu__item {
+  cursor: pointer;
+  height: 32px;
+  line-height: 32px;
+  font-size: 16px;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.menu__item-danger {
+  color: var(--color-danger);
+}
+
+.menu__item:hover {
+  background-color: var(--color-item-active);
+}
+
+.menu__item__icon {
+  width: 18px;
+  height: 18px;
+  background: transparent no-repeat center / contain;
+  margin-right: 16px;
+}

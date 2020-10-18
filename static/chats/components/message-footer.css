@@ -1,0 +1,23 @@
+.message-footer {
+  display: flex;
+  padding: 4px 24px 0 24px;
+}
+
+.message-footer__icon {
+  display: none;
+  width: 12px;
+  height: 12px;
+  background: transparent no-repeat center / contain;
+}
+
+.message-footer__time {
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  color: #a0a0bc;
+}
+
+.read .message-footer__icon {
+  display: block;
+}

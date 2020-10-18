@@ -1,0 +1,37 @@
+.chat-list__header {
+  height: 72px;
+  padding-top: 16px;
+}
+
+.chat-list__header__controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px 0 16px;
+}
+
+.chat-list__header .search-field {
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+.chat-list__content {
+  height: calc(100vh - 74px - 80px);
+  overflow: auto;
+  padding: 0 16px;
+}
+
+.chat-list__content li {
+  margin-top: 16px;
+}
+
+.chat-list__content li:last-child {
+  margin-bottom: 16px;
+}
+
+.chat-list__footer {
+  height: 80px;
+}
+
+.chat-list__footer .user-info {
+  margin: 8px 16px;
+}

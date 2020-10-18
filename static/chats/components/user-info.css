@@ -3,11 +3,11 @@
   align-items: center;
   padding: 8px 16px;
   cursor: pointer;
-  border-radius: 64px;
+  border-radius: 48px;
 }
 
 .user-info:hover {
-  background-color: #eceef6;
+  background-color: var(--color-item-active);
 }
 
 .user-info__name {
