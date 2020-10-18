@@ -1,0 +1,21 @@
+.page-500 {
+  align-items: center;
+  justify-content: center;
+}
+
+.page-500__content-wrapper {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-500__title {
+  font-size: 96px;
+  font-weight: bold;
+}
+
+.page-500__description {
+  font-size: 24px;
+  font-weight: bold;
+}

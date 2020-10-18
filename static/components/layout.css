@@ -22,6 +22,14 @@ main {
   color: var(--color-text-primary);
 }
 
+.margin-top-80 {
+  margin-top: 80px;
+}
+
+.margin-top-64 {
+  margin-top: 64px;
+}
+
 .margin-top-40 {
   margin-top: 40px;
 }
