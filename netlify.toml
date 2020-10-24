@@ -1,0 +1,19 @@
+[build]
+publish = "static/"
+
+command = "npm run build"
+
+
+[[redirects]]
+from = "/utils/*"
+to = "/utils/:splat.js"
+
+[[redirects]]
+from = "/test-page/*"
+to = "/test-page/:splat.js"
+
+
+#[[redirects]]
+#from = "/*"
+#to = "/index.html"
+#status = 200
