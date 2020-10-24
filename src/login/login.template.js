@@ -1,13 +1,5 @@
 const loginPageTemplate = `
-  <link rel="stylesheet" href="../fonts/latofonts.css" />
-  <link rel="stylesheet" href="../utils/reset.css" />
-  <link rel="stylesheet" href="../components/layout.css" />
-  <link rel="stylesheet" href="../components/text-field.css" />
-  <link rel="stylesheet" href="../components/button.css" />
-  <link rel="stylesheet" href="../components/card.css" />
-  <link rel="stylesheet" href="./login/login.css" />
-
-  <main class="login-page">
+  <main class="login-page root">
     <article class="card">
       <h1 class="login-page__title margin-top-24">Вход</h1>
       <form>
@@ -29,12 +21,12 @@ const loginPageTemplate = `
         </article>
 
         <section class="login-page__buttons">
-          <button id="login" class="button_primary">Авторизоваться</button>
-          <button class="text-button_primary margin-top-16">Нет аккаунта?</button>
+          <button id="login-button" class="button_primary">Авторизоваться</button>
+          <button id="not-registered-button" class="text-button_primary margin-top-16">Нет аккаунта?</button>
         </section>
       </form>
     </article>
   </main>
-  <script src="../utils/serialize.js"></script>
-  <script src="./login.js"></script>
 `;
+
+export default loginPageTemplate;

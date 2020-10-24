@@ -1,0 +1,18 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-shadow: var(--color-shadow) 0 1px 2px 0px;
+  border: 0.0625rem solid var(--color-shadow);
+  border-radius: 0.875rem;
+  width: 340px;
+}
+
+.card:hover {
+  box-shadow: var(--color-shadow) 0 2px 12px 0px;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.card-lite:hover {
+  box-shadow: var(--color-shadow) 0 1px 2px 0px;
+}
