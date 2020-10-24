@@ -1,6 +1,6 @@
 import simpleRouter from "./utils/simple-router.js";
-import TestPage from "./test-page/test-page.js";
-import LoginPage from "./login/login-page.js";
+import TestPage from "./pages/test-page/test-page.js";
+import LoginPage from "./pages/login/login-page.js";
 
 simpleRouter
     .registerPage("test", new TestPage())

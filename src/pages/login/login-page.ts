@@ -1,6 +1,6 @@
-import Block from "../utils/block.js";
+import Block from "../../utils/block.js";
 import loginPageTemplate from "./login.template.js";
-import simpleRouter from "../utils/simple-router.js";
+import simpleRouter from "../../utils/simple-router.js";
 
 class LoginPage extends Block {
     constructor() {
