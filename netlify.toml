@@ -2,18 +2,7 @@
 publish = "static/"
 command = "npm run build"
 
-
 [[redirects]]
-from = "/utils/*"
-to = "/utils/:splat.js"
-
-[[redirects]]
-from = "/test-page/*"
-to = "/test-page/:splat.js"
-
-
-# we'll need it later
-#[[redirects]]
-#from = "/*"
-#to = "/index.html"
-#status = 200
+from = "/*"
+to = "/index.html"
+status = 200

@@ -1,6 +1,18 @@
-import EventBus from './event-bus';
+import EventBus from "./event-bus.js";
 
-class Block {
+interface BlockMeta {
+    tagName: string;
+    props: Record<string, unknown>;
+    template: Handlebars.Template;
+}
+
+interface BaseProps {
+    [key: string]: unknown;
+}
+
+type TemplateProps = Record<string, string | number>;
+
+class Block<TProps extends BaseProps = {}> {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -9,11 +21,14 @@ class Block {
         FLOW_BIND: "flow:bind",
     };
 
-    _element = null;
-    _meta = null;
-    _template = null;
+    _element: HTMLElement | null = null;
+    _meta: BlockMeta | null = null;
+    _template: HandlebarsTemplateDelegate<TemplateProps> | null = null;
 
-    constructor(tagName = "div", template = '', props = {}) {
+    props: TProps;
+    eventBus: EventBus;
+
+    constructor(tagName = "div", template = "", props = {} as TProps) {
         const eventBus = new EventBus();
         this._meta = {
             tagName,
@@ -31,14 +46,14 @@ class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _compileTemplate(template) {
-        return Handlebars.compile(template);
+    _compileTemplate(template: string) {
+        return Handlebars.compile<TemplateProps>(template);
     }
 
-    _makePropsProxy(props) {
+    _makePropsProxy(props: TProps) {
         const self = this;
         return new Proxy(props, {
-            set(target, prop, value) {
+            set(target: BaseProps, prop: string, value: unknown) {
                 if (target[prop] === value) {
                     return true;
                 }
@@ -49,11 +64,11 @@ class Block {
             },
             deleteProperty() {
                 throw new Error("Forbidden");
-            }
-        });
+            },
+        }) as TProps;
     }
 
-    _registerEvents(eventBus) {
+    _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -67,11 +82,11 @@ class Block {
     }
 
     _createResources() {
-        const { tagName } = this._meta;
+        const { tagName } = this._meta!;
         this._element = this._createDocumentElement(tagName);
     }
 
-    _createDocumentElement(tagName) {
+    _createDocumentElement(tagName: string) {
         return document.createElement(tagName);
     }
 
@@ -81,9 +96,9 @@ class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_BIND);
     }
 
-    componentDidMount(oldProps) {}
+    componentDidMount() {}
 
-    _componentDidUpdate(oldProps, newProps) {
+    _componentDidUpdate(oldProps: TProps, newProps: TProps) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (response) {
             this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
@@ -91,41 +106,43 @@ class Block {
         }
     }
 
-    componentDidUpdate(oldProps, newProps) {
+    componentDidUpdate(oldProps: TProps, newProps: TProps) {
         return true;
     }
 
-    setProps(nextProps) {
+    setProps(nextProps: TProps) {
         Object.assign(this.props, nextProps);
-    };
+    }
 
     get element() {
-        return this._element;
+        return this._element!;
     }
 
     _render() {
-        removeAllChildren(this.element)
+        if (!this.element) return;
+        removeAllChildren(this.element);
         this.element.innerHTML = this.render();
     }
 
     render() {
-        const textProps = {};
+        const textProps = {} as Record<string, string | number>;
         for (let key in this.props) {
-            if (this.props[key] instanceof Block) {
-                textProps[key] = this.props[key].render();
+            const value = this.props[key];
+            if (value instanceof Block) {
+                textProps[key] = value.render();
             } else {
-                textProps[key] = this.props[key];
+                textProps[key] = value as string | number;
             }
         }
-        return this._template(textProps);
+        return this._template!(textProps);
     }
 
-    _bindContent(parent) {
+    _bindContent(parent?: HTMLElement) {
         if (parent) {
-            this._element = parent.querySelector('.root');
+            this._element = parent.querySelector(".root");
         }
         if (!this.element) {
-            console.error('nothing to bind to!');
+            console.error("Nothing to bind to!");
         }
         this.bindContent();
     }
@@ -135,17 +152,9 @@ class Block {
     getContent() {
         return this.element;
     }
-
-    show() {
-        this.getContent().style.display = "block";
-    }
-
-    hide() {
-        this.getContent().style.display = "none";
-    }
 }
 
-function removeAllChildren(node) {
+function removeAllChildren(node: HTMLElement) {
     while (node.firstChild) {
         node.removeChild(node.firstChild);
     }
