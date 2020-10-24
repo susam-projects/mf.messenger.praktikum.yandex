@@ -1,3 +1,5 @@
+import Block from '../utils/block';
+
 class Button extends Block {
     constructor(props) {
         // Создаем враппер дом-элемент button

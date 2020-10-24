@@ -4,8 +4,30 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "node ./server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "run-p server watch",
+
+    "server": "node ./server/server.js",
+
+    "clean": "rimraf ./static",
+
+    "copy:html": "copyfiles -u 1 ./src/index.html ./static",
+    "copy:images": "copyfiles -u 1 ./src/**/*.svg ./static",
+    "copy": "run-s copy:html copy:images",
+
+    "css:dev": "node-sass ./src/index.scss > ./static/styles.css",
+    "css:prod": "node-sass ./src/index.scss | postcss -u autoprefixer -b 'last 2 versions' > ./static/styles.css",
+
+    "js:main": "copyfiles -u 1 ./src/*.js ./src/**/*.js ./static",
+    "js:vendor": "copyfiles vendor/*.js ./static",
+
+    "watch:vendor": "onchange './vendor/**/*.js' -- npm run js:vendor",
+    "watch:html": "onchange './src/**/*.html' -- npm run copy:html",
+    "watch:css": "onchange './src/**/*.scss' -- npm run css:dev",
+    "watch:js": "onchange './src/**/*.js' -- npm run js:main",
+    "watch": "run-p watch:css watch:js watch:html",
+
+    "prebuild": "run-s clean copy",
+    "build": "run-s css:dev js:main js:vendor"
   },
   "repository": {
     "type": "git",
@@ -19,7 +41,16 @@
   "homepage": "https://github.com/susam-projects/mf.messenger.praktikum.yandex#readme",
   "dependencies": {},
   "devDependencies": {
-    "express": "^4.17.1",
-    "prettier": "^2.1.2"
+    "autoprefixer": "10.0.1",
+    "copyfiles": "^2.4.0",
+    "express": "4.17.1",
+    "node-sass": "4.14.1",
+    "npm-run-all": "4.1.5",
+    "onchange": "7.1.0",
+    "postcss": "^8.1.4",
+    "postcss-cli": "8.1.0",
+    "prettier": "2.1.2",
+    "rimraf": "3.0.2",
+    "typescript": "4.0.3"
   }
 }

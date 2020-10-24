@@ -1,4 +1,4 @@
-import TestPage from './test-page';
+import TestPage from './test-page/test-page';
 
 const simpleRouter = {
     _page: '',
