@@ -6,8 +6,8 @@
   --color-my-message: #081832;
   --color-my-message-contrast: #fff;
   --color-other-message: #fff;
-  --color-other-message-border: var(--color-input-border);
-  --color-other-message-contrast: var(--color-text-primary);
+  --color-other-message-border: $COLOR_INPUT_BORDER;
+  --color-other-message-contrast: $COLOR_TEXT_PRIMARY;
 }
 
 .message-list li {

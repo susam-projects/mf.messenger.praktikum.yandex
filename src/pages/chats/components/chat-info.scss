@@ -7,7 +7,7 @@
 
 .chat-info.selected,
 .chat-info:hover {
-  background-color: var(--color-item-active);
+  background-color: $COLOR_ITEM_ACTIVE;
 }
 
 .chat-info__image-section {
@@ -27,14 +27,14 @@
 .chat-info__time {
   font-size: 14px;
   line-height: 19px;
-  color: var(--color-text-tretiary);
+  color: $COLOR_TEXT_TRETIARY;
 }
 
 .chat-info__last-message {
   font-size: 12px;
   line-height: 15px;
   margin: 4px 0;
-  color: var(--color-text-secondary);
+  color: $COLOR_TEXT_SECONDARY;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

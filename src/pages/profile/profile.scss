@@ -15,7 +15,7 @@
 }
 
 .profile-page__back:hover {
-  background-color: var(--color-item-active);
+  background-color: $COLOR_ITEM_ACTIVE;
 }
 
 .profile-page__back__icon {
@@ -40,8 +40,10 @@
   align-items: center;
 }
 
-.profile-page__content__buttons button {
-  margin: 0 16px;
+.profile-page__content__buttons {
+  button {
+    margin: 0 16px;
+  }
 }
 
 .icon-back {

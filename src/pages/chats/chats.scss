@@ -1,31 +1,24 @@
-@import "./components/user-info";
-@import "./components/chat-info";
-@import "./components/message-field";
-@import "./components/message-footer";
-@import "./components/message-list";
-@import "./components/message";
+@import "./variables";
+@import "./components/components";
 @import "./chat";
 @import "./chat-list";
 
 .chats-page {
   align-items: stretch;
-  --color-chat-list-bg: #f4f6f9;
-  --color-chat-bg: #eff1f7;
-  --color-chat-bg-item: #e6e9ef;
 }
 
 .chats-page__left-menu {
   width: 350px;
-  background-color: var(--color-chat-list-bg);
+  background-color: $COLOR_CHAT_LIST_BG;
 }
 
 .chats-page__chat {
   flex-grow: 1;
-  background-color: var(--color-chat-bg);
-}
+  background-color: $COLOR_CHAT_BG;
 
-.chats-page__chat .divider {
-  background-color: var(--color-chat-bg-item);
+  .divider {
+    background-color: $COLOR_CHAT_BG_ITEM;
+  }
 }
 
 @media screen and (max-width: 750px) {

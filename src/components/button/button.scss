@@ -7,71 +7,52 @@ button {
   border-radius: 20px;
   padding: 0 16px;
   background-color: transparent;
-}
 
-button:hover,
-button:active,
-button:focus {
-  transition: all 0.2s ease 0s;
-}
+  &:hover,
+  &:active,
+  &:focus {
+    transition: all 0.2s ease 0s;
+  }
 
-button:active {
-  transform: scale(0.95);
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .button_primary {
-  background-color: var(--color-primary);
-  color: var(--color-primary-contrast);
-}
+  background-color: $COLOR_PRIMARY;
+  color: $COLOR_PRIMARY_CONTRAST;
 
-.button_primary:focus,
-.button_primary:hover {
-  background-color: var(--color-primary-dark);
+  &:focus,
+  &:hover {
+    background-color: $COLOR_PRIMARY_DARK;
+  }
 }
 
 .button_neutral {
-  color: var(--color-primary);
-  border: 1px solid var(--color-input-border);
-}
+  color: $COLOR_PRIMARY;
+  border: 1px solid $COLOR_INPUT_BORDER;
 
-.button_neutral:focus,
-.button_neutral:hover {
-  background-color: var(--color-item-active);
+  &:focus,
+  &:hover {
+    background-color: $COLOR_ITEM_ACTIVE;
+  }
 }
 
 .text-button_primary {
-  color: var(--color-primary);
-}
+  color: $COLOR_PRIMARY;
 
-.text-button_primary:focus,
-.text-button_primary:hover {
-  color: var(--color-primary-dark);
+  &:focus,
+  &:hover {
+    color: $COLOR_PRIMARY_DARK;
+  }
 }
 
 .text-button_danger {
-  color: var(--color-danger);
-}
+  color: $COLOR_DANGER;
 
-.text-button_danger:focus,
-.text-button_danger:hover {
-  color: var(--color-danger-dark);
-}
-
-.icon-button {
-  width: 40px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-input-border);
-}
-
-.icon-button:hover {
-  background-color: var(--color-item-active);
-}
-
-.icon-button__icon {
-  width: 24px;
-  height: 24px;
-  background: transparent no-repeat center / contain;
+  &:focus,
+  &:hover {
+    color: $COLOR_DANGER_DARK;
+  }
 }

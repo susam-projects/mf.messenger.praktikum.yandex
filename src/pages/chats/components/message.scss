@@ -1,3 +1,4 @@
+/* hack to be able to use min function with arguments of different type */
 @function min($numbers...) {
   @return m#{i}n(#{$numbers});
 }
@@ -16,23 +17,23 @@
   max-width: min(50%, 350px);
   display: inline-block;
   padding: 8px 16px;
-}
 
-.message__bubble:after {
-  content: "";
-  position: absolute;
-  left: 7px;
-  bottom: 5px;
-  width: 0;
-  height: 0;
-  border: 18px solid transparent;
-  border-bottom-left-radius: 8px;
-  border-right-color: white;
-  border-left: 0;
-  border-bottom: 0;
-  margin-top: -9px;
-  margin-left: -18px;
-  transform: skewY(-30deg);
+  &:after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    bottom: 5px;
+    width: 0;
+    height: 0;
+    border: 18px solid transparent;
+    border-bottom-left-radius: 8px;
+    border-right-color: white;
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -9px;
+    margin-left: -18px;
+    transform: skewY(-30deg);
+  }
 }
 
 .message__text {
@@ -57,17 +58,17 @@
   .message-right {
     padding-left: unset;
     padding-right: 20px;
-  }
 
-  .message-right .message__bubble:after {
-    left: unset;
-    right: 7px;
-    border: 18px solid transparent;
-    border-radius: 0 0 8px 0;
-    border-left-color: white;
-    border-right: 0;
-    border-bottom: 0;
-    margin-right: -18px;
-    transform: skewY(30deg);
+    .message__bubble:after {
+      left: unset;
+      right: 7px;
+      border: 18px solid transparent;
+      border-radius: 0 0 8px 0;
+      border-left-color: white;
+      border-right: 0;
+      border-bottom: 0;
+      margin-right: -18px;
+      transform: skewY(30deg);
+    }
   }
 }
