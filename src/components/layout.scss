@@ -1,103 +1,103 @@
 body {
-  font-family: LatoWeb, sans-serif;
-  --color-primary: #01b6f5;
-  --color-primary-dark: #00a3dc;
-  --color-primary-contrast: #fff;
-  --color-danger: #fe4849;
-  --color-danger-dark: #e44041;
-  --color-danger-contrast: #fff;
-  --color-text-primary: #061c3f;
-  --color-text-secondary: #576574;
-  --color-text-tretiary: #a4a7b5;
-  --color-shadow: #d7d9e2;
-  --color-input-label: #3f4954;
-  --color-input-border: #a4a7b5;
-  --color-chat-control-border: #e3e5ed;
-  --color-item-active: #eceef6;
+    font-family: LatoWeb, sans-serif;
+    --color-primary: #01b6f5;
+    --color-primary-dark: #00a3dc;
+    --color-primary-contrast: #fff;
+    --color-danger: #fe4849;
+    --color-danger-dark: #e44041;
+    --color-danger-contrast: #fff;
+    --color-text-primary: #061c3f;
+    --color-text-secondary: #576574;
+    --color-text-tretiary: #a4a7b5;
+    --color-shadow: #d7d9e2;
+    --color-input-label: #3f4954;
+    --color-input-border: #a4a7b5;
+    --color-chat-control-border: #e3e5ed;
+    --color-item-active: #eceef6;
 }
 
 main {
-  display: flex;
-  height: 100vh;
-  color: var(--color-text-primary);
+    display: flex;
+    height: 100vh;
+    color: $COLOR_TEXT_PRIMARY;
 }
 
 .margin-top-80 {
-  margin-top: 80px;
+    margin-top: 80px;
 }
 
 .margin-top-64 {
-  margin-top: 64px;
+    margin-top: 64px;
 }
 
 .margin-top-40 {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
 .margin-top-32 {
-  margin-top: 32px;
+    margin-top: 32px;
 }
 
 .margin-top-24 {
-  margin-top: 24px;
+    margin-top: 24px;
 }
 
 .margin-top-16 {
-  margin-top: 16px;
+    margin-top: 16px;
 }
 
 .margin-top-8 {
-  margin-top: 8px;
+    margin-top: 8px;
 }
 
 .margin-bottom-40 {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .margin-bottom-32 {
-  margin-bottom: 32px;
+    margin-bottom: 32px;
 }
 
 .margin-bottom-24 {
-  margin-bottom: 24px;
+    margin-bottom: 24px;
 }
 
 .margin-bottom-16 {
-  margin-bottom: 16px;
+    margin-bottom: 16px;
 }
 
 .margin-bottom-8 {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .font-size-32 {
-  font-size: 32px;
+    font-size: 32px;
 }
 
 .font-size-24 {
-  font-size: 24px;
+    font-size: 24px;
 }
 
 .font-size-16 {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .font-size-8 {
-  font-size: 8px;
+    font-size: 8px;
 }
 
 h1 {
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 29px;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
 }
 
 h2 {
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 h3 {
-  font-size: 16px;
-  font-weight: normal;
+    font-size: 16px;
+    font-weight: normal;
 }

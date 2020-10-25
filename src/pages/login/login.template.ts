@@ -21,8 +21,12 @@ const loginPageTemplate = `
         </article>
 
         <section class="login-page__buttons">
-          <button id="login-button" class="button_primary">Авторизоваться</button>
-          <button id="not-registered-button" class="text-button_primary margin-top-16">Нет аккаунта?</button>
+          <span id="login-button" class="login-page__button-container">
+            {{{loginButton}}}
+          </span>
+          <span id="go-to-sign-up-button" class="login-page__button-container margin-top-16">
+            {{{goToSignUpButton}}}
+          </span>
         </section>
       </form>
     </article>

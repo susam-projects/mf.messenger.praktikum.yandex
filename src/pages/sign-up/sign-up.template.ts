@@ -1,13 +1,5 @@
 const signUpPageTemplate = `
-  <link rel="stylesheet" href="../fonts/latofonts.css" />
-  <link rel="stylesheet" href="../utils/reset.css" />
-  <link rel="stylesheet" href="../components/layout.css" />
-  <link rel="stylesheet" href="../components/text-field.css" />
-  <link rel="stylesheet" href="../components/button.css" />
-  <link rel="stylesheet" href="../components/card.css" />
-  <link rel="stylesheet" href="./sign-up/sign-up.css" />
-
-  <main class="sign-up-page">
+  <main class="sign-up-page root">
     <article class="card">
       <h1 class="sign-up-page__title margin-top-24">Регистрация</h1>
 
@@ -71,11 +63,15 @@ const signUpPageTemplate = `
       </form>
 
       <section class="sign-up-page__buttons">
-        <button class="button_primary" id="sign-up">Зарегистрироваться</button>
-        <button class="text-button_primary margin-top-16">Войти</button>
+        <span id="sign-up-button" class="sign-up-page__button-container">
+          {{{signUpButton}}}
+        </span>
+        <span id="go-to-login-button" class="sign-up-page__button-container margin-top-16">
+          {{{goToLoginButton}}}
+        </span>
       </section>
     </article>
   </main>
-  <script src="../utils/serialize.js"></script>
-  <script src="./sign-up.js"></script>
 `;
+
+export default signUpPageTemplate;

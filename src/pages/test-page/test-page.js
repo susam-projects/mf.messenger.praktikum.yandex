@@ -1,4 +1,4 @@
-import Block from "../../utils/block";
+import Block from "../../utils/block.js";
 
 class TestPage extends Block {
     constructor() {

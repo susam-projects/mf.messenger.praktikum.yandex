@@ -2,17 +2,15 @@ import EventBus from "./event-bus.js";
 
 interface BlockMeta {
     tagName: string;
-    props: Record<string, unknown>;
+    props: object;
     template: Handlebars.Template;
 }
 
-interface BaseProps {
-    [key: string]: unknown;
-}
+type BaseProps = Record<string, unknown>;
 
 type TemplateProps = Record<string, string | number>;
 
-class Block<TProps extends BaseProps = {}> {
+class Block<TProps extends object = {}> {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -52,7 +50,8 @@ class Block<TProps extends BaseProps = {}> {
 
     _makePropsProxy(props: TProps) {
         const self = this;
-        return new Proxy(props, {
+        return (new Proxy(props, {
+            // @ts-ignore
             set(target: BaseProps, prop: string, value: unknown) {
                 if (target[prop] === value) {
                     return true;
@@ -65,7 +64,7 @@ class Block<TProps extends BaseProps = {}> {
             deleteProperty() {
                 throw new Error("Forbidden");
             },
-        }) as TProps;
+        }) as unknown) as TProps;
     }
 
     _registerEvents(eventBus: EventBus) {
@@ -131,13 +130,13 @@ class Block<TProps extends BaseProps = {}> {
             if (value instanceof Block) {
                 textProps[key] = value.render();
             } else {
-                textProps[key] = value as string | number;
+                textProps[key] = (value as unknown) as string | number;
             }
         }
         return this._template!(textProps);
     }
 
-    _bindContent(parent?: HTMLElement) {
+    _bindContent(parent?: Element | null) {
         if (parent) {
             this._element = parent.querySelector(".root");
         }

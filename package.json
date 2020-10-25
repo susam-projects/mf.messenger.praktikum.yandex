@@ -19,7 +19,7 @@
     "watch:vendor": "onchange './vendor/**/*.js' -- npm run js:vendor",
     "watch:html": "onchange './src/**/*.html' -- npm run copy:html",
     "watch:css": "onchange './src/**/*.scss' -- npm run css:dev",
-    "watch:js": "onchange './src/**/*.{ts,js}' -- npm run js:main",
+    "watch:js": "onchange './src/**/*.{ts,js,template.ts}' -- npm run js:main",
     "prebuild": "run-s clean copy",
     "build": "run-s css:dev js:main js:vendor"
   },
