@@ -2,10 +2,11 @@ import Button from "../../components/button/button.js";
 import Block from "../../utils/block.js";
 import FormValidator, {
     CONFIRM_PASSWORD_VALIDATOR,
-    EMAIL_VALIDATOR,
+    REQUIRED_EMAIL_VALIDATOR,
+    InputValidators,
     LOGIN_VALIDATOR,
     NAME_VALIDATOR,
-    PASSWORD_VALIDATOR,
+    REQUIRED_PASSWORD_VALIDATOR,
     PHONE_VALIDATOR,
 } from "../../utils/form-validator.js";
 import simpleRouter from "../../utils/simple-router.js";
@@ -16,11 +17,11 @@ interface SignUpPageProps {
     goToLoginButton: Block;
 }
 
-const VALIDATORS = {
+const VALIDATORS: InputValidators = {
     login: LOGIN_VALIDATOR,
-    email: EMAIL_VALIDATOR,
-    password: PASSWORD_VALIDATOR,
-    confirm_password: CONFIRM_PASSWORD_VALIDATOR,
+    email: REQUIRED_EMAIL_VALIDATOR,
+    password: REQUIRED_PASSWORD_VALIDATOR,
+    confirm_password: CONFIRM_PASSWORD_VALIDATOR("password"),
     first_name: NAME_VALIDATOR,
     second_name: NAME_VALIDATOR,
     phone: PHONE_VALIDATOR,

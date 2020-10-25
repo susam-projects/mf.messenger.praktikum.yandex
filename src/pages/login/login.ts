@@ -1,6 +1,10 @@
 import Button from "../../components/button/button.js";
 import Block from "../../utils/block.js";
-import FormValidator, { LOGIN_VALIDATOR, PASSWORD_VALIDATOR } from "../../utils/form-validator.js";
+import FormValidator, {
+    InputValidators,
+    LOGIN_VALIDATOR,
+    REQUIRED_PASSWORD_VALIDATOR,
+} from "../../utils/form-validator.js";
 import loginPageTemplate from "./login.template.js";
 import simpleRouter from "../../utils/simple-router.js";
 
@@ -9,9 +13,9 @@ interface LoginPageProps {
     goToSignUpButton: Block;
 }
 
-const VALIDATORS = {
+const VALIDATORS: InputValidators = {
     login: LOGIN_VALIDATOR,
-    password: PASSWORD_VALIDATOR,
+    password: REQUIRED_PASSWORD_VALIDATOR,
 };
 
 class LoginPage extends Block<LoginPageProps> {

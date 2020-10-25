@@ -1,5 +1,5 @@
 const profilePageTemplate = `
-  <main class="profile-page">
+  <main class="profile-page root">
     <section id="back-button" class="profile-page__back">
       <div class="profile-page__back__icon icon-back"></div>
     </section>

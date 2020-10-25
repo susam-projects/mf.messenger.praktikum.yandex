@@ -1,11 +1,15 @@
 import Block from "../../utils/block.js";
-import FormValidator from "../../utils/form-validator.js";
+import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../utils/form-validator.js";
 import simpleRouter from "../../utils/simple-router.js";
 import chatPageTemplate from "./chats.template.js";
 
 // interface ChatsPageProps {
 //     sendMessageButton: Block;
 // }
+
+const VALIDATORS: InputValidators = {
+    message: MESSAGE_VALIDATOR,
+};
 
 class ChatsPage extends Block {
     private validator: FormValidator | undefined;
@@ -25,11 +29,11 @@ class ChatsPage extends Block {
             simpleRouter.setPage("profile");
         });
 
-        this.validator = new FormValidator({}, messageInput!);
+        this.validator = new FormValidator(VALIDATORS, messageInput!);
 
         const trySendMessage = () => {
             if (!this.validator?.validate()) {
-                alert("Can't send such message!");
+                alert("Некорректное сообщение!");
             }
         };
 
