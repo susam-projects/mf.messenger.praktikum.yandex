@@ -140,7 +140,7 @@ const chatPageTemplate = `
             <button class="icon-button">
               <span class="icon-button__icon icon-vertical-dots"></span>
             </button>
-            <nav class="menu chat__header__actions-menu open">
+            <nav class="menu chat__header__actions-menu">
               <article class="card card-lite">
                 <ul>
                   <li class="menu__item">
