@@ -49,9 +49,7 @@
   color: var(--color-other-message-contrast);
 }
 
-.message-container-my .message-footer .right {
-  display: none;
-}
+.message-container-my .message-footer .right,
 .message-container-other .message-footer .left {
   display: none;
 }

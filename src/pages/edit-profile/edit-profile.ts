@@ -10,7 +10,7 @@ import FormValidator, {
     PHONE_VALIDATOR,
     PASSWORD_VALIDATOR,
     EMAIL_VALIDATOR,
-    IF_FIELD_IS_NOT_EMPTY,
+    ifFieldIsNotEmpty,
     REQUIRED_PASSWORD_VALIDATOR,
 } from "../../utils/form-validator.js";
 import simpleRouter from "../../utils/simple-router.js";
@@ -30,7 +30,7 @@ const VALIDATORS: InputValidators = {
     phone: PHONE_VALIDATOR,
     email: EMAIL_VALIDATOR,
     oldPassword: PASSWORD_VALIDATOR,
-    newPassword: IF_FIELD_IS_NOT_EMPTY("oldPassword", REQUIRED_PASSWORD_VALIDATOR),
+    newPassword: ifFieldIsNotEmpty("oldPassword", REQUIRED_PASSWORD_VALIDATOR),
     confirmPassword: CONFIRM_PASSWORD_VALIDATOR("newPassword"),
 };
 
@@ -40,6 +40,7 @@ class EditProfilePage extends Block<EditProfilePageProps> {
     constructor() {
         super("div", editProfilePageTemplate, {
             saveButton: new Button({
+                className: "edit-profile-page__buttons-gap",
                 variant: "primary",
                 label: "Сохранить",
                 onClick: () => {
@@ -49,6 +50,7 @@ class EditProfilePage extends Block<EditProfilePageProps> {
                 },
             }),
             cancelButton: new Button({
+                className: "edit-profile-page__buttons-gap",
                 variant: "neutral",
                 label: "Отменить",
                 onClick: () => {

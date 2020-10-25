@@ -38,12 +38,12 @@ const profilePageTemplate = `
         </article>
 
         <section class="profile-page__content__buttons margin-top-40 margin-bottom-24">
-          <span id="edit-button">
+          <div id="edit-button">
             {{{editButton}}}
-          </span>
-          <span id="logout-button">
+          </div>
+          <div id="logout-button">
             {{{logoutButton}}}
-          </span>
+          </div>
         </section>
       </article>
     </section>

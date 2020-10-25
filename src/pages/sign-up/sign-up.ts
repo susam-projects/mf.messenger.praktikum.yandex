@@ -33,6 +33,7 @@ class SignUpPage extends Block<SignUpPageProps> {
     constructor() {
         super("div", signUpPageTemplate, {
             signUpButton: new Button({
+                className: "sign-up-page__button-full-width",
                 label: "Зарегистрироваться",
                 variant: "primary",
                 onClick: () => {
@@ -42,6 +43,7 @@ class SignUpPage extends Block<SignUpPageProps> {
                 },
             }),
             goToLoginButton: new Button({
+                className: "sign-up-page__button-full-width",
                 label: "Войти",
                 variant: "text-primary",
                 onClick() {

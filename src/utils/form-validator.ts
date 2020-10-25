@@ -68,7 +68,7 @@ export const AVATAR_VALIDATOR = /^.*$/i;
 // it doesn't have any special meaning, just disallow some characters in order to complete the task
 export const MESSAGE_VALIDATOR = /^[A-ZА-ЯЁ\s\d_\-,.;@#$%^&*()]+$/i;
 
-export const IF_FIELD_IS_NOT_EMPTY = (fieldName: string, validator: RegExp): ValidatorFunction => (value, inputs) => {
+export const ifFieldIsNotEmpty = (fieldName: string, validator: RegExp): ValidatorFunction => (value, inputs) => {
     const field = find(inputs, it => it.name === fieldName);
     return !field || !field.value || validator.test(value);
 };

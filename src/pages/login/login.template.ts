@@ -17,16 +17,16 @@ const loginPageTemplate = `
             Пароль
           </label>
           <input class="text-field__input" placeholder="●●●●●●●●●●●" type="password" name="password" />
-          <div class="text-field__error-text">Неправильный пароль</div>
+          <div class="text-field__error-text">Пароль должен быть: &ge;6 символов, буквы и цифры</div>
         </article>
 
         <section class="login-page__buttons">
-          <span id="login-button" class="login-page__button-container">
+          <div id="login-button" class="login-page__button-container">
             {{{loginButton}}}
-          </span>
-          <span id="go-to-sign-up-button" class="login-page__button-container margin-top-16">
+          </div>
+          <div id="go-to-sign-up-button" class="login-page__button-container margin-top-16">
             {{{goToSignUpButton}}}
-          </span>
+          </div>
         </section>
       </form>
     </article>

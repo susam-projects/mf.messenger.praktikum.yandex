@@ -24,6 +24,7 @@ class LoginPage extends Block<LoginPageProps> {
     constructor() {
         super("div", loginPageTemplate, {
             loginButton: new Button({
+                className: "login-page__button_full-width",
                 variant: "primary",
                 label: "Авторизоваться",
                 onClick: () => {
@@ -33,6 +34,7 @@ class LoginPage extends Block<LoginPageProps> {
                 },
             }),
             goToSignUpButton: new Button({
+                className: "login-page__button_full-width",
                 variant: "text-primary",
                 label: "Нет аккаунта?",
                 onClick() {

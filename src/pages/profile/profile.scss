@@ -1,8 +1,5 @@
 @import "./field-info";
 
-.profile-page {
-}
-
 .profile-page__back {
   flex-shrink: 0;
   cursor: pointer;
@@ -12,10 +9,10 @@
   align-items: center;
   justify-content: center;
   background-color: #f4f6f9;
-}
 
-.profile-page__back:hover {
-  background-color: $COLOR_ITEM_ACTIVE;
+  &:hover {
+    background-color: $COLOR_ITEM_ACTIVE;
+  }
 }
 
 .profile-page__back__icon {
@@ -41,9 +38,11 @@
 }
 
 .profile-page__content__buttons {
-  button {
-    margin: 0 16px;
-  }
+  display: flex;
+}
+
+.profile-page__buttons-gap {
+  margin: 0 16px;
 }
 
 .icon-back {

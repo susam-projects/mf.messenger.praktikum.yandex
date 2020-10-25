@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   padding: 16px;
-  box-shadow: $COLOR_SHADOW 0 1px 2px 0px;
+  box-shadow: $COLOR_SHADOW 0 1px 2px 0;
   border: 0.0625rem solid $COLOR_SHADOW;
   border-radius: 0.875rem;
   width: 340px;
 }
 
 .card:hover {
-  box-shadow: $COLOR_SHADOW 0 2px 12px 0px;
+  box-shadow: $COLOR_SHADOW 0 2px 12px 0;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .card-lite:hover {
-  box-shadow: $COLOR_SHADOW 0 1px 2px 0px;
+  box-shadow: $COLOR_SHADOW 0 1px 2px 0;
 }

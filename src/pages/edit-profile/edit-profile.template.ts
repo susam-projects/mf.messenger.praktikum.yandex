@@ -70,7 +70,7 @@ const editProfilePageTemplate = `
               Пароль
             </label>
             <input class="text-field__input" placeholder="●●●●●●●●●●●" type="password" name="oldPassword" />
-            <div class="text-field__error-text">Неправильный пароль</div>
+            <div class="text-field__error-text">Пароль должен быть: &ge;6 символов, буквы и цифры</div>
           </article>
 
           <article class="text-field margin-top-8">
@@ -79,7 +79,7 @@ const editProfilePageTemplate = `
               Новый Пароль
             </label>
             <input class="text-field__input" placeholder="&ge;6 символов, буквы и цифры" type="password" name="newPassword" />
-            <div class="text-field__error-text">Неправильный пароль</div>
+            <div class="text-field__error-text">Пароль должен быть: &ge;6 символов, буквы и цифры</div>
           </article>
 
           <article class="text-field margin-top-8">
@@ -98,8 +98,8 @@ const editProfilePageTemplate = `
         </section>
 
         <section class="edit-profile-page__buttons margin-top-40 margin-bottom-8">
-          <span id="save-button">{{{saveButton}}}</span>
-          <span id="cancel-button">{{{cancelButton}}}</span>
+          <div id="save-button">{{{saveButton}}}</div>
+          <div id="cancel-button">{{{cancelButton}}}</div>
         </section>
       </form>
     </article>

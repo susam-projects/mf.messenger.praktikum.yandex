@@ -26,7 +26,7 @@ const signUpPageTemplate = `
             Пароль
           </label>
           <input class="text-field__input" placeholder="&ge;6 символов, буквы и цифры" type="password" name="password" />
-          <div class="text-field__error-text">Неправильный пароль</div>
+          <div class="text-field__error-text">Пароль должен быть: &ge;6 символов, буквы и цифры</div>
         </article>
         <article class="text-field text-field_required margin-top-16">
           <label class="text-field__label">
@@ -63,12 +63,12 @@ const signUpPageTemplate = `
       </form>
 
       <section class="sign-up-page__buttons">
-        <span id="sign-up-button" class="sign-up-page__button-container">
+        <div id="sign-up-button" class="sign-up-page__button-container">
           {{{signUpButton}}}
-        </span>
-        <span id="go-to-login-button" class="sign-up-page__button-container margin-top-16">
+        </div>
+        <div id="go-to-login-button" class="sign-up-page__button-container margin-top-16">
           {{{goToLoginButton}}}
-        </span>
+        </div>
       </section>
     </article>
   </main>

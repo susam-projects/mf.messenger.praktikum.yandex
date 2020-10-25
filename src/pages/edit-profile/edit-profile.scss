@@ -29,10 +29,14 @@
   flex-direction: column;
 }
 
-.edit-profile-page__buttons button {
+.edit-profile-page__buttons {
+  display: flex;
+}
+
+.edit-profile-page__buttons-gap {
   margin: 0 16px;
 }
 
 .icon-upload {
-  background-image: url('./pages/edit-profile/upload.svg');
+  background-image: url("./pages/edit-profile/upload.svg");
 }

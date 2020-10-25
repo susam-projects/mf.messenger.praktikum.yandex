@@ -12,6 +12,7 @@ class ProfilePage extends Block<ProfilePageProps> {
     constructor() {
         super("div", profilePageTemplate, {
             editButton: new Button({
+                className: "profile-page__buttons-gap",
                 variant: "text-primary",
                 label: "Редактировать",
                 onClick: () => {
@@ -19,6 +20,7 @@ class ProfilePage extends Block<ProfilePageProps> {
                 },
             }),
             logoutButton: new Button({
+                className: "profile-page__buttons-gap",
                 variant: "text-danger",
                 label: "Выйти",
                 onClick: () => {
