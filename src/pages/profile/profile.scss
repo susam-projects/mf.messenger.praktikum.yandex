@@ -1,3 +1,5 @@
+@import "./field-info";
+
 .profile-page {
 }
 
@@ -43,5 +45,5 @@
 }
 
 .icon-back {
-  background-image: url('./back.svg');
+  background-image: url("./pages/profile/back.svg");
 }

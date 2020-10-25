@@ -3,9 +3,9 @@ import FormValidator from "../../utils/form-validator.js";
 import simpleRouter from "../../utils/simple-router.js";
 import chatPageTemplate from "./chats.template.js";
 
-interface ChatsPageProps {
-    sendMessageButton: Block;
-}
+// interface ChatsPageProps {
+//     sendMessageButton: Block;
+// }
 
 class ChatsPage extends Block {
     private validator: FormValidator | undefined;
@@ -22,7 +22,7 @@ class ChatsPage extends Block {
 
         userInfo?.addEventListener("click", event => {
             event.preventDefault();
-            simpleRouter.setPage("login");
+            simpleRouter.setPage("profile");
         });
 
         this.validator = new FormValidator({}, messageInput!);
