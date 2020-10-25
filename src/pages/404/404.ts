@@ -22,7 +22,7 @@ class Page404 extends Block<Page404Props> {
 
     bindContent() {
         const goToChatsButton = this.element.querySelector("#go-to-chats-button");
-        this.props.goToChatsButton._bindContent(goToChatsButton);
+        this.props.goToChatsButton.init(goToChatsButton);
     }
 }
 

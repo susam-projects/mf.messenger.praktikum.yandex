@@ -1,6 +1,6 @@
 const profilePageTemplate = `
   <main class="profile-page root">
-    <section id="back-button" class="profile-page__back">
+    <section id="back-line" class="profile-page__back">
       <div class="profile-page__back__icon icon-back"></div>
     </section>
     <section class="profile-page__content">

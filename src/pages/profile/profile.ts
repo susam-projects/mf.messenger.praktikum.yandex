@@ -29,17 +29,17 @@ class ProfilePage extends Block<ProfilePageProps> {
     }
 
     bindContent() {
-        const backButton = this.element.querySelector("#back-button");
-        const editButton = this.element.querySelector("#edit-button");
-        const logoutButton = this.element.querySelector("#logout-button");
+        const backLine = this.element?.querySelector("#back-line");
+        const editButton = this.element?.querySelector("#edit-button");
+        const logoutButton = this.element?.querySelector("#logout-button");
 
-        backButton?.addEventListener("click", event => {
+        backLine?.addEventListener("click", event => {
             event.preventDefault();
             simpleRouter.setPage("chats");
         });
 
-        this.props.editButton._bindContent(editButton);
-        this.props.logoutButton._bindContent(logoutButton);
+        this.props.editButton.init(editButton);
+        this.props.logoutButton.init(logoutButton);
     }
 }
 

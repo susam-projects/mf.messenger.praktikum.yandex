@@ -66,8 +66,8 @@ class EditProfilePage extends Block<EditProfilePageProps> {
 
         this.validator = new FormValidator(VALIDATORS, formInputs);
 
-        this.props.saveButton._bindContent(saveButton);
-        this.props.cancelButton._bindContent(cancelButton);
+        this.props.saveButton.init(saveButton);
+        this.props.cancelButton.init(cancelButton);
     }
 }
 
