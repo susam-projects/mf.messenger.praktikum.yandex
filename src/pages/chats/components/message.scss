@@ -1,3 +1,7 @@
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}
+
 .message {
   display: flex;
   align-items: flex-end;
@@ -15,7 +19,7 @@
 }
 
 .message__bubble:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 7px;
   bottom: 5px;

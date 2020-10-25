@@ -27,7 +27,7 @@ function removeAllChildren(node: HTMLElement) {
     }
 }
 
-// for tests
+// for dev
 // @ts-ignore
 window.simpleRouter = simpleRouter;
 

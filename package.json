@@ -10,7 +10,7 @@
     "clean": "rimraf ./static",
     "copy": "run-s copy:html copy:images",
     "copy:html": "copyfiles -u 1 ./src/index.html ./static",
-    "copy:images": "copyfiles -u 1 ./src/**/*.svg ./static",
+    "copy:images": "copyfiles -u 1 \"./src/**/*.{svg,jpg,png}\" ./static",
     "css:dev": "node-sass ./src/index.scss > ./static/styles.css",
     "css:prod": "node-sass ./src/index.scss | postcss -u autoprefixer -b 'last 2 versions' > ./static/styles.css",
     "js:main": "tsc -p .",

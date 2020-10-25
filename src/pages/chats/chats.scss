@@ -1,3 +1,12 @@
+@import "./components/user-info";
+@import "./components/chat-info";
+@import "./components/message-field";
+@import "./components/message-footer";
+@import "./components/message-list";
+@import "./components/message";
+@import "./chat";
+@import "./chat-list";
+
 .chats-page {
   align-items: stretch;
   --color-chat-list-bg: #f4f6f9;

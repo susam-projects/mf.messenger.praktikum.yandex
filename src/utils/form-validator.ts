@@ -5,13 +5,15 @@ type InputValidator = RegExp | ValidatorFunction;
 type ValidatorFunction = (value: string, inputs: NodeListOf<HTMLInputElement>) => boolean;
 
 class FormValidator {
-    constructor(private inputValidators: Record<string, InputValidator> = {}, private form: HTMLFormElement) {
-        const inputs = form.querySelectorAll("input");
+    constructor(
+        private inputValidators: Record<string, InputValidator> = {},
+        private inputs: NodeListOf<HTMLInputElement>,
+    ) {
         inputs && bindValidators(inputs, this.inputValidators);
     }
 
     validate(): boolean {
-        const inputs = this.form.querySelectorAll("input");
+        const inputs = this.inputs;
         return !!inputs && checkAll(inputs, input => processValidation(input, this.inputValidators, inputs));
     }
 }

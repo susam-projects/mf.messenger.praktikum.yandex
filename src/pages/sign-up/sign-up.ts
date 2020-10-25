@@ -53,12 +53,13 @@ class SignUpPage extends Block<SignUpPageProps> {
     bindContent() {
         const signUpButton = this.element.querySelector("#sign-up-button");
         const goToLoginButton = this.element.querySelector("#go-to-login-button");
+        const form = this.element.querySelector("form")!;
+        const formInputs = form.querySelectorAll("input");
 
         this.props.signUpButton._bindContent(signUpButton);
         this.props.goToLoginButton._bindContent(goToLoginButton);
 
-        const form = this.element.querySelector("form");
-        this.validator = new FormValidator(VALIDATORS, form!);
+        this.validator = new FormValidator(VALIDATORS, formInputs);
     }
 }
 
