@@ -9,9 +9,9 @@ const chatPageTemplate = `
               <div class="text-field-with-icon__icon search-field__icon"></div>
             </div>
           </article>
-          <button class="icon-button">
-            <span class="icon-button__icon icon-plus"></span>
-          </button>
+          <div id="create-chat-button">
+            {{{createChatButton}}}
+          </div>
         </section>
         <hr class="divider margin-top-16" />
       </header>
@@ -137,10 +137,10 @@ const chatPageTemplate = `
             <h1>Название чата</h1>
           </section>
           <section class="chat__header__actions">
-            <button class="icon-button">
-              <span class="icon-button__icon icon-vertical-dots"></span>
-            </button>
-            <nav class="menu chat__header__actions-menu">
+            <div id="chat-actions-button">
+              {{{chatActionsButton}}}
+            </div>
+            <nav id="chat-actions-menu" class="menu chat__header__actions-menu">
               <article class="card card-lite">
                 <ul>
                   <li class="menu__item">
@@ -265,18 +265,18 @@ const chatPageTemplate = `
 
       <section class="chat__control-panel">
         <section class="chat__control-panel__buttons">
-          <button class="icon-button">
-            <span class="icon-button__icon icon-smile"></span>
-          </button>
-          <button class="icon-button">
-            <span class="icon-button__icon icon-document"></span>
-          </button>
-          <button class="icon-button">
-            <span class="icon-button__icon icon-image"></span>
-          </button>
-          <button class="icon-button">
-            <span class="icon-button__icon icon-video"></span>
-          </button>
+          <div id="smiles-button">
+            {{{smilesButton}}}
+          </div>
+          <div id="add-document-button">
+            {{{addDocumentButton}}}
+          </div>
+          <div id="add-image-button">
+            {{{addImageButton}}}
+          </div>
+          <div id="add-video-button">
+            {{{addVideoButton}}}
+          </div>
         </section>
         <section class="margin-top-16">
           <article id="message-field" class="text-field-with-icon message-field">

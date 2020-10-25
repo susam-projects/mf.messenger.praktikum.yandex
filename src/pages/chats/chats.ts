@@ -2,24 +2,76 @@ import Block from "../../utils/block.js";
 import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../utils/form-validator.js";
 import simpleRouter from "../../utils/simple-router.js";
 import chatPageTemplate from "./chats.template.js";
+import IconButton from "../../components/icon-button/icon-button.js";
+import { toggleClass } from "../../utils/dom-utils.js";
 
-// interface ChatsPageProps {
-//     sendMessageButton: Block;
-// }
+interface ChatsPageProps {
+    // sendMessageButton: Block;
+    createChatButton: Block;
+    chatActionsButton: Block;
+    smilesButton: Block;
+    addDocumentButton: Block;
+    addImageButton: Block;
+    addVideoButton: Block;
+}
 
 const VALIDATORS: InputValidators = {
     message: MESSAGE_VALIDATOR,
 };
 
-class ChatsPage extends Block {
+class ChatsPage extends Block<ChatsPageProps> {
     private validator: FormValidator | undefined;
 
     constructor() {
-        super("div", chatPageTemplate);
+        super("div", chatPageTemplate, {
+            createChatButton: new IconButton({
+                iconClassName: "icon-plus",
+                onClick: () => {
+                    console.log("create chat click");
+                },
+            }),
+            chatActionsButton: new IconButton({
+                iconClassName: "icon-vertical-dots",
+                onClick: () => {
+                    const actionsMenu = this.element.querySelector("#chat-actions-menu")!;
+                    toggleClass(actionsMenu, "open");
+                },
+            }),
+            smilesButton: new IconButton({
+                iconClassName: "icon-smile",
+                onClick: () => {
+                    console.log("open smiles menu");
+                },
+            }),
+            addDocumentButton: new IconButton({
+                iconClassName: "icon-document",
+                onClick: () => {
+                    console.log("open document selector");
+                },
+            }),
+            addImageButton: new IconButton({
+                iconClassName: "icon-image",
+                onClick: () => {
+                    console.log("open image selector");
+                },
+            }),
+            addVideoButton: new IconButton({
+                iconClassName: "icon-video",
+                onClick: () => {
+                    console.log("open video selector");
+                },
+            }),
+        });
     }
 
     bindContent() {
         const userInfo = this.element.querySelector("#user-info");
+        const createChatButton = this.element.querySelector("#create-chat-button");
+        const chatActionsButton = this.element.querySelector("#chat-actions-button");
+        const smilesButton = this.element.querySelector("#smiles-button");
+        const addDocumentButton = this.element.querySelector("#add-document-button");
+        const addImageButton = this.element.querySelector("#add-image-button");
+        const addVideoButton = this.element.querySelector("#add-video-button");
         const messageField = this.element.querySelector("#message-field");
         const messageInput = messageField?.querySelectorAll("input");
         const sendMessageButton = this.element.querySelector("#send-message");
@@ -28,6 +80,13 @@ class ChatsPage extends Block {
             event.preventDefault();
             simpleRouter.setPage("profile");
         });
+
+        this.props.createChatButton.init(createChatButton);
+        this.props.chatActionsButton.init(chatActionsButton);
+        this.props.smilesButton.init(smilesButton);
+        this.props.addDocumentButton.init(addDocumentButton);
+        this.props.addImageButton.init(addImageButton);
+        this.props.addVideoButton.init(addVideoButton);
 
         this.validator = new FormValidator(VALIDATORS, messageInput!);
 
