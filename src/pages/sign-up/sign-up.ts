@@ -1,5 +1,13 @@
 import Button from "../../components/button/button.js";
 import Block from "../../utils/block.js";
+import FormValidator, {
+    CONFIRM_PASSWORD_VALIDATOR,
+    EMAIL_VALIDATOR,
+    LOGIN_VALIDATOR,
+    NAME_VALIDATOR,
+    PASSWORD_VALIDATOR,
+    PHONE_VALIDATOR,
+} from "../../utils/form-validator.js";
 import simpleRouter from "../../utils/simple-router.js";
 import signUpPageTemplate from "./sign-up.template.js";
 
@@ -8,14 +16,28 @@ interface SignUpPageProps {
     goToLoginButton: Block;
 }
 
+const VALIDATORS = {
+    login: LOGIN_VALIDATOR,
+    email: EMAIL_VALIDATOR,
+    password: PASSWORD_VALIDATOR,
+    confirm_password: CONFIRM_PASSWORD_VALIDATOR,
+    first_name: NAME_VALIDATOR,
+    second_name: NAME_VALIDATOR,
+    phone: PHONE_VALIDATOR,
+};
+
 class SignUpPage extends Block<SignUpPageProps> {
+    private validator: FormValidator | undefined;
+
     constructor() {
         super("div", signUpPageTemplate, {
             signUpButton: new Button({
                 label: "Зарегистрироваться",
                 variant: "primary",
-                onClick() {
-                    simpleRouter.setPage("chats");
+                onClick: () => {
+                    if (this.validator!.validate()) {
+                        simpleRouter.setPage("chats");
+                    }
                 },
             }),
             goToLoginButton: new Button({
@@ -34,6 +56,9 @@ class SignUpPage extends Block<SignUpPageProps> {
 
         this.props.signUpButton._bindContent(signUpButton);
         this.props.goToLoginButton._bindContent(goToLoginButton);
+
+        const form = this.element.querySelector("form");
+        this.validator = new FormValidator(VALIDATORS, form!);
     }
 }
 

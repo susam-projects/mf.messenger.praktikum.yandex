@@ -5,9 +5,8 @@ import TestPage from "./pages/test-page/test-page.js";
 import LoginPage from "./pages/login/login.js";
 
 simpleRouter
-    .registerPage("test", new TestPage())
     .registerPage("login", new LoginPage())
     .registerPage("sign-up", new SignUpPage())
     .registerPage("chats", new TestPage());
 
-simpleRouter.setPage("login");
+simpleRouter.setPage("sign-up");

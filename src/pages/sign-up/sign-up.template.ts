@@ -18,14 +18,14 @@ const signUpPageTemplate = `
             Почта
           </label>
           <input class="text-field__input" placeholder="email@example.com" type="email" name="email" />
-          <div class="text-field__error-text">Неправильный email</div>
+          <div class="text-field__error-text">Неправильная почта</div>
         </article>
         <article class="text-field text-field_required margin-top-16">
           <label class="text-field__label">
             <span class="text-field__required-mark">*</span>
             Пароль
           </label>
-          <input class="text-field__input" placeholder="Буквы и цифры" type="password" name="password" />
+          <input class="text-field__input" placeholder="&ge;6 символов, буквы и цифры" type="password" name="password" />
           <div class="text-field__error-text">Неправильный пароль</div>
         </article>
         <article class="text-field text-field_required margin-top-16">
@@ -34,7 +34,7 @@ const signUpPageTemplate = `
             Пароль (ещё раз)
           </label>
           <input class="text-field__input" placeholder="Подтвердите пароль" type="password" name="confirm_password" />
-          <div class="text-field__error-text">Неправильный пароль</div>
+          <div class="text-field__error-text">Пароли не совпадают</div>
         </article>
         <article class="text-field margin-top-16">
           <label class="text-field__label">
@@ -42,7 +42,7 @@ const signUpPageTemplate = `
             Имя
           </label>
           <input class="text-field__input" placeholder="Михаил" name="first_name" />
-          <div class="text-field__error-text">Неправильный пароль</div>
+          <div class="text-field__error-text">Неправильное имя</div>
         </article>
         <article class="text-field margin-top-16">
           <label class="text-field__label">
@@ -50,7 +50,7 @@ const signUpPageTemplate = `
             Фамилия
           </label>
           <input class="text-field__input" placeholder="Нестеров" name="second_name" />
-          <div class="text-field__error-text">Неправильный пароль</div>
+          <div class="text-field__error-text">Неправильная фамилия</div>
         </article>
         <article class="text-field margin-top-16">
           <label class="text-field__label">
@@ -58,7 +58,7 @@ const signUpPageTemplate = `
             Телефон
           </label>
           <input class="text-field__input" placeholder="+7 111 111 11 11" name="phone" />
-          <div class="text-field__error-text">Неправильный пароль</div>
+          <div class="text-field__error-text">Неправильный телефон</div>
         </article>
       </form>
 

@@ -11,7 +11,7 @@ const loginPageTemplate = `
           <input class="text-field__input" placeholder="username" name="login" />
           <div class="text-field__error-text">Неправильный логин</div>
         </article>
-        <article class="text-field text-field_error margin-top-16">
+        <article class="text-field margin-top-16">
           <label class="text-field__label">
             <span class="text-field__required-mark">*</span>
             Пароль
