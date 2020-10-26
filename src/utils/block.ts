@@ -25,6 +25,7 @@ class Block<TProps extends object = {}> {
     private _element: Element | null = null;
     private readonly _meta: BlockMeta | null = null;
     private readonly _template: HandlebarsTemplateDelegate<TemplateProps> | null = null;
+    private _isRendering = false;
 
     constructor(tagName = "div", template = "", props = {} as TProps) {
         this._meta = {
@@ -141,9 +142,11 @@ class Block<TProps extends object = {}> {
     }
 
     private _render(): void {
-        if (!this.element) return;
+        if (!this.element || this._isRendering) return;
+        this._isRendering = true;
         removeAllChildren(this.element);
         this.element.innerHTML = this.render();
+        this._isRendering = false;
     }
 
     private _bindContent(): void {
