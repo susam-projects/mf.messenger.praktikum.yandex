@@ -1,10 +1,12 @@
 import Button from "../../components/button/button.js";
 import Block from "../../utils/block.js";
-import { LOGIN_VALIDATOR, REQUIRED_PASSWORD_VALIDATOR } from "../../utils/form-validator.js";
 import loginPageTemplate from "./login.template.js";
 import simpleRouter from "../../utils/simple-router.js";
 import TextField from "../../components/text-field/text-field.js";
-import TextFieldsValidator from "../../utils/text-fields-validator.js";
+import TextFieldsValidator, {
+    LOGIN_VALIDATOR,
+    REQUIRED_PASSWORD_VALIDATOR,
+} from "../../utils/text-fields-validator.js";
 
 interface LoginPageProps {
     userNameField: TextField;
@@ -29,7 +31,7 @@ class LoginPage extends Block<LoginPageProps> {
                 type: "password",
                 label: "Пароль",
                 placeholder: "●●●●●●●●●●●",
-                errorText: "Пароль должен быть: >=6 символов, буквы и цифры",
+                errorText: "Пароль должен содержать ≥6 символов, буквы и цифры",
                 name: "password",
             }),
 

@@ -1,4 +1,4 @@
-import { checkAll, find } from "./array-utils.js";
+import { checkAll } from "./array-utils.js";
 
 export type InputValidators = Record<string, InputValidator>;
 export type InputValidator = RegExp | ValidatorFunction;
@@ -54,28 +54,8 @@ function processValidation(
     return result;
 }
 
-export const LOGIN_VALIDATOR = /^[A-Za-z][\w-]{2,}$/i;
-export const REQUIRED_EMAIL_VALIDATOR = /\S+@\S+\.\S+/i;
-export const EMAIL_VALIDATOR = /(^\s*$)|(^\S+@\S+\.\S+$)/i;
-export const REQUIRED_PASSWORD_VALIDATOR = /[A-ZА-ЯЁ\d]{6,}/i;
-export const PASSWORD_VALIDATOR = /(^$)|(^[A-ZА-ЯЁ\d]{6,}$)/i;
-export const NAME_VALIDATOR = /(^\s*$)|(^[A-ZА-ЯЁ]+$)/i;
-export const DISPLAY_NAME_VALIDATOR = /(^\s*$)|(^[A-ZА-ЯЁ\s]+$)/i;
-export const PHONE_VALIDATOR = /(^\s*$)|(^\+?\d[\d-\s]+$)/i;
-export const AVATAR_VALIDATOR = /^.*$/i;
-
 // "~ are not allowed.
 // it doesn't have any special meaning, just disallow some characters in order to complete the task
 export const MESSAGE_VALIDATOR = /^[A-ZА-ЯЁ\s\d_\-,.;@#$%^&*()]+$/i;
-
-export const ifFieldIsNotEmpty = (fieldName: string, validator: RegExp): ValidatorFunction => (value, inputs) => {
-    const field = find(inputs, it => it.name === fieldName);
-    return !field || !field.value || validator.test(value);
-};
-
-export const CONFIRM_PASSWORD_VALIDATOR = (passwordFieldName = "password"): ValidatorFunction => (value, inputs) => {
-    const passwordInput = find(inputs, it => it.name === passwordFieldName);
-    return !passwordInput || passwordInput.value === value;
-};
 
 export default FormValidator;

@@ -10,91 +10,33 @@ const editProfilePageTemplate = `
         </label>
 
         <section class="edit-profile-page__inputs margin-top-24">
-          <article class="text-field">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Логин
-            </label>
-            <input class="text-field__input" placeholder="username" value="username" name="login" />
-            <div class="text-field__error-text">Неправильный логин</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Отображаемое имя
-            </label>
-            <input class="text-field__input" placeholder="username" value="Василий Тёркин" name="display_name" />
-            <div class="text-field__error-text">Неправильное отображаемое имя</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Имя
-            </label>
-            <input class="text-field__input" placeholder="Михаил" name="first_name" />
-            <div class="text-field__error-text">Неправильное имя</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Фамилия
-            </label>
-            <input class="text-field__input" placeholder="Нестеров" name="second_name" />
-            <div class="text-field__error-text">Неправильная фамилия</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Телефон
-            </label>
-            <input class="text-field__input" placeholder="+7 111 111 11 11" name="phone" />
-            <div class="text-field__error-text">Неправильный телефон</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Почта
-            </label>
-            <input class="text-field__input" placeholder="email@example.com" type="email" name="email" />
-            <div class="text-field__error-text">Неправильная почта</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Пароль
-            </label>
-            <input class="text-field__input" placeholder="●●●●●●●●●●●" type="password" name="oldPassword" />
-            <div class="text-field__error-text">Пароль должен быть: &ge;6 символов, буквы и цифры</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Новый Пароль
-            </label>
-            <input class="text-field__input" placeholder="&ge;6 символов, буквы и цифры" type="password" name="newPassword" />
-            <div class="text-field__error-text">Пароль должен быть: &ge;6 символов, буквы и цифры</div>
-          </article>
-
-          <article class="text-field margin-top-8">
-            <label class="text-field__label">
-              <span class="text-field__required-mark">*</span>
-              Новый Пароль (ещё раз)
-            </label>
-            <input
-              class="text-field__input"
-              placeholder="Подтвердите пароль"
-              type="password"
-              name="confirmPassword"
-            />
-            <div class="text-field__error-text">Пароли не совпадают</div>
-          </article>
+          <div id="login-field">
+            {{{loginField}}}
+          </div>
+          <div id="display-name-field" class="margin-top-8">
+            {{{displayNameField}}}
+          </div>
+          <div id="first-name-field" class="margin-top-8">
+            {{{firstNameField}}}
+          </div>
+          <div id="second-name-field" class="margin-top-8">
+            {{{secondNameField}}}
+          </div>
+          <div id="phone-field" class="margin-top-8">
+            {{{phoneField}}}
+          </div>
+          <div id="email-field" class="margin-top-8">
+            {{{emailField}}}
+          </div>
+          <div id="old-password-field" class="margin-top-8">
+            {{{oldPasswordField}}}
+          </div>
+          <div id="new-password-field" class="margin-top-8">
+            {{{newPasswordField}}}
+          </div>
+          <div id="confirm-password-field" class="margin-top-8">
+            {{{confirmPasswordField}}}
+          </div>
         </section>
 
         <section class="edit-profile-page__buttons margin-top-40 margin-bottom-8">
