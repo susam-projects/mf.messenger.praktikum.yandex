@@ -1,7 +1,7 @@
 import { checkAll, find } from "./array-utils.js";
 
 export type InputValidators = Record<string, InputValidator>;
-type InputValidator = RegExp | ValidatorFunction;
+export type InputValidator = RegExp | ValidatorFunction;
 type ValidatorFunction = (value: string, inputs: NodeListOf<HTMLInputElement>) => boolean;
 
 class FormValidator {

@@ -22,7 +22,7 @@ class Block<TProps extends object = {}> {
     props: TProps;
 
     private _eventBus = new EventBus();
-    private _element: HTMLElement | null = null;
+    private _element: Element | null = null;
     private readonly _meta: BlockMeta | null = null;
     private readonly _template: HandlebarsTemplateDelegate<TemplateProps> | null = null;
 
@@ -41,17 +41,17 @@ class Block<TProps extends object = {}> {
         this._eventBus.emit(Block.EVENTS.INIT);
     }
 
-    get element(): HTMLElement {
+    get element(): Element {
         return this._element!;
     }
 
-    getContent(): HTMLElement {
+    getContent(): Element {
         return this.element;
     }
 
     init(parent?: Element | null): void {
         if (parent) {
-            this._element = parent.querySelector(".root");
+            this._element = parent;
             this._eventBus.emit(Block.EVENTS.FLOW_BIND);
         } else {
             this._createResources();

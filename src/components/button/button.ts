@@ -21,9 +21,9 @@ class Button extends Block<ButtonProps> {
     }
 
     bindContent() {
-        const button = this.element;
+        const button = this.element.querySelector("button");
 
-        button.addEventListener("click", event => {
+        button?.addEventListener("click", event => {
             event.preventDefault();
             this.props.onClick!();
         });
