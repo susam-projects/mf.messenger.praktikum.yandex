@@ -14,7 +14,7 @@ const textFieldTemplate = `
     <input
       class="text-field__input"
       placeholder="{{placeholder}}"
-      value="{{value}}"
+      value="{{defaultValue}}"
       type="{{type}}"
       name="{{name}}"
     />

@@ -10,7 +10,7 @@ interface TextFieldProps {
     placeholder?: string;
     errorText?: string;
     name?: string;
-    value?: string | number;
+    defaultValue?: string | number;
     onChange?: (event: Event) => void;
     onBlur?: (event: FocusEvent) => void;
     onFocus?: (event: FocusEvent) => void;
@@ -26,7 +26,7 @@ const DEFAULT_PROPS: Partial<TextFieldProps> = {
     placeholder: "",
     errorText: "",
     name: "",
-    value: "",
+    defaultValue: "",
     onChange: noop,
     onBlur: noop,
     onFocus: noop,
