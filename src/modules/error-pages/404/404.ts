@@ -1,6 +1,6 @@
-import Button from "../../ui/components/button/button.js";
-import Block from "../../ui/component-system/block.js";
-import simpleRouter from "../../ui/component-system/simple-router.js";
+import Button from "../../../ui/components/button/button.js";
+import Block from "../../../ui/component-system/block.js";
+import simpleRouter from "../../../ui/component-system/simple-router.js";
 import page404Template from "./404.template.js";
 
 interface Page404Props {
