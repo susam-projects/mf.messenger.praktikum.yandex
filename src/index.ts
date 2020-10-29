@@ -1,12 +1,12 @@
-import "./utils/ui/handlebars-helpers.js";
-import Page404 from "./pages/404/404.js";
-import Page500 from "./pages/500/500.js";
-import ChatsPage from "./pages/chats/chats.js";
-import EditProfilePage from "./pages/edit-profile/edit-profile.js";
-import ProfilePage from "./pages/profile/profile.js";
-import SignUpPage from "./pages/sign-up/sign-up.js";
-import simpleRouter from "./utils/ui/simple-router.js";
-import LoginPage from "./pages/login/login.js";
+import "./ui/component-system/handlebars-helpers.js";
+import Page404 from "./modules/404/404.js";
+import Page500 from "./modules/500/500.js";
+import ChatsPage from "./modules/chats/page/chats.js";
+import EditProfilePage from "./modules/profile/edit-profile/page/edit-profile.js";
+import ProfilePage from "./modules/profile/view-profile/page/profile.js";
+import SignUpPage from "./modules/start-page/sign-up/page/sign-up.js";
+import simpleRouter from "./ui/component-system/simple-router.js";
+import LoginPage from "./modules/start-page/login/page/login.js";
 
 simpleRouter
     .registerPage("login", new LoginPage())

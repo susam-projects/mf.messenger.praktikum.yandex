@@ -1,0 +1,119 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.chat__header__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat__header__chat-info {
+  display: flex;
+  align-items: center;
+}
+
+.chat__header .avatar {
+  margin: 12px 16px 12px 24px;
+}
+
+.chat__header__actions {
+  display: flex;
+  align-items: center;
+  padding-right: 24px;
+  position: relative;
+  color: #2f8ad3;
+}
+
+.chat__header__actions-menu {
+  display: none;
+}
+
+.chat__header__actions-menu.open {
+  display: block;
+  position: absolute;
+  top: 62px;
+  right: 24px;
+  width: 270px;
+}
+
+.chat__messages {
+  height: calc(100vh - 74px - 146px);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__messages-container {
+  flex-grow: 1;
+}
+
+.chat__control-panel {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  width: calc(100% - 24px * 2);
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid var(--color-chat-control-border);
+  box-shadow: 0 1px 2px var(--color-chat-control-border);
+  border-radius: 14px;
+}
+
+.chat__control-panel__buttons {
+  display: flex;
+  padding: 0 16px;
+}
+
+.chat__control-panel__buttons button {
+  margin-right: 24px;
+}
+
+.icon-plus {
+  background-image: url("./modules/chats/page/images/add.svg");
+}
+
+.icon-vertical-dots {
+  background-image: url("./modules/chats/page/images/vertical-dots.svg");
+}
+
+.icon-edit {
+  background-image: url("./modules/chats/page/images/edit.svg");
+}
+
+.icon-user-group {
+  background-image: url("./modules/chats/page/images/user-group.svg");
+}
+
+.icon-lock {
+  background-image: url("./modules/chats/page/images/lock.svg");
+}
+
+.icon-trash {
+  background-image: url("./modules/chats/page/images/trash.svg");
+}
+
+.icon-check {
+  background-image: url("./modules/chats/page/images/check.svg");
+}
+
+.image-pair {
+  background-image: url("./modules/chats/page/images/img.jpg");
+}
+
+.icon-smile {
+  background-image: url("./modules/chats/page/images/smile.svg");
+}
+
+.icon-document {
+  background-image: url("./modules/chats/page/images/document.svg");
+}
+
+.icon-image {
+  background-image: url("./modules/chats/page/images/image.svg");
+}
+
+.icon-video {
+  background-image: url("./modules/chats/page/images/video.svg");
+}
