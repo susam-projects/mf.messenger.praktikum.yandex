@@ -17,14 +17,14 @@
   display: flex;
   align-items: center;
   padding: 0 16px;
+
+  &:hover {
+    background-color: $COLOR_ITEM_ACTIVE;
+  }
 }
 
 .menu__item-danger {
   color: $COLOR_DANGER;
-}
-
-.menu__item:hover {
-  background-color: $COLOR_ITEM_ACTIVE;
 }
 
 .menu__item__icon {

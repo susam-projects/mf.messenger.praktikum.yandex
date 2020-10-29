@@ -1,6 +1,6 @@
-import Block from "../../utils/block.js";
+import Block from "../../utils/ui/block.js";
 import iconButtonTemplate from "./icon-button.template.js";
-import { noop } from "../../utils/func-utils.js";
+import { noop } from "../../utils/useful-functions/func-utils.js";
 
 interface IconButtonProps {
     className?: string;

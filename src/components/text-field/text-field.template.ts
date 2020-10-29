@@ -3,7 +3,6 @@ const textFieldTemplate = `
     class="
       text-field
       {{#if isRequired}}text-field_required{{/if}}
-      {{#if isError}}text-field_error{{/if}}
       root
     "
   >

@@ -1,9 +1,9 @@
-import Block from "../../utils/block.js";
-import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../utils/form-validator.js";
-import simpleRouter from "../../utils/simple-router.js";
+import Block from "../../utils/ui/block.js";
+import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../utils/ui/form-validator.js";
+import simpleRouter from "../../utils/ui/simple-router.js";
 import chatPageTemplate from "./chats.template.js";
 import IconButton from "../../components/icon-button/icon-button.js";
-import { toggleClass } from "../../utils/dom-utils.js";
+import { toggleClass } from "../../utils/ui/dom-utils.js";
 
 interface ChatsPageProps {
     // sendMessageButton: Block;

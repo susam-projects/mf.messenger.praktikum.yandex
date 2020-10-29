@@ -1,4 +1,4 @@
-import EventBus from "./event-bus.js";
+import EventBus from "../events/event-bus.js";
 
 interface BlockMeta {
     tagName: string;
@@ -6,11 +6,13 @@ interface BlockMeta {
     template: Handlebars.Template;
 }
 
-type BaseProps = Record<string, unknown>;
+interface BaseProps {
+    [key: string]: unknown;
+}
 
 type TemplateProps = Record<string, string | number>;
 
-class Block<TProps extends object = {}> {
+class Block<TProps extends {} = {}> {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -85,6 +87,14 @@ class Block<TProps extends object = {}> {
         Object.assign(this.props, nextProps);
     }
 
+    show(): void {
+        (this.element as HTMLElement).style.display = "block";
+    }
+
+    hide(): void {
+        (this.element as HTMLElement).style.display = "none";
+    }
+
     protected bindContent(): void {}
 
     private _compileTemplate(template: string): HandlebarsTemplateDelegate<TemplateProps> {
@@ -93,8 +103,6 @@ class Block<TProps extends object = {}> {
 
     private _makePropsProxy(props: TProps): TProps {
         return (new Proxy(props, {
-            // TODO: investigate how to correctly handle index signatures / Record types
-            // @ts-ignore
             set: (target: BaseProps, prop: string, value: unknown) => {
                 if (target[prop] === value) {
                     return true;

@@ -1,12 +1,12 @@
 import Button from "../../components/button/button.js";
-import Block from "../../utils/block.js";
+import Block from "../../utils/ui/block.js";
 import loginPageTemplate from "./login.template.js";
-import simpleRouter from "../../utils/simple-router.js";
+import simpleRouter from "../../utils/ui/simple-router.js";
 import TextField from "../../components/text-field/text-field.js";
 import TextFieldsValidator, {
     LOGIN_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
-} from "../../utils/text-fields-validator.js";
+} from "../../utils/ui/text-fields-validator.js";
 
 interface LoginPageProps {
     userNameField: TextField;

@@ -1,5 +1,5 @@
-import Block from "../../utils/block.js";
-import { noop } from "../../utils/func-utils.js";
+import Block from "../../utils/ui/block.js";
+import { noop } from "../../utils/useful-functions/func-utils.js";
 import buttonTemplate from "./button.template.js";
 
 interface ButtonProps {

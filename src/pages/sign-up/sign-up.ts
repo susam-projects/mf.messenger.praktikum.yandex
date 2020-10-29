@@ -1,6 +1,6 @@
 import Button from "../../components/button/button.js";
-import Block from "../../utils/block.js";
-import simpleRouter from "../../utils/simple-router.js";
+import Block from "../../utils/ui/block.js";
+import simpleRouter from "../../utils/ui/simple-router.js";
 import signUpPageTemplate from "./sign-up.template.js";
 import TextField from "../../components/text-field/text-field.js";
 import TextFieldsValidator, {
@@ -11,7 +11,7 @@ import TextFieldsValidator, {
     PHONE_VALIDATOR,
     REQUIRED_EMAIL_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
-} from "../../utils/text-fields-validator.js";
+} from "../../utils/ui/text-fields-validator.js";
 
 interface SignUpPageProps {
     loginField: TextField;

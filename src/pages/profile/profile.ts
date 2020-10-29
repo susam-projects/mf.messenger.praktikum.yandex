@@ -1,6 +1,6 @@
 import Button from "../../components/button/button.js";
-import Block from "../../utils/block.js";
-import simpleRouter from "../../utils/simple-router.js";
+import Block from "../../utils/ui/block.js";
+import simpleRouter from "../../utils/ui/simple-router.js";
 import profilePageTemplate from "./profile.template.js";
 
 interface ProfilePageProps {

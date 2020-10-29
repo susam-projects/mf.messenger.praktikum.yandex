@@ -1,6 +1,6 @@
-import Block from "../../utils/block.js";
+import Block from "../../utils/ui/block.js";
 import textFieldTemplate from "./text-field.template.js";
-import { noop } from "../../utils/func-utils.js";
+import { noop } from "../../utils/useful-functions/func-utils.js";
 
 interface TextFieldProps {
     isRequired?: boolean;
@@ -56,6 +56,8 @@ class TextField extends Block<TextFieldProps> {
                     break;
             }
         });
+
+        this.isError = this.props.isError!;
     }
 
     get value(): string {
@@ -66,6 +68,15 @@ class TextField extends Block<TextFieldProps> {
     get name(): string {
         const input = this.element.querySelector("input");
         return (input && input.name) ?? "";
+    }
+
+    set isError(value: boolean) {
+        const root = this.element.querySelector(".root");
+        if (value) {
+            root?.classList.add("text-field_error");
+        } else {
+            root?.classList.remove("text-field_error");
+        }
     }
 }
 

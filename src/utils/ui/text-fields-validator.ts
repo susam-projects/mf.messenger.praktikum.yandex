@@ -1,5 +1,5 @@
-import TextField from "../components/text-field/text-field.js";
-import { checkAll } from "./array-utils.js";
+import TextField from "../../components/text-field/text-field.js";
+import { checkAll } from "../useful-functions/array-utils.js";
 
 export interface TextFieldInfo {
     textField: TextField;
@@ -29,10 +29,7 @@ class TextFieldsValidator {
 
     private _processInput(textField: TextField, validator: InputValidator): boolean {
         const isPassed = this._checkField(textField, validator);
-        textField.setProps({
-            isError: !isPassed,
-            defaultValue: textField.value,
-        });
+        textField.isError = !isPassed;
         return isPassed;
     }
 

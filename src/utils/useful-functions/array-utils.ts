@@ -23,3 +23,7 @@ export function checkAll<T>(arr: ArrayLike<T>, predicate: (item: T) => boolean):
     }
     return result;
 }
+
+export function ensureArray<T>(value: T | T[]): T[] {
+    return Array.isArray(value) ? value : [value];
+}

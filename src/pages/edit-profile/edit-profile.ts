@@ -1,6 +1,6 @@
 import Button from "../../components/button/button.js";
-import Block from "../../utils/block.js";
-import simpleRouter from "../../utils/simple-router.js";
+import Block from "../../utils/ui/block.js";
+import simpleRouter from "../../utils/ui/simple-router.js";
 import editProfilePageTemplate from "./edit-profile.template.js";
 import TextFieldsValidator, {
     CONFIRM_PASSWORD_VALIDATOR,
@@ -13,7 +13,7 @@ import TextFieldsValidator, {
     PASSWORD_VALIDATOR,
     PHONE_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
-} from "../../utils/text-fields-validator.js";
+} from "../../utils/ui/text-fields-validator.js";
 import TextField from "../../components/text-field/text-field.js";
 
 interface EditProfilePageProps {
