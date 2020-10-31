@@ -1,5 +1,5 @@
-import Api from "../../../../infrastructure/api/api.js";
-import { Response } from "../../../../infrastructure/api/http-transport.js";
+import Api from "../../../infrastructure/api/api.js";
+import { Response } from "../../../infrastructure/api/http-transport.js";
 
 export interface ISignUpData {
     first_name?: string;

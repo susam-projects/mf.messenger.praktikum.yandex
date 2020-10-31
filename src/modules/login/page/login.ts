@@ -1,11 +1,11 @@
-import Button from "../../../../ui/components/button/button.js";
-import Block from "../../../../ui/component-system/block.js";
+import Button from "../../../ui/components/button/button.js";
+import Block from "../../../ui/component-system/block.js";
 import loginPageTemplate from "./login.template.js";
-import TextField from "../../../../ui/components/text-field/text-field.js";
+import TextField from "../../../ui/components/text-field/text-field.js";
 import TextFieldsValidator, {
     LOGIN_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
-} from "../../../../ui/component-utils/text-fields-validator.js";
+} from "../../../ui/component-utils/text-fields-validator.js";
 import LoginController from "../controller/login-controller.js";
 
 interface LoginPageProps {
