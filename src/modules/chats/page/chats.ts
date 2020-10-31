@@ -1,6 +1,5 @@
 import Block from "../../../ui/component-system/block.js";
 import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../../ui/component-utils/form-validator.js";
-import simpleRouter from "../../../ui/component-system/simple-router.js";
 import chatPageTemplate from "./chats.template.js";
 import IconButton from "../../../ui/components/icon-button/icon-button.js";
 import { toggleClass } from "../../../ui/utils/dom-utils.js";
@@ -78,7 +77,7 @@ class ChatsPage extends Block<ChatsPageProps> {
 
         userInfo?.addEventListener("click", event => {
             event.preventDefault();
-            simpleRouter.setPage("profile");
+            this._router.go("/profile");
         });
 
         this.props.createChatButton.init(createChatButton);

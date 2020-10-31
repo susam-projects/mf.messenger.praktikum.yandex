@@ -1,6 +1,5 @@
 import Button from "../../../../ui/components/button/button.js";
 import Block from "../../../../ui/component-system/block.js";
-import simpleRouter from "../../../../ui/component-system/simple-router.js";
 import signUpPageTemplate from "./sign-up.template.js";
 import TextField from "../../../../ui/components/text-field/text-field.js";
 import TextFieldsValidator, {
@@ -92,7 +91,7 @@ class SignUpPage extends Block<SignUpPageProps> {
                 variant: "primary",
                 onClick: () => {
                     if (this._validator.validate()) {
-                        simpleRouter.setPage("chats");
+                        this._router.go("/chats");
                     }
                 },
             }),
@@ -101,8 +100,8 @@ class SignUpPage extends Block<SignUpPageProps> {
                 className: "sign-up-page__button-full-width",
                 label: "Войти",
                 variant: "text-primary",
-                onClick() {
-                    simpleRouter.setPage("login");
+                onClick: () => {
+                    this._router.go("/");
                 },
             }),
         });

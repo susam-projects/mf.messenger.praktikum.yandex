@@ -28,6 +28,14 @@ class Button extends Block<ButtonProps> {
             this.props.onClick!();
         });
     }
+
+    show(): void {
+        (this.element as HTMLElement).style.display = "inline";
+    }
+
+    hide(): void {
+        (this.element as HTMLElement).style.display = "none";
+    }
 }
 
 export default Button;

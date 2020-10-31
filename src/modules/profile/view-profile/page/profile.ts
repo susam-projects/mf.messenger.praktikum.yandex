@@ -1,6 +1,5 @@
 import Button from "../../../../ui/components/button/button.js";
 import Block from "../../../../ui/component-system/block.js";
-import simpleRouter from "../../../../ui/component-system/simple-router.js";
 import profilePageTemplate from "./profile.template.js";
 
 interface ProfilePageProps {
@@ -16,7 +15,7 @@ class ProfilePage extends Block<ProfilePageProps> {
                 variant: "text-primary",
                 label: "Редактировать",
                 onClick: () => {
-                    simpleRouter.setPage("edit-profile");
+                    this._router.go("/edit-profile");
                 },
             }),
             logoutButton: new Button({
@@ -24,7 +23,7 @@ class ProfilePage extends Block<ProfilePageProps> {
                 variant: "text-danger",
                 label: "Выйти",
                 onClick: () => {
-                    simpleRouter.setPage("login");
+                    this._router.go("/");
                 },
             }),
         });
@@ -37,7 +36,7 @@ class ProfilePage extends Block<ProfilePageProps> {
 
         backLine?.addEventListener("click", event => {
             event.preventDefault();
-            simpleRouter.setPage("chats");
+            this._router.go("/chats");
         });
 
         this.props.editButton.init(editButton);

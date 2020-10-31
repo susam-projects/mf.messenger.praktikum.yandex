@@ -1,6 +1,5 @@
 import Button from "../../../../ui/components/button/button.js";
 import Block from "../../../../ui/component-system/block.js";
-import simpleRouter from "../../../../ui/component-system/simple-router.js";
 import editProfilePageTemplate from "./edit-profile.template.js";
 import TextFieldsValidator, {
     CONFIRM_PASSWORD_VALIDATOR,
@@ -110,7 +109,7 @@ class EditProfilePage extends Block<EditProfilePageProps> {
                 label: "Сохранить",
                 onClick: () => {
                     if (this._validator!.validate()) {
-                        simpleRouter.setPage("profile");
+                        this._router.go("/profile");
                     }
                 },
             }),
@@ -120,7 +119,7 @@ class EditProfilePage extends Block<EditProfilePageProps> {
                 variant: "neutral",
                 label: "Отменить",
                 onClick: () => {
-                    simpleRouter.setPage("profile");
+                    this._router.go("/profile");
                 },
             }),
         });

@@ -1,7 +1,6 @@
 import Button from "../../../../ui/components/button/button.js";
 import Block from "../../../../ui/component-system/block.js";
 import loginPageTemplate from "./login.template.js";
-import simpleRouter from "../../../../ui/component-system/simple-router.js";
 import TextField from "../../../../ui/components/text-field/text-field.js";
 import TextFieldsValidator, {
     LOGIN_VALIDATOR,
@@ -41,7 +40,7 @@ class LoginPage extends Block<LoginPageProps> {
                 label: "Авторизоваться",
                 onClick: () => {
                     if (this._validator.validate()) {
-                        simpleRouter.setPage("chats");
+                        this._router.go("/chats");
                     }
                 },
             }),
@@ -50,8 +49,8 @@ class LoginPage extends Block<LoginPageProps> {
                 className: "login-page__button_full-width",
                 variant: "text-primary",
                 label: "Нет аккаунта?",
-                onClick() {
-                    simpleRouter.setPage("sign-up");
+                onClick: () => {
+                    this._router.go("/sign-up");
                 },
             }),
         });
