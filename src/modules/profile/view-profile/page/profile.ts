@@ -1,6 +1,7 @@
 import Button from "../../../../ui/components/button/button.js";
 import Block from "../../../../ui/component-system/block.js";
 import profilePageTemplate from "./profile.template.js";
+import ViewProfileController from "../controller/view-profile-controller.js";
 
 interface ProfilePageProps {
     editButton: Block;
@@ -8,6 +9,8 @@ interface ProfilePageProps {
 }
 
 class ProfilePage extends Block<ProfilePageProps> {
+    private readonly _controller = new ViewProfileController();
+
     constructor() {
         super("div", profilePageTemplate, {
             editButton: new Button({
@@ -22,7 +25,8 @@ class ProfilePage extends Block<ProfilePageProps> {
                 className: "profile-page__buttons-gap",
                 variant: "text-danger",
                 label: "Выйти",
-                onClick: () => {
+                onClick: async () => {
+                    await this._controller.logout();
                     this._router.go("/");
                 },
             }),

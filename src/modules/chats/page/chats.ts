@@ -3,6 +3,7 @@ import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../../ui/c
 import chatPageTemplate from "./chats.template.js";
 import IconButton from "../../../ui/components/icon-button/icon-button.js";
 import { toggleClass } from "../../../ui/utils/dom-utils.js";
+import ChatsController from "../controller/chats-controller.js";
 
 interface ChatsPageProps {
     // sendMessageButton: Block;
@@ -19,7 +20,8 @@ const VALIDATORS: InputValidators = {
 };
 
 class ChatsPage extends Block<ChatsPageProps> {
-    private _validator: FormValidator | undefined;
+    private _validator!: FormValidator;
+    private readonly _controller = new ChatsController();
 
     constructor() {
         super("div", chatPageTemplate, {
@@ -61,6 +63,10 @@ class ChatsPage extends Block<ChatsPageProps> {
                 },
             }),
         });
+
+        this._controller.getAppUserInfo().then(info => {
+            console.log(info);
+        });
     }
 
     bindContent() {
@@ -90,7 +96,7 @@ class ChatsPage extends Block<ChatsPageProps> {
         this._validator = new FormValidator(VALIDATORS, messageInput!);
 
         const trySendMessage = () => {
-            if (!this._validator?.validate()) {
+            if (!this._validator.validate()) {
                 alert("Некорректное сообщение!");
             }
         };
