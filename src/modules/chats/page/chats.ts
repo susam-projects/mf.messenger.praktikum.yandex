@@ -19,7 +19,7 @@ const VALIDATORS: InputValidators = {
 };
 
 class ChatsPage extends Block<ChatsPageProps> {
-    private validator: FormValidator | undefined;
+    private _validator: FormValidator | undefined;
 
     constructor() {
         super("div", chatPageTemplate, {
@@ -87,10 +87,10 @@ class ChatsPage extends Block<ChatsPageProps> {
         this.props.addImageButton.init(addImageButton);
         this.props.addVideoButton.init(addVideoButton);
 
-        this.validator = new FormValidator(VALIDATORS, messageInput!);
+        this._validator = new FormValidator(VALIDATORS, messageInput!);
 
         const trySendMessage = () => {
-            if (!this.validator?.validate()) {
+            if (!this._validator?.validate()) {
                 alert("Некорректное сообщение!");
             }
         };

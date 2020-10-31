@@ -3,7 +3,7 @@ import Block from "../../../../ui/component-system/block.js";
 import signUpPageTemplate from "./sign-up.template.js";
 import TextField from "../../../../ui/components/text-field/text-field.js";
 import TextFieldsValidator, {
-    CONFIRM_PASSWORD_VALIDATOR,
+    createConfirmPasswordValidator,
     createTextFieldInfo,
     LOGIN_VALIDATOR,
     NAME_VALIDATOR,
@@ -11,6 +11,7 @@ import TextFieldsValidator, {
     REQUIRED_EMAIL_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
 } from "../../../../ui/component-utils/text-fields-validator.js";
+import SignUpController from "../controller/sign-up-controller.js";
 
 interface SignUpPageProps {
     loginField: TextField;
@@ -26,6 +27,7 @@ interface SignUpPageProps {
 
 class SignUpPage extends Block<SignUpPageProps> {
     private _validator: TextFieldsValidator;
+    private _controller = new SignUpController();
 
     constructor() {
         super("div", signUpPageTemplate, {
@@ -79,6 +81,7 @@ class SignUpPage extends Block<SignUpPageProps> {
             }),
 
             phoneField: new TextField({
+                isRequired: true,
                 label: "Телефон",
                 placeholder: "+7 111 111 11 11",
                 errorText: "Неправильный телефон",
@@ -89,8 +92,21 @@ class SignUpPage extends Block<SignUpPageProps> {
                 className: "sign-up-page__button-full-width",
                 label: "Зарегистрироваться",
                 variant: "primary",
-                onClick: () => {
+                onClick: async () => {
                     if (this._validator.validate()) {
+                        if (
+                            !(await this._controller.signUp({
+                                first_name: this.props.firstNameField.value,
+                                second_name: this.props.secondNameField.value,
+                                email: this.props.emailField.value,
+                                login: this.props.loginField.value,
+                                password: this.props.passwordField.value,
+                                phone: this.props.phoneField.value,
+                            }))
+                        ) {
+                            alert("Ошибка регистрации!");
+                            return;
+                        }
                         this._router.go("/chats");
                     }
                 },
@@ -110,7 +126,10 @@ class SignUpPage extends Block<SignUpPageProps> {
             createTextFieldInfo(this.props.loginField, LOGIN_VALIDATOR),
             createTextFieldInfo(this.props.emailField, REQUIRED_EMAIL_VALIDATOR),
             createTextFieldInfo(this.props.passwordField, REQUIRED_PASSWORD_VALIDATOR),
-            createTextFieldInfo(this.props.confirmPasswordField, CONFIRM_PASSWORD_VALIDATOR(this.props.passwordField)),
+            createTextFieldInfo(
+                this.props.confirmPasswordField,
+                createConfirmPasswordValidator(this.props.passwordField),
+            ),
             createTextFieldInfo(this.props.firstNameField, NAME_VALIDATOR),
             createTextFieldInfo(this.props.secondNameField, NAME_VALIDATOR),
             createTextFieldInfo(this.props.phoneField, PHONE_VALIDATOR),

@@ -10,6 +10,9 @@ const signUpPageTemplate = `
         <div id="email-field" class="margin-top-16">
           {{{emailField}}}
         </div>
+        <div id="phone-field" class="margin-top-16">
+          {{{phoneField}}}
+        </div>
         <div id="password-field" class="margin-top-16">
           {{{passwordField}}}
         </div>
@@ -21,9 +24,6 @@ const signUpPageTemplate = `
         </div>
         <div id="second-name-field" class="margin-top-16">
           {{{secondNameField}}}
-        </div>
-        <div id="phone-field" class="margin-top-16">
-          {{{phoneField}}}
         </div>
       </form>
 

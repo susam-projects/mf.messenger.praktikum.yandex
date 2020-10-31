@@ -1,3 +1,3 @@
 export function noop() {}
 
-export const identity = (a: unknown) => a;
+export const identity = <T>(a: T): T => a;

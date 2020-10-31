@@ -6,6 +6,7 @@ import TextFieldsValidator, {
     LOGIN_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
 } from "../../../../ui/component-utils/text-fields-validator.js";
+import LoginController from "../controller/login-controller.js";
 
 interface LoginPageProps {
     userNameField: TextField;
@@ -16,6 +17,7 @@ interface LoginPageProps {
 
 class LoginPage extends Block<LoginPageProps> {
     private _validator: TextFieldsValidator;
+    private _controller = new LoginController();
 
     constructor() {
         super("div", loginPageTemplate, {
@@ -38,10 +40,15 @@ class LoginPage extends Block<LoginPageProps> {
                 className: "login-page__button_full-width",
                 variant: "primary",
                 label: "Авторизоваться",
-                onClick: () => {
-                    if (this._validator.validate()) {
-                        this._router.go("/chats");
+                onClick: async () => {
+                    if (!this._validator.validate()) return;
+                    const password = this.props.passwordField.value;
+                    const userName = this.props.userNameField.value;
+                    if (!(await this._controller.login(userName, password))) {
+                        alert("Неправильный логин или пароль!");
+                        return;
                     }
+                    this._router.go("/chats");
                 },
             }),
 

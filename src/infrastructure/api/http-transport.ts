@@ -16,7 +16,7 @@ type RequestOptions<TData = unknown> = {
 
 type PublicRequestOptions<TData = unknown> = Omit<RequestOptions<TData>, "method">;
 
-type Response = {
+export type Response = {
     status: number;
     response: unknown;
 };

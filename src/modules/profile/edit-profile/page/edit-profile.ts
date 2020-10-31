@@ -2,7 +2,7 @@ import Button from "../../../../ui/components/button/button.js";
 import Block from "../../../../ui/component-system/block.js";
 import editProfilePageTemplate from "./edit-profile.template.js";
 import TextFieldsValidator, {
-    CONFIRM_PASSWORD_VALIDATOR,
+    createConfirmPasswordValidator,
     createTextFieldInfo,
     DISPLAY_NAME_VALIDATOR,
     EMAIL_VALIDATOR,
@@ -138,7 +138,7 @@ class EditProfilePage extends Block<EditProfilePageProps> {
             ),
             createTextFieldInfo(
                 this.props.confirmPasswordField,
-                CONFIRM_PASSWORD_VALIDATOR(this.props.newPasswordField),
+                createConfirmPasswordValidator(this.props.newPasswordField),
             ),
         ]);
     }
