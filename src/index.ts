@@ -9,6 +9,9 @@ import LoginPage from "./modules/login/page/login.js";
 import { Router } from "./ui/component-system/router.js";
 import Block from "./ui/component-system/block.js";
 import createRedirect from "./ui/component-system/redirect.js";
+import IndexController from "./index-controller.js";
+
+const controller = new IndexController();
 
 const router = new Router("#app")
     .use("/", LoginPage as typeof Block)
@@ -20,11 +23,15 @@ const router = new Router("#app")
     .use("/500", Page500 as typeof Block)
     .use("/*", createRedirect("/404"));
 
-router.start();
+start();
 
-// if (await this._controller.isAuthorized()) {
-//       this._router.go("/chats");
-// }
+async function start() {
+    if (await controller.isAuthorized()) {
+        router.go("/chats");
+    }
+
+    router.start();
+}
 
 // for dev
 // @ts-ignore
