@@ -2,7 +2,7 @@ import Button from "../../../../ui/components/button/button.js";
 import Block from "../../../../ui/component-system/block.js";
 import profilePageTemplate from "./profile.template.js";
 import ViewProfileController from "../controller/view-profile-controller.js";
-import ProfileField from "../components/profile-field.js";
+import ProfileField from "./components/profile-field.js";
 
 interface ProfilePageProps {
     loginField: Block;
