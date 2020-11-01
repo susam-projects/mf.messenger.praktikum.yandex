@@ -7,35 +7,29 @@ const profilePageTemplate = `
       <article class="card profile-page__content-wrapper">
         <article class="avatar avatar-120 margin-top-40">ВТ</article>
 
-        <article class="field-info margin-top-24">
-          <h3>Логин</h3>
-          <div class="field-info__value">username</div>
-        </article>
+        <div id="login" class="margin-top-24">
+            {{{loginField}}}
+        </div>
 
-        <article class="field-info margin-top-16">
-          <h3>Отображаемое имя</h3>
-          <div class="field-info__value">Василий Тёркин</div>
-        </article>
+        <div id="display-name" class="margin-top-16">
+            {{{displayNameField}}}
+        </div>
 
-        <article class="field-info margin-top-16">
-          <h3>Имя</h3>
-          <div class="field-info__value">---</div>
-        </article>
+        <div id="first-name" class="margin-top-16">
+            {{{firstNameField}}}
+        </div>
 
-        <article class="field-info margin-top-16">
-          <h3>Фамилия</h3>
-          <div class="field-info__value">---</div>
-        </article>
+        <div id="second-name" class="margin-top-16">
+            {{{secondNameField}}}
+        </div>
 
-        <article class="field-info margin-top-16">
-          <h3>Телефон</h3>
-          <div class="field-info__value">---</div>
-        </article>
+        <div id="phone" class="margin-top-16">
+            {{{phoneField}}}
+        </div>
 
-        <article class="field-info margin-top-16">
-          <h3>Почта</h3>
-          <div class="field-info__value">sample@mail.com</div>
-        </article>
+        <div id="email" class="margin-top-16">
+            {{{emailField}}}
+        </div>
 
         <section class="profile-page__content__buttons margin-top-40 margin-bottom-24">
           <div id="edit-button">

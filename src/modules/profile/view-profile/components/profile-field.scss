@@ -1,10 +1,10 @@
-.field-info {
+.profile-field {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.field-info__value {
+.profile-field__value {
   margin-top: 8px;
   color: $COLOR_INPUT_BORDER;
 }

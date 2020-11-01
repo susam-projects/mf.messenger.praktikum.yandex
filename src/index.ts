@@ -22,6 +22,10 @@ const router = new Router("#app")
 
 router.start();
 
+// if (await this._controller.isAuthorized()) {
+//       this._router.go("/chats");
+// }
+
 // for dev
 // @ts-ignore
 window.__router = router;
