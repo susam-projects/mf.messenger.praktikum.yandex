@@ -48,14 +48,14 @@ export function createTextFieldInfo(textField: TextField, validator: InputValida
     };
 }
 
-export const LOGIN_VALIDATOR = /^[A-Za-z][\w-]{2,}$/i;
+export const REQUIRED_LOGIN_VALIDATOR = /^[A-Za-z][\w-]{2,}$/i;
 export const REQUIRED_EMAIL_VALIDATOR = /\S+@\S+/i;
-export const EMAIL_VALIDATOR = /(^\s*$)|(^\S+@\S+$)/i;
 export const REQUIRED_PASSWORD_VALIDATOR = /[A-ZА-ЯЁ\d]{6,}/i;
 export const PASSWORD_VALIDATOR = /(^$)|(^[A-ZА-ЯЁ\d]{6,}$)/i;
 export const NAME_VALIDATOR = /(^\s*$)|(^[A-ZА-ЯЁ]+$)/i;
 export const DISPLAY_NAME_VALIDATOR = /(^\s*$)|(^[A-ZА-ЯЁ\s]+$)/i;
-export const PHONE_VALIDATOR = /^((8|\+7)[- ]?)?((\d{3})?[- ]?)?[\d- ]{7,10}$/;
+export const REQUIRED_PHONE_VALIDATOR = /^((8|\+7)[- ]?)?((\d{3})?[- ]?)?[\d- ]{7,10}$/;
+export const PHONE_VALIDATOR = /(^\s*$)|(^((8|\+7)[- ]?)?((\d{3})?[- ]?)?[\d- ]{7,10}$)/;
 
 // "~ are not allowed.
 // it doesn't have any special meaning, just disallow some characters in order to complete the task

@@ -26,11 +26,16 @@ const router = new Router("#app")
 start();
 
 async function start() {
-    if (await controller.isAuthorized()) {
+    router.start();
+
+    const isStartPage = router.currentRoute === "/" || router.currentRoute === "/sign-up";
+    const isAuthorized = await controller.isAuthorized();
+    if (isStartPage && isAuthorized) {
         router.go("/chats");
     }
-
-    router.start();
+    if (!isStartPage && !isAuthorized) {
+        router.go("/");
+    }
 }
 
 // for dev

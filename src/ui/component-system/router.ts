@@ -13,6 +13,13 @@ export class Router {
         Router.__instance = this;
     }
 
+    get currentRoute(): string | null {
+        if (this._currentRoute) {
+            return this._currentRoute.pathname;
+        }
+        return null;
+    }
+
     use(pathname: string, block: typeof Block) {
         const route = new Route(pathname, block, { rootQuery: this._rootQuery });
         this._routes.push(route);
@@ -25,18 +32,6 @@ export class Router {
         };
 
         this._onRoute(window.location.pathname);
-    }
-
-    _onRoute(pathname: string) {
-        const route = this.getRoute(pathname);
-        if (!route) return;
-
-        if (this._currentRoute) {
-            this._currentRoute.leave();
-        }
-
-        this._currentRoute = route;
-        route.navigate(pathname);
     }
 
     go(pathname: string) {
@@ -54,6 +49,18 @@ export class Router {
 
     forward() {
         this._history.forward();
+    }
+
+    private _onRoute(pathname: string) {
+        const route = this.getRoute(pathname);
+        if (!route) return;
+
+        if (this._currentRoute) {
+            this._currentRoute.leave();
+        }
+
+        this._currentRoute = route;
+        route.navigate(pathname);
     }
 }
 

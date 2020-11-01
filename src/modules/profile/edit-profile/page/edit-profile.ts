@@ -5,15 +5,16 @@ import TextFieldsValidator, {
     createConfirmPasswordValidator,
     createTextFieldInfo,
     DISPLAY_NAME_VALIDATOR,
-    EMAIL_VALIDATOR,
     ifFieldIsNotEmpty,
-    LOGIN_VALIDATOR,
+    REQUIRED_LOGIN_VALIDATOR,
     NAME_VALIDATOR,
     PASSWORD_VALIDATOR,
-    PHONE_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
+    PHONE_VALIDATOR,
+    REQUIRED_EMAIL_VALIDATOR,
 } from "../../../../ui/component-utils/text-fields-validator.js";
 import TextField from "../../../../ui/components/text-field/text-field.js";
+import EditProfileController from "../controller/edit-profile-controller.js";
 
 interface EditProfilePageProps {
     loginField: TextField;
@@ -30,7 +31,8 @@ interface EditProfilePageProps {
 }
 
 class EditProfilePage extends Block<EditProfilePageProps> {
-    private _validator: TextFieldsValidator;
+    private _validator!: TextFieldsValidator;
+    private _controller!: EditProfileController;
 
     constructor() {
         super("div", editProfilePageTemplate, {
@@ -107,9 +109,25 @@ class EditProfilePage extends Block<EditProfilePageProps> {
                 className: "edit-profile-page__buttons-gap",
                 variant: "primary",
                 label: "Сохранить",
-                onClick: () => {
-                    if (this._validator!.validate()) {
-                        this._router.go("/profile");
+                onClick: async () => {
+                    if (this._validator.validate()) {
+                        if (
+                            await this._controller.update({
+                                avatar: undefined,
+                                login: this.props.loginField.value,
+                                displayName: this.props.displayNameField.value,
+                                firstName: this.props.firstNameField.value,
+                                secondName: this.props.secondNameField.value,
+                                phone: this.props.phoneField.value,
+                                email: this.props.emailField.value,
+                                oldPassword: this.props.oldPasswordField.value,
+                                newPassword: this.props.newPasswordField.value,
+                            })
+                        ) {
+                            this._router.go("/profile");
+                        } else {
+                            alert("error updating profile!");
+                        }
                     }
                 },
             }),
@@ -125,12 +143,12 @@ class EditProfilePage extends Block<EditProfilePageProps> {
         });
 
         this._validator = new TextFieldsValidator([
-            createTextFieldInfo(this.props.loginField, LOGIN_VALIDATOR),
+            createTextFieldInfo(this.props.loginField, REQUIRED_LOGIN_VALIDATOR),
             createTextFieldInfo(this.props.displayNameField, DISPLAY_NAME_VALIDATOR),
             createTextFieldInfo(this.props.firstNameField, NAME_VALIDATOR),
             createTextFieldInfo(this.props.secondNameField, NAME_VALIDATOR),
             createTextFieldInfo(this.props.phoneField, PHONE_VALIDATOR),
-            createTextFieldInfo(this.props.emailField, EMAIL_VALIDATOR),
+            createTextFieldInfo(this.props.emailField, REQUIRED_EMAIL_VALIDATOR),
             createTextFieldInfo(this.props.oldPasswordField, PASSWORD_VALIDATOR),
             createTextFieldInfo(
                 this.props.newPasswordField,
@@ -141,6 +159,15 @@ class EditProfilePage extends Block<EditProfilePageProps> {
                 createConfirmPasswordValidator(this.props.newPasswordField),
             ),
         ]);
+    }
+
+    init(parent?: Element | null) {
+        this._controller = new EditProfileController();
+        super.init(parent);
+    }
+
+    componentDidMount() {
+        this._updateProfileData();
     }
 
     bindContent() {
@@ -167,6 +194,22 @@ class EditProfilePage extends Block<EditProfilePageProps> {
         this.props.confirmPasswordField.init(confirmPasswordField);
         this.props.saveButton.init(saveButton);
         this.props.cancelButton.init(cancelButton);
+    }
+
+    async show() {
+        await this._updateProfileData();
+        super.show();
+    }
+
+    private async _updateProfileData() {
+        const profileData = await this._controller.getProfileData();
+        if (!profileData) return;
+        this.props.loginField.setProps({ defaultValue: profileData.login });
+        this.props.displayNameField.setProps({ defaultValue: profileData.displayName });
+        this.props.firstNameField.setProps({ defaultValue: profileData.firstName });
+        this.props.secondNameField.setProps({ defaultValue: profileData.secondName });
+        this.props.phoneField.setProps({ defaultValue: profileData.phone });
+        this.props.emailField.setProps({ defaultValue: profileData.email });
     }
 }
 

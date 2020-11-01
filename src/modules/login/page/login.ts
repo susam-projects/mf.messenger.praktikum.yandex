@@ -3,7 +3,7 @@ import Block from "../../../ui/component-system/block.js";
 import loginPageTemplate from "./login.template.js";
 import TextField from "../../../ui/components/text-field/text-field.js";
 import TextFieldsValidator, {
-    LOGIN_VALIDATOR,
+    REQUIRED_LOGIN_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
 } from "../../../ui/component-utils/text-fields-validator.js";
 import LoginController from "../controller/login-controller.js";
@@ -65,7 +65,7 @@ class LoginPage extends Block<LoginPageProps> {
         this._validator = new TextFieldsValidator([
             {
                 textField: this.props.userNameField,
-                validator: LOGIN_VALIDATOR,
+                validator: REQUIRED_LOGIN_VALIDATOR,
             },
             {
                 textField: this.props.passwordField,

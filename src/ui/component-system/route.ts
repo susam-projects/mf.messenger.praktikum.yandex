@@ -13,6 +13,10 @@ class Route {
         this._props = props;
     }
 
+    get pathname(): string {
+        return this._pathname;
+    }
+
     navigate(pathname: string): void {
         if (this.match(pathname)) {
             this.render();

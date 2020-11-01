@@ -5,9 +5,9 @@ import TextField from "../../../ui/components/text-field/text-field.js";
 import TextFieldsValidator, {
     createConfirmPasswordValidator,
     createTextFieldInfo,
-    LOGIN_VALIDATOR,
+    REQUIRED_LOGIN_VALIDATOR,
     NAME_VALIDATOR,
-    PHONE_VALIDATOR,
+    REQUIRED_PHONE_VALIDATOR,
     REQUIRED_EMAIL_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
 } from "../../../ui/component-utils/text-fields-validator.js";
@@ -123,7 +123,7 @@ class SignUpPage extends Block<SignUpPageProps> {
         });
 
         this._validator = new TextFieldsValidator([
-            createTextFieldInfo(this.props.loginField, LOGIN_VALIDATOR),
+            createTextFieldInfo(this.props.loginField, REQUIRED_LOGIN_VALIDATOR),
             createTextFieldInfo(this.props.emailField, REQUIRED_EMAIL_VALIDATOR),
             createTextFieldInfo(this.props.passwordField, REQUIRED_PASSWORD_VALIDATOR),
             createTextFieldInfo(
@@ -132,7 +132,7 @@ class SignUpPage extends Block<SignUpPageProps> {
             ),
             createTextFieldInfo(this.props.firstNameField, NAME_VALIDATOR),
             createTextFieldInfo(this.props.secondNameField, NAME_VALIDATOR),
-            createTextFieldInfo(this.props.phoneField, PHONE_VALIDATOR),
+            createTextFieldInfo(this.props.phoneField, REQUIRED_PHONE_VALIDATOR),
         ]);
     }
 
