@@ -6,6 +6,7 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "run-p server watch",
+    "test": "jest",
     "server": "node ./server/server.js",
     "clean": "rimraf ./static",
     "copy": "run-s copy:html copy:images",
@@ -35,9 +36,11 @@
   "homepage": "https://github.com/susam-projects/mf.messenger.praktikum.yandex#readme",
   "dependencies": {},
   "devDependencies": {
+    "@types/jest": "26.0.15",
     "autoprefixer": "10.0.1",
     "copyfiles": "2.4.0",
     "express": "4.17.1",
+    "jest": "26.6.1",
     "node-sass": "4.14.1",
     "npm-run-all": "4.1.5",
     "onchange": "7.1.0",
@@ -45,6 +48,7 @@
     "postcss-cli": "8.1.0",
     "prettier": "2.1.2",
     "rimraf": "3.0.2",
+    "ts-jest": "26.4.3",
     "typescript": "4.0.3"
   }
 }

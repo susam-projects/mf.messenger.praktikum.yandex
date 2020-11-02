@@ -1,6 +1,8 @@
 {
   "include": [
-    "./src"
+    "./src",
+    "./vendor/handlebars/index.d.ts",
+    "node_modules/@types/jest/index.d.ts"
   ],
   "compilerOptions": {
     "target": "ES2015",
@@ -17,7 +19,6 @@
     "strictNullChecks": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "typeRoots": ["./vendor"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
