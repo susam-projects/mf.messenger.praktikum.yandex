@@ -1,0 +1,50 @@
+@import "./components/profile-field";
+
+.profile-page__back {
+  flex-shrink: 0;
+  cursor: pointer;
+  width: 100px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f6f9;
+
+  &:hover {
+    background-color: $COLOR_ITEM_ACTIVE;
+  }
+}
+
+.profile-page__back__icon {
+  width: 48px;
+  height: 48px;
+  background: transparent no-repeat center / contain;
+}
+
+.profile-page__content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eff1f7;
+}
+
+.profile-page__content-wrapper {
+  background-color: white;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-page__content__buttons {
+  display: flex;
+}
+
+.profile-page__buttons-gap {
+  margin: 0 16px;
+}
+
+.icon-back {
+  background-image: url("./profile/view-profile/page/back.svg");
+}

@@ -1,5 +1,5 @@
-import Api from "./infrastructure/api/api.js";
-import { Response } from "./infrastructure/api/http-transport";
+import Api from "./common/infrastructure/api/api.js";
+import { Response } from "./common/infrastructure/api/http-transport.js";
 
 class IndexApi {
     private readonly _api = new Api("https://ya-praktikum.tech/api/v2/auth/");
