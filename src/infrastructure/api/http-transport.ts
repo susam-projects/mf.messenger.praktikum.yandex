@@ -22,20 +22,20 @@ export type Response = {
 };
 
 class HttpTransport {
-    get(url: string, { data, ...opts }: PublicRequestOptions): Promise<Response> {
+    get(url: string, { data, ...opts }: PublicRequestOptions = {}): Promise<Response> {
         url += toQuery(data);
         return this._request(url, { ...opts, method: RequestMethod.GET });
     }
 
-    post(url: string, options: PublicRequestOptions): Promise<Response> {
+    post(url: string, options: PublicRequestOptions = {}): Promise<Response> {
         return this._request(url, { ...options, method: RequestMethod.POST });
     }
 
-    delete(url: string, options: PublicRequestOptions): Promise<Response> {
+    delete(url: string, options: PublicRequestOptions = {}): Promise<Response> {
         return this._request(url, { ...options, method: RequestMethod.DELETE });
     }
 
-    put(url: string, options: PublicRequestOptions): Promise<Response> {
+    put(url: string, options: PublicRequestOptions = {}): Promise<Response> {
         return this._request(url, { ...options, method: RequestMethod.PUT });
     }
 
