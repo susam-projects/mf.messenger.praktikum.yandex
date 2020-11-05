@@ -3,17 +3,6 @@ import HttpTransport from "./http-transport";
 import cases from "jest-in-case";
 import { Mock } from "xhr-mock/lib/types";
 
-// @ts-ignore
-global.FormData = class {
-    private _files: Record<string, File> = {};
-    append(name: string, file: File) {
-        this._files[name] = file;
-    }
-    getFiles() {
-        return Object.values(this._files);
-    }
-};
-
 type SendRequestCase = {
     name: string;
     prepare: (xhr: typeof xhrMock, url: string, mock: Mock) => unknown;
@@ -133,12 +122,20 @@ describe("HttpTransport", () => {
     });
 
     it("can upload file as form data", async () => {
-        const TEST_FILE = ({ kindOf: "file" } as unknown) as File;
+        const TEST_FILE = new File([], "test-file");
+
+        function getFiles(form: FormData) {
+            const files: File[] = [];
+            for (let key of form.keys()) {
+                files.push(form.get(key) as File);
+            }
+            return files;
+        }
 
         xhrMock.post("/upload", (req, res) => {
             expect(req.header("Content-Type")).toContain("multipart/form-data");
             expect(req.body()).toBeInstanceOf(FormData);
-            expect(req.body().getFiles()).toContain(TEST_FILE);
+            expect(getFiles(req.body())).toContain(TEST_FILE);
             return res.status(200);
         });
 

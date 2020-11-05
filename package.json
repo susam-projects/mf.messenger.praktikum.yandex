@@ -36,6 +36,8 @@
   "homepage": "https://github.com/susam-projects/mf.messenger.praktikum.yandex#readme",
   "dependencies": {},
   "devDependencies": {
+    "@testing-library/dom": "^7.26.4",
+    "@testing-library/jest-dom": "^5.11.5",
     "@types/jest": "26.0.15",
     "@types/jest-in-case": "1.0.3",
     "autoprefixer": "10.0.1",
