@@ -1,6 +1,7 @@
 import Block from "./block.js";
+import Router from "./router.js";
 
-function createRedirect(destination: string): typeof Block {
+function createRedirect(destination: string, router?: Router): typeof Block {
     return class Redirect extends Block {
         init() {
             super.init();
@@ -12,7 +13,7 @@ function createRedirect(destination: string): typeof Block {
         }
 
         private _doRedirect() {
-            this._router.go(destination);
+            (router ?? this._router).go(destination);
         }
     } as typeof Block;
 }

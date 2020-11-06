@@ -50,6 +50,10 @@ function checkPath(path: string, pattern: string): boolean {
 
     let patternPartIndex = 0;
 
+    if (pathParts.length < patternParts.length) {
+        return false;
+    }
+
     for (let pathPart of pathParts) {
         const patternPart = patternParts[patternPartIndex];
 

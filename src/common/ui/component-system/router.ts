@@ -1,7 +1,7 @@
 import Block from "./block.js";
 import Route from "./route.js";
 
-export class Router {
+class Router {
     static __instance: Router;
 
     private readonly _history = window.history;
@@ -9,8 +9,12 @@ export class Router {
     private _currentRoute: Route | null = null;
 
     constructor(private readonly _rootQuery: string) {
+        return this.init();
+    }
+
+    protected init() {
         if (Router.__instance) return Router.__instance;
-        Router.__instance = this;
+        return (Router.__instance = this);
     }
 
     get currentRoute(): string | null {
@@ -39,10 +43,6 @@ export class Router {
         this._onRoute(pathname);
     }
 
-    getRoute(pathname: string) {
-        return this._routes.find(route => route.match(pathname));
-    }
-
     back() {
         this._history.back();
     }
@@ -52,15 +52,20 @@ export class Router {
     }
 
     private _onRoute(pathname: string) {
-        const route = this.getRoute(pathname);
-        if (!route) return;
+        const route = this._getRoute(pathname);
 
         if (this._currentRoute) {
             this._currentRoute.leave();
         }
 
+        if (!route) return;
+
         this._currentRoute = route;
         route.navigate(pathname);
+    }
+
+    private _getRoute(pathname: string) {
+        return this._routes.find(route => route.match(pathname));
     }
 }
 

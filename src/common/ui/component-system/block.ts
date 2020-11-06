@@ -1,5 +1,5 @@
 import EventBus from "../../infrastructure/events/event-bus.js";
-import { Router } from "./router.js";
+import Router from "./router.js";
 
 interface BlockMeta {
     tagName: string;
@@ -28,10 +28,10 @@ class Block<TProps extends {} = {}> {
     private _element: Element | null = null;
     private readonly _meta: BlockMeta | null = null;
     private readonly _template: HandlebarsTemplateDelegate<TemplateProps> | null = null;
-    protected readonly _router = new Router("");
+    protected readonly _router: Router;
     private _isRendering = false;
 
-    constructor(tagName = "div", template = "", props = {} as TProps) {
+    constructor(tagName = "div", template = "", props = {} as TProps, router?: Router) {
         this._meta = {
             tagName,
             props,
@@ -44,6 +44,8 @@ class Block<TProps extends {} = {}> {
 
         this._registerEvents(this._eventBus);
         this._eventBus.emit(Block.EVENTS.INIT);
+
+        this._router = router || new Router("");
     }
 
     get element(): Element {
