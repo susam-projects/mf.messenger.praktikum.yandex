@@ -6,7 +6,7 @@ import EditProfilePage from "./profile/edit-profile/page/edit-profile.js";
 import ProfilePage from "./profile/view-profile/page/profile.js";
 import SignUpPage from "./sign-up/page/sign-up.js";
 import LoginPage from "./login/page/login.js";
-import { Router } from "./common/ui/component-system/router.js";
+import Router from "./common/ui/component-system/router.js";
 import Block from "./common/ui/component-system/block.js";
 import createRedirect from "./common/ui/component-system/redirect.js";
 import IndexController from "./index-controller.js";
