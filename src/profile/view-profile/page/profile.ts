@@ -84,29 +84,11 @@ class ProfilePage extends Block<ProfilePageProps> {
 
     bindContent() {
         const backLine = this.element?.querySelector("#back-line");
-        const loginField = this.element?.querySelector("#login");
-        const displayNameField = this.element?.querySelector("#display-name");
-        const firstNameField = this.element?.querySelector("#first-name");
-        const secondNameField = this.element?.querySelector("#second-name");
-        const phoneField = this.element?.querySelector("#phone");
-        const emailField = this.element?.querySelector("#email");
-        const editButton = this.element?.querySelector("#edit-button");
-        const logoutButton = this.element?.querySelector("#logout-button");
 
         backLine?.addEventListener("click", event => {
             event.preventDefault();
             this._router.go("/chats");
         });
-
-        this.props.loginField.init(loginField);
-        this.props.displayNameField.init(displayNameField);
-        this.props.firstNameField.init(firstNameField);
-        this.props.secondNameField.init(secondNameField);
-        this.props.phoneField.init(phoneField);
-        this.props.emailField.init(emailField);
-
-        this.props.editButton.init(editButton);
-        this.props.logoutButton.init(logoutButton);
     }
 
     async show() {

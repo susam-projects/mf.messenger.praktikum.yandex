@@ -18,11 +18,6 @@ class Page500 extends Block<Page500Props> {
             }),
         });
     }
-
-    bindContent() {
-        const goToChatsButton = this.element.querySelector("#go-to-chats-button");
-        this.props.goToChatsButton.init(goToChatsButton);
-    }
 }
 
 export default Page500;

@@ -1,6 +1,7 @@
 import Block from "../../component-system/block.js";
 import iconButtonTemplate from "./icon-button.template.js";
 import { noop } from "../../../infrastructure/utils/func-utils.js";
+import { findNode } from "../../utils/dom-utils.js";
 
 interface IconButtonProps {
     className?: string;
@@ -20,7 +21,7 @@ class IconButton extends Block<IconButtonProps> {
     }
 
     protected bindContent() {
-        const button = this.element.querySelector("button");
+        const button = findNode(this.element, "button");
 
         button?.addEventListener("click", event => {
             event.preventDefault();

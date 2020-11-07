@@ -1,6 +1,7 @@
 import Block from "../../component-system/block.js";
 import textFieldTemplate from "./text-field.template.js";
 import { noop } from "../../../infrastructure/utils/func-utils.js";
+import { findNode } from "../../utils/dom-utils.js";
 
 interface TextFieldProps {
     isRequired?: boolean;
@@ -40,7 +41,7 @@ class TextField extends Block<TextFieldProps> {
     }
 
     protected bindContent() {
-        const input = this.element.querySelector("input");
+        const input = findNode<HTMLInputElement>(this.element, "input");
 
         input?.addEventListener("change", event => this.props.onChange!(event));
         input?.addEventListener("blur", event => this.props.onBlur!(event));
@@ -56,8 +57,13 @@ class TextField extends Block<TextFieldProps> {
                     break;
             }
         });
+    }
 
-        this.isError = this.props.isError!;
+    render() {
+        if (this.value) {
+            this.props.defaultValue = this.value;
+        }
+        return super.render();
     }
 
     get value(): string {
@@ -68,15 +74,6 @@ class TextField extends Block<TextFieldProps> {
     get name(): string {
         const input = this.element.querySelector("input");
         return (input && input.name) ?? "";
-    }
-
-    set isError(value: boolean) {
-        const root = this.element.querySelector(".root");
-        if (value) {
-            root?.classList.add("text-field_error");
-        } else {
-            root?.classList.remove("text-field_error");
-        }
     }
 }
 

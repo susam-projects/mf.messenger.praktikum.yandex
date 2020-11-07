@@ -2,7 +2,7 @@ import Block from "../../common/ui/component-system/block.js";
 import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../common/ui/component-utils/form-validator.js";
 import chatPageTemplate from "./chats.template.js";
 import IconButton from "../../common/ui/components/icon-button/icon-button.js";
-import { toggleClass } from "../../common/ui/utils/dom-utils.js";
+import { findNode, toggleClass } from "../../common/ui/utils/dom-utils.js";
 import ChatsController from "../controller/chats-controller.js";
 
 interface ChatsPageProps {
@@ -34,7 +34,7 @@ class ChatsPage extends Block<ChatsPageProps> {
             chatActionsButton: new IconButton({
                 iconClassName: "icon-vertical-dots",
                 onClick: () => {
-                    const actionsMenu = this.element.querySelector("#chat-actions-menu")!;
+                    const actionsMenu = findNode(this.element, "#chat-actions-menu")!;
                     toggleClass(actionsMenu, "open");
                 },
             }),
@@ -71,12 +71,6 @@ class ChatsPage extends Block<ChatsPageProps> {
 
     bindContent() {
         const userInfo = this.element.querySelector("#user-info");
-        const createChatButton = this.element.querySelector("#create-chat-button");
-        const chatActionsButton = this.element.querySelector("#chat-actions-button");
-        const smilesButton = this.element.querySelector("#smiles-button");
-        const addDocumentButton = this.element.querySelector("#add-document-button");
-        const addImageButton = this.element.querySelector("#add-image-button");
-        const addVideoButton = this.element.querySelector("#add-video-button");
         const messageField = this.element.querySelector("#message-field");
         const messageInput = messageField?.querySelectorAll("input");
         const sendMessageButton = this.element.querySelector("#send-message");
@@ -85,13 +79,6 @@ class ChatsPage extends Block<ChatsPageProps> {
             event.preventDefault();
             this._router.go("/profile");
         });
-
-        this.props.createChatButton.init(createChatButton);
-        this.props.chatActionsButton.init(chatActionsButton);
-        this.props.smilesButton.init(smilesButton);
-        this.props.addDocumentButton.init(addDocumentButton);
-        this.props.addImageButton.init(addImageButton);
-        this.props.addVideoButton.init(addVideoButton);
 
         this._validator = new FormValidator(VALIDATORS, messageInput!);
 

@@ -1,6 +1,7 @@
 import Block from "../../component-system/block.js";
 import { noop } from "../../../infrastructure/utils/func-utils.js";
 import buttonTemplate from "./button.template.js";
+import { findNode } from "../../utils/dom-utils.js";
 
 interface ButtonProps {
     className?: string;
@@ -21,7 +22,7 @@ class Button extends Block<ButtonProps> {
     }
 
     bindContent() {
-        const button = this.element.querySelector("button");
+        const button = findNode<HTMLButtonElement>(this.element, "button");
 
         button?.addEventListener("click", event => {
             event.preventDefault();

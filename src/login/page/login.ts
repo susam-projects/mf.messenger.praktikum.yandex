@@ -73,18 +73,6 @@ class LoginPage extends Block<LoginPageProps> {
             },
         ]);
     }
-
-    bindContent() {
-        const userNameField = this.element.querySelector("#username-field");
-        const passwordField = this.element.querySelector("#password-field");
-        const loginButtonContainer = this.element.querySelector("#login-button");
-        const goToSignUpButton = this.element.querySelector("#go-to-sign-up-button");
-
-        this.props.userNameField.init(userNameField);
-        this.props.passwordField.init(passwordField);
-        this.props.loginButton.init(loginButtonContainer);
-        this.props.goToSignUpButton.init(goToSignUpButton);
-    }
 }
 
 export default LoginPage;

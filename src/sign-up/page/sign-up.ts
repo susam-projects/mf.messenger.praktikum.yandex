@@ -113,7 +113,7 @@ class SignUpPage extends Block<SignUpPageProps> {
             }),
 
             goToLoginButton: new Button({
-                className: "sign-up-page__button-full-width",
+                className: "sign-up-page__button-full-width margin-top-16",
                 label: "Войти",
                 variant: "text-primary",
                 onClick: () => {
@@ -134,28 +134,6 @@ class SignUpPage extends Block<SignUpPageProps> {
             createTextFieldInfo(this.props.secondNameField, NAME_VALIDATOR),
             createTextFieldInfo(this.props.phoneField, REQUIRED_PHONE_VALIDATOR),
         ]);
-    }
-
-    bindContent() {
-        const loginField = this.element.querySelector("#login-field");
-        const emailField = this.element.querySelector("#email-field");
-        const passwordField = this.element.querySelector("#password-field");
-        const confirmPasswordField = this.element.querySelector("#confirm-password-field");
-        const firstNameField = this.element.querySelector("#first-name-field");
-        const secondNameField = this.element.querySelector("#second-name-field");
-        const phoneField = this.element.querySelector("#phone-field");
-        const signUpButton = this.element.querySelector("#sign-up-button");
-        const goToLoginButton = this.element.querySelector("#go-to-login-button");
-
-        this.props.loginField.init(loginField);
-        this.props.emailField.init(emailField);
-        this.props.passwordField.init(passwordField);
-        this.props.confirmPasswordField.init(confirmPasswordField);
-        this.props.firstNameField.init(firstNameField);
-        this.props.secondNameField.init(secondNameField);
-        this.props.phoneField.init(phoneField);
-        this.props.signUpButton.init(signUpButton);
-        this.props.goToLoginButton.init(goToLoginButton);
     }
 }
 

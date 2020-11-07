@@ -29,7 +29,7 @@ class TextFieldsValidator {
 
     private _processInput(textField: TextField, validator: InputValidator): boolean {
         const isPassed = this._checkField(textField, validator);
-        textField.isError = !isPassed;
+        textField.props.isError = !isPassed;
         return isPassed;
     }
 

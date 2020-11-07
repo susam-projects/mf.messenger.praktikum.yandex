@@ -9,9 +9,7 @@ const chatPageTemplate = `
               <div class="text-field-with-icon__icon search-field__icon"></div>
             </div>
           </article>
-          <div id="create-chat-button">
-            {{{createChatButton}}}
-          </div>
+          {{{createChatButton}}}
         </section>
         <hr class="divider margin-top-16" />
       </header>
@@ -137,9 +135,7 @@ const chatPageTemplate = `
             <h1>Название чата</h1>
           </section>
           <section class="chat__header__actions">
-            <div id="chat-actions-button">
-              {{{chatActionsButton}}}
-            </div>
+            {{{chatActionsButton}}}
             <nav id="chat-actions-menu" class="menu chat__header__actions-menu">
               <article class="card card-lite">
                 <ul>
@@ -265,18 +261,10 @@ const chatPageTemplate = `
 
       <section class="chat__control-panel">
         <section class="chat__control-panel__buttons">
-          <div id="smiles-button">
-            {{{smilesButton}}}
-          </div>
-          <div id="add-document-button">
-            {{{addDocumentButton}}}
-          </div>
-          <div id="add-image-button">
-            {{{addImageButton}}}
-          </div>
-          <div id="add-video-button">
-            {{{addVideoButton}}}
-          </div>
+          {{{smilesButton}}}
+          {{{addDocumentButton}}}
+          {{{addImageButton}}}
+          {{{addVideoButton}}}
         </section>
         <section class="margin-top-16">
           <article id="message-field" class="text-field-with-icon message-field">

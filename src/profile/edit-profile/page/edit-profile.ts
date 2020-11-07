@@ -41,15 +41,13 @@ class EditProfilePage extends Block<EditProfilePageProps> {
                 placeholder: "username",
                 errorText: "Неправильный логин",
                 name: "login",
-                defaultValue: "username",
             }),
 
             displayNameField: new TextField({
                 label: "Отображаемое имя",
-                placeholder: "username",
+                placeholder: "Василий Тёркин",
                 errorText: "Неправильное отображаемое имя",
                 name: "login",
-                defaultValue: "Василий Тёркин",
             }),
 
             firstNameField: new TextField({
@@ -168,32 +166,6 @@ class EditProfilePage extends Block<EditProfilePageProps> {
 
     componentDidMount() {
         this._updateProfileData();
-    }
-
-    bindContent() {
-        const loginField = this.element.querySelector("#login-field");
-        const displayNameField = this.element.querySelector("#display-name-field");
-        const firstNameField = this.element.querySelector("#first-name-field");
-        const secondNameField = this.element.querySelector("#second-name-field");
-        const phoneField = this.element.querySelector("#phone-field");
-        const emailField = this.element.querySelector("#email-field");
-        const oldPasswordField = this.element.querySelector("#old-password-field");
-        const newPasswordField = this.element.querySelector("#new-password-field");
-        const confirmPasswordField = this.element.querySelector("#confirm-password-field");
-        const saveButton = this.element.querySelector("#save-button");
-        const cancelButton = this.element.querySelector("#cancel-button");
-
-        this.props.loginField.init(loginField);
-        this.props.displayNameField.init(displayNameField);
-        this.props.firstNameField.init(firstNameField);
-        this.props.secondNameField.init(secondNameField);
-        this.props.phoneField.init(phoneField);
-        this.props.emailField.init(emailField);
-        this.props.oldPasswordField.init(oldPasswordField);
-        this.props.newPasswordField.init(newPasswordField);
-        this.props.confirmPasswordField.init(confirmPasswordField);
-        this.props.saveButton.init(saveButton);
-        this.props.cancelButton.init(cancelButton);
     }
 
     async show() {

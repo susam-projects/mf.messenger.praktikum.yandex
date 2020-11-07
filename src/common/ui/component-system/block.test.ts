@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom";
 import Block from "./block";
 
 describe("Block", () => {
@@ -10,37 +11,40 @@ describe("Block", () => {
         it("renders content by a given template", () => {
             const TEST_TEMPLATE = "<div>Test</div>";
             const block = new Block(undefined, TEST_TEMPLATE);
-            expect(block.element.innerHTML).toEqual(TEST_TEMPLATE);
+            expect(block.element).toHaveTextContent("Test");
         });
 
         it("renders props", () => {
-            const TEST_TEMPLATE = "<div>{{prop1}}</div><div>{{prop2}}</div>";
+            const TEST_INNER_CONTENT = "<div>{{prop1}}</div><div>{{prop2}}</div>";
+            const TEST_TEMPLATE = `<div>${TEST_INNER_CONTENT}</div>`;
             const TEST_PROPS = {
                 prop1: "value1",
                 prop2: "value2",
             };
-            const EXPECTED_RESULT = TEST_TEMPLATE.replace("{{prop1}}", TEST_PROPS.prop1).replace(
+            const EXPECTED_RESULT = TEST_INNER_CONTENT.replace("{{prop1}}", TEST_PROPS.prop1).replace(
                 "{{prop2}}",
                 TEST_PROPS.prop2,
             );
 
             const block = new Block(undefined, TEST_TEMPLATE, TEST_PROPS);
-            expect(block.element.innerHTML).toEqual(EXPECTED_RESULT);
+            expect(block.element.firstElementChild!.innerHTML).toEqual(EXPECTED_RESULT);
         });
 
         it("renders nothing if there is no appropriate prop", () => {
-            const TEST_TEMPLATE = "<div>{{prop1}}</div><div>{{prop2}}</div>";
+            const TEST_INNER_CONTENT = "<div>{{prop1}}</div><div>{{prop2}}</div>";
+            const TEST_TEMPLATE = `<div>${TEST_INNER_CONTENT}</div>`;
             const TEST_PROPS = {
                 prop1: "value1",
             };
 
-            const expected = TEST_TEMPLATE.replace("{{prop1}}", TEST_PROPS.prop1).replace("{{prop2}}", "");
+            const expected = TEST_INNER_CONTENT.replace("{{prop1}}", TEST_PROPS.prop1).replace("{{prop2}}", "");
             const block = new Block(undefined, TEST_TEMPLATE, TEST_PROPS);
-            expect(block.element.innerHTML).toEqual(expected);
+            expect(block.element.firstElementChild!.innerHTML).toEqual(expected);
         });
 
         it("ignores surplus props", () => {
-            const TEST_TEMPLATE = "<div>{{prop1}}</div><div>{{prop2}}</div>";
+            const TEST_INNER_CONTENT = "<div>{{prop1}}</div><div>{{prop2}}</div>";
+            const TEST_TEMPLATE = `<div>${TEST_INNER_CONTENT}</div>`;
             const TEST_PROPS = {
                 prop1: "value1",
                 prop2: "value2",
@@ -48,11 +52,11 @@ describe("Block", () => {
             };
             const block = new Block(undefined, TEST_TEMPLATE, TEST_PROPS);
 
-            const expected = TEST_TEMPLATE.replace("{{prop1}}", TEST_PROPS.prop1).replace(
+            const expected = TEST_INNER_CONTENT.replace("{{prop1}}", TEST_PROPS.prop1).replace(
                 "{{prop2}}",
                 TEST_PROPS.prop2,
             );
-            expect(block.element.innerHTML).toEqual(expected);
+            expect(block.element.firstElementChild!.innerHTML).toEqual(expected);
         });
 
         it("renders inner blocks", () => {
@@ -61,8 +65,7 @@ describe("Block", () => {
             const innerBlock = new Block(undefined, INNER_BLOCK_TEMPLATE);
             const block = new Block(undefined, BLOCK_TEMPLATE, { inner: innerBlock });
 
-            const expected = BLOCK_TEMPLATE.replace("{{{inner}}}", INNER_BLOCK_TEMPLATE);
-            expect(block.element.innerHTML).toEqual(expected);
+            expect(block.element.firstElementChild!.innerHTML).toContain("Inner");
         });
 
         it("renders all inner blocks", () => {
@@ -79,10 +82,9 @@ describe("Block", () => {
                 inner3: innerBlock3,
             });
 
-            const expected = BLOCK_TEMPLATE.replace("{{{inner1}}}", INNER_BLOCK_1_TEMPLATE)
-                .replace("{{{inner2}}}", INNER_BLOCK_2_TEMPLATE)
-                .replace("{{{inner3}}}", INNER_BLOCK_3_TEMPLATE);
-            expect(block.element.innerHTML).toEqual(expected);
+            expect(block.element.innerHTML).toContain("Inner");
+            expect(block.element.innerHTML).toContain("Inner2");
+            expect(block.element.innerHTML).toContain("Inner3");
         });
     });
 
@@ -93,17 +95,17 @@ describe("Block", () => {
             boundTo!: Element | null;
             elementType!: string;
 
-            init(parent?: Element | null) {
+            init() {
                 this.componentDidMount = jest.fn();
                 this.bindContent = jest.fn(() => {
                     this.boundTo = this.element;
                     this.elementType = this.element.tagName;
                 });
-                super.init(parent);
+                super.init();
             }
 
-            superInit(parent?: Element | null) {
-                super.init(parent);
+            superInit() {
+                super.init();
             }
         }
 
@@ -130,7 +132,7 @@ describe("Block", () => {
         it("can be bound to a given node", () => {
             const block = new TestBlock();
             const node = document.createElement("div");
-            block.superInit(node);
+            block.element = node;
             expect(block.boundTo).toBe(node);
         });
 
@@ -142,9 +144,26 @@ describe("Block", () => {
         it("doesn't call componentDidMount when bound to a node", () => {
             const block = new TestBlock();
             block.componentDidMount.mockClear();
-            const node = document.createElement("div");
-            block.superInit(node);
+            block.element = document.createElement("div");
             expect(block.componentDidMount).not.toBeCalled();
+        });
+
+        it("binds inner block to it's node", () => {
+            const inner = new TestBlock(undefined, "<p>Inner</p>");
+            new TestBlock(undefined, "<div>{{{inner}}}</div>", { inner });
+
+            expect(inner.element).toHaveTextContent("Inner");
+            expect(inner.bindContent).toHaveBeenCalled();
+        });
+
+        it("rebinds inner block on rerender", () => {
+            const inner = new TestBlock(undefined, "<p>Inner</p>");
+            const block = new TestBlock(undefined, "<div>{{{inner}}} - {{prop}}</div>", { inner, prop: "value" });
+
+            inner.bindContent.mockClear();
+            block.setProps({ prop: "newValue" });
+            expect(inner.element).toHaveTextContent("Inner");
+            expect(inner.bindContent).toHaveBeenCalled();
         });
     });
 
@@ -156,31 +175,31 @@ describe("Block", () => {
             newProps?: T;
             bindContent!: ReturnType<typeof jest.fn>;
 
-            init(parent?: Element | null) {
-                this.render = jest.fn();
+            init() {
+                this.render = jest.fn(() => super.render());
                 this.bindContent = jest.fn();
                 this.componentDidUpdate = jest.fn((oldProps: T, newProps: T) => {
                     this.oldProps = Object.assign({}, oldProps);
                     this.newProps = Object.assign({}, newProps);
                     return super.componentDidUpdate(oldProps, newProps);
                 });
-                super.init(parent);
+                super.init();
             }
         }
 
         class TrueUpdateBlock extends Block {
-            init(parent?: Element | null) {
+            init() {
                 this.render = jest.fn();
                 this.componentDidUpdate = jest.fn(() => true);
-                super.init(parent);
+                super.init();
             }
         }
 
         class FalseUpdateBlock extends Block {
-            init(parent?: Element | null) {
+            init() {
                 this.render = jest.fn();
                 this.componentDidUpdate = jest.fn(() => false);
-                super.init(parent);
+                super.init();
             }
         }
 
@@ -240,8 +259,8 @@ describe("Block", () => {
         });
 
         it("rerenders all inner blocks on props change", () => {
-            const inner1 = new TestBlock();
-            const inner2 = new TestBlock();
+            const inner1 = new TestBlock(undefined, "<p>Inner1</p>");
+            const inner2 = new TestBlock(undefined, "<p>Inner2</p>");
             const TEST_TEMPLATE = "<div>{{prop}}</div></div><div>{{{inner1}}}</div><div>{{{inner2}}}</div>";
             const block = new Block(undefined, TEST_TEMPLATE, { prop: "value", inner1, inner2 });
             (inner1.render as JestSpy).mockClear();
@@ -269,15 +288,10 @@ describe("Block", () => {
         });
 
         test("to container / parent node", () => {
-            const inner = new Block();
+            const inner = new Block(undefined, "<div>InnerBlock</div>");
             const block = new Block(undefined, "<div>{{{inner}}}</div>", { inner });
             expect(block.element).toBeInstanceOf(Element);
             expect(inner.element).toBeInstanceOf(Element);
         });
     });
-
-    // TODO
-    // auto bind of inner blocks
-    // it.todo("binds inner block to it's parent node");
-    // it.todo("rebinds all inner blocks on rerender");
 });
