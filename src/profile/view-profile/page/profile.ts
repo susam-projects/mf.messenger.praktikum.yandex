@@ -73,9 +73,9 @@ class ProfilePage extends Block<ProfilePageProps> {
         });
     }
 
-    async init(parent?: Element | null) {
+    async init() {
         this._controller = new ViewProfileController();
-        super.init(parent);
+        super.init();
     }
 
     componentDidMount() {

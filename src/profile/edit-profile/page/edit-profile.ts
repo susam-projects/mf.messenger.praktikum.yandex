@@ -159,9 +159,9 @@ class EditProfilePage extends Block<EditProfilePageProps> {
         ]);
     }
 
-    init(parent?: Element | null) {
+    init() {
         this._controller = new EditProfileController();
-        super.init(parent);
+        super.init();
     }
 
     componentDidMount() {

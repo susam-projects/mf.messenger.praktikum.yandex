@@ -18,11 +18,6 @@ class Page404 extends Block<Page404Props> {
             }),
         });
     }
-
-    bindContent() {
-        const goToChatsButton = this.element.querySelector("#go-to-chats-button");
-        this.props.goToChatsButton.init(goToChatsButton);
-    }
 }
 
 export default Page404;
