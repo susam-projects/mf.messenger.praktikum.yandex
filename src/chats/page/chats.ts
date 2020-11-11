@@ -2,17 +2,25 @@ import Block from "../../common/ui/component-system/block.js";
 import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../common/ui/component-utils/form-validator.js";
 import chatPageTemplate from "./chats.template.js";
 import IconButton from "../../common/ui/components/icon-button/icon-button.js";
-import { findNode, toggleClass } from "../../common/ui/utils/dom-utils.js";
 import ChatsController from "../controller/chats-controller.js";
+import Modal from "../../common/ui/components/modal/modal.js";
+import CreateChatBlock from "./components/create-chat/create-chat.js";
+import ChatUsersBlock from "./components/chat-users/chat-users.js";
+import DeleteChatBlock from "./components/delete-chat/delete-chat.js";
+import Menu from "../../common/ui/components/menu/menu.js";
 
 interface ChatsPageProps {
     // sendMessageButton: Block;
     createChatButton: Block;
     chatActionsButton: Block;
+    chatActionsMenu: Menu;
     smilesButton: Block;
     addDocumentButton: Block;
     addImageButton: Block;
     addVideoButton: Block;
+    deleteChatModal: Block;
+    createChatModal: Block;
+    chatUsersModal: Block;
 }
 
 const VALIDATORS: InputValidators = {
@@ -28,16 +36,35 @@ class ChatsPage extends Block<ChatsPageProps> {
             createChatButton: new IconButton({
                 iconClassName: "icon-plus",
                 onClick: () => {
-                    console.log("create chat click");
+                    this.props.createChatModal.show();
                 },
             }),
+
             chatActionsButton: new IconButton({
                 iconClassName: "icon-vertical-dots",
                 onClick: () => {
-                    const actionsMenu = findNode(this.element, "#chat-actions-menu")!;
-                    toggleClass(actionsMenu, "open");
+                    this.props.chatActionsMenu.toggle();
                 },
             }),
+            chatActionsMenu: new Menu({
+                className: "chat__header__actions-menu",
+                items: [
+                    {
+                        iconClass: "icon-edit",
+                        label: "Изменить название чата",
+                    },
+                    {
+                        iconClass: "icon-user-group",
+                        label: "Управлять участниками",
+                    },
+                    {
+                        iconClass: "icon-trash",
+                        isDanger: true,
+                        label: "Удалить чат",
+                    },
+                ],
+            }),
+
             smilesButton: new IconButton({
                 iconClassName: "icon-smile",
                 onClick: () => {
@@ -61,6 +88,37 @@ class ChatsPage extends Block<ChatsPageProps> {
                 onClick: () => {
                     console.log("open video selector");
                 },
+            }),
+
+            deleteChatModal: new Modal({
+                contentClassName: "chats-page__delete-chat",
+                content: new DeleteChatBlock({
+                    chatName: "test-chat",
+                    onDeleteClick: () => {
+                        console.log("delete chat");
+                        this.props.deleteChatModal.hide();
+                    },
+                    onCancelClick: () => {
+                        this.props.deleteChatModal.hide();
+                    },
+                }),
+            }),
+
+            createChatModal: new Modal({
+                content: new CreateChatBlock({
+                    onCreateClick: chatName => {
+                        // create new chat
+                        console.log("create chat, named", chatName);
+                        this.props.createChatModal.hide();
+                    },
+                    onCancelClick: () => {
+                        this.props.createChatModal.hide();
+                    },
+                }),
+            }),
+
+            chatUsersModal: new Modal({
+                content: new ChatUsersBlock(),
             }),
         });
 
@@ -100,6 +158,8 @@ class ChatsPage extends Block<ChatsPageProps> {
             event.preventDefault();
             trySendMessage();
         });
+
+        this.props.chatUsersModal.show();
     }
 }
 

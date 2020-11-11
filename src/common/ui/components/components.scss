@@ -1,12 +1,13 @@
+@import "./button/button";
+@import "./icon-button/icon-button";
+@import "./text-field/text-field";
+@import "./modal/modal";
 @import "./divider";
 @import "./layout";
 @import "./avatar";
 @import "./badge";
-@import "./button/button";
-@import "./icon-button/icon-button";
 @import "./card";
 @import "./icon";
-@import "./menu";
-@import "./text-field/text-field";
+@import "src/common/ui/components/menu/menu";
 @import "./text-field-with-icon";
 @import "./search-field";

@@ -7,6 +7,9 @@ const buttonTemplate = `
       {{#if (equals variant 'neutral')}}
         button_neutral
       {{/if}}
+      {{#if (equals variant 'danger')}}
+        button_danger
+      {{/if}}
       {{#if (equals variant 'text-primary')}}
         text-button_primary
       {{/if}}

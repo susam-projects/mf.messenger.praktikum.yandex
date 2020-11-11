@@ -1,0 +1,17 @@
+.create-chat {
+  padding: 0 16px;
+}
+
+.create-chat__title {
+  text-align: center;
+}
+
+.create-chat__buttons {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-chat__button_full-width {
+  flex-grow: 1;
+}

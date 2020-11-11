@@ -7,7 +7,7 @@ interface ButtonProps {
     className?: string;
     label?: string;
     onClick?: () => void;
-    variant?: "primary" | "neutral" | "text-primary" | "text-danger";
+    variant?: "primary" | "neutral" | "danger" | "text-primary" | "text-danger";
 }
 
 const DEFAULT_PROPS: Partial<ButtonProps> = {

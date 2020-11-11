@@ -1,5 +1,11 @@
 .menu {
   z-index: 1000;
+  display: none;
+  position: absolute;
+
+  &.open {
+    display: block;
+  }
 }
 
 .menu .card {

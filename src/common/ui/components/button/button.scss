@@ -39,6 +39,16 @@ button {
   }
 }
 
+.button_danger {
+  background-color: $COLOR_DANGER;
+  color: $COLOR_DANGER_CONTRAST;
+
+  &:focus,
+  &:hover {
+    background-color: $COLOR_DANGER_DARK;
+  }
+}
+
 .text-button_primary {
   color: $COLOR_PRIMARY;
 

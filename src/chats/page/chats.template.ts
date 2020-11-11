@@ -1,6 +1,6 @@
 const chatPageTemplate = `
   <main class="chats-page prefer-menu root">
-    <article class="chats-page__left-menu chat-list">
+    <section class="chats-page__left-menu chat-list">
       <header class="chat-list__header">
         <section class="chat-list__header__controls">
           <article id="search-field" class="text-field-with-icon search-field">
@@ -125,9 +125,9 @@ const chatPageTemplate = `
           <div class="user-info__avatar avatar avatar-48">ВТ</div>
         </article>
       </footer>
-    </article>
+    </section>
 
-    <article class="chats-page__chat chat">
+    <section class="chats-page__chat chat">
       <header class="chat__header">
         <section class="chat__header__top">
           <section class="chat__header__chat-info">
@@ -136,28 +136,7 @@ const chatPageTemplate = `
           </section>
           <section class="chat__header__actions">
             {{{chatActionsButton}}}
-            <nav id="chat-actions-menu" class="menu chat__header__actions-menu">
-              <article class="card card-lite">
-                <ul>
-                  <li class="menu__item">
-                    <span class="menu__item__icon icon-edit"></span>
-                    <span>Редактировать</span>
-                  </li>
-                  <li class="menu__item">
-                    <span class="menu__item__icon icon-user-group"></span>
-                    <span>Управлять участниками</span>
-                  </li>
-                  <li class="menu__item">
-                    <span class="menu__item__icon icon-lock"></span>
-                    <span>Задать пароль</span>
-                  </li>
-                  <li class="menu__item menu__item-danger">
-                    <span class="menu__item__icon icon-trash"></span>
-                    <span>Удалить</span>
-                  </li>
-                </ul>
-              </article>
-            </nav>
+            {{{chatActionsMenu}}}
           </section>
         </section>
         <hr class="divider" />
@@ -275,7 +254,10 @@ const chatPageTemplate = `
           </article>
         </section>
       </section>
-    </article>
+    </section>
+    <section>{{{deleteChatModal}}}</section>
+    <section>{{{createChatModal}}}</section>
+    <section>{{{chatUsersModal}}}</section>
   </main>
 `;
 

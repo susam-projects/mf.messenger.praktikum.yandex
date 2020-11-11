@@ -26,13 +26,7 @@
   color: #2f8ad3;
 }
 
-.chat__header__actions-menu {
-  display: none;
-}
-
 .chat__header__actions-menu.open {
-  display: block;
-  position: absolute;
   top: 62px;
   right: 24px;
   width: 270px;
