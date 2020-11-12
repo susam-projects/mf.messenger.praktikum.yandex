@@ -32,7 +32,6 @@ class Block<TProps extends {} = {}> {
     private readonly _template: HandlebarsTemplateDelegate<TemplateProps> | null = null;
     protected readonly _router: Router;
     private _isRendering = false;
-    private _innerBlocks = new Map<string, Block>();
     private _renderId = idGenerator.getNewId();
 
     constructor(tagName = "div", template = "", props = {} as TProps, router?: Router) {
@@ -84,7 +83,6 @@ class Block<TProps extends {} = {}> {
 
     render(): string {
         const templateProps = {} as TemplateProps;
-        this._innerBlocks.clear();
         for (let key in this.props) {
             const value = this.props[key];
             if (value instanceof Block) {

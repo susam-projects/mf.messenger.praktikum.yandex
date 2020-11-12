@@ -2,3 +2,54 @@
 .chat-users__user-list {
   padding: 16px 16px 0;
 }
+
+.chat-user {
+  cursor: pointer;
+  display: flex;
+  padding: 8px 16px;
+  border-radius: 80px;
+
+  &.selected,
+  &:hover {
+    background-color: $COLOR_ITEM_ACTIVE;
+  }
+}
+
+.chat-user__image-section {
+  margin-right: 8px;
+}
+
+.chat-user__text-section {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.chat-user__role {
+  font-size: 12px;
+  line-height: 15px;
+  margin: 4px 0;
+  color: $COLOR_TEXT_SECONDARY;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.chat-user__action-button {
+  width: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.chat-user__action-icon {
+  width: 24px;
+  height: 24px;
+  background: transparent no-repeat center / contain;
+}
+
+.icon-remove-chat-user {
+  background-image: url("./chats/page/components/chat-users/add.svg");
+}
+
+.icon-add-chat-user {
+  background-image: url("./chats/page/components/chat-users/remove.svg");
+}

@@ -11,22 +11,29 @@ const chatUsersTemplate = `
     <hr class="divider margin-top-16" />
     <section class="chat-users__user-list">
       <ul>
-        <li>
-          <article class="chat-info">
-            <section class="chat-info__image-section">
-              <div class="avatar avatar-24">&nbsp;</div>
-            </section>
-            <section class="chat-info__text-section">
-              <div class="chat-info__text-section__first-line">
-                <h3>Название чата</h3>
-                <div class="chat-info__time">15:32</div>
-              </div>
-              <div class="chat-info__last-message">
-                Текст какого-то сообщения, которое было последним в этом чате
-              </div>
-            </section>
-          </article>
-        </li>
+        {{#each users}}
+          <li>
+            <div class="chat-user">
+              <section class="chat-user__image-section">
+                <div class="avatar avatar-24">&nbsp;</div>
+              </section>
+              <section class="chat-user__text-section">
+                <h3>{{this.name}}</h3>
+                <div class="chat-user__role">
+                  {{this.role}}
+                </div>
+              </section>
+              <section class="chat-user__action-button">
+                {{#if this.canRemove}}
+                  <div class="chat-user__action-icon icon-remove-chat-user"></div>
+                {{/if}}
+                {{#if this.canAdd}}
+                  <div class="chat-user__action-icon icon-add-chat-user"></div>
+                {{/if}}
+              </section>
+            </div>
+          </li>
+        {{/each}}
       </ul>
     </section>
   </div>
