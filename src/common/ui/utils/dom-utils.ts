@@ -20,6 +20,10 @@ export function findNode<T extends Element>(element: Element, selector: string):
     return element.querySelector(selector);
 }
 
+export function findClosest<T extends Element>(element: Element, selector: string): T | null {
+    return element.closest(selector);
+}
+
 export function createElement(markupText: string): Element | null {
     const div = document.createElement("div");
     div.innerHTML = markupText.trim();

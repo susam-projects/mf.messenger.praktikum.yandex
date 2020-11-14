@@ -3,7 +3,7 @@ const menuTemplate = `
     <div class="card card-lite">
       <ul>
         {{#each items}}
-          <li class="menu__item {{#if this.isDanger}}menu__item-danger{{/if}}">
+          <li class="menu__item {{#if this.isDanger}}menu__item-danger{{/if}}" data-id="{{this.id}}">
             <span class="menu__item__icon {{this.iconClass}}"></span>
             <span>{{this.label}}</span>
           </li>

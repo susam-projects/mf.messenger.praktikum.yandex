@@ -50,19 +50,38 @@ class ChatsPage extends Block<ChatsPageProps> {
                 className: "chat__header__actions-menu",
                 items: [
                     {
+                        id: "edit",
                         iconClass: "icon-edit",
                         label: "Изменить название чата",
                     },
                     {
+                        id: "users",
                         iconClass: "icon-user-group",
                         label: "Управлять участниками",
                     },
                     {
+                        id: "delete",
                         iconClass: "icon-trash",
                         isDanger: true,
                         label: "Удалить чат",
                     },
                 ],
+                onClick: itemId => {
+                    if (itemId === "edit") {
+                        this.props.chatActionsMenu.hide();
+                        return;
+                    }
+                    if (itemId === "users") {
+                        this.props.chatUsersModal.show();
+                        this.props.chatActionsMenu.hide();
+                        return;
+                    }
+                    if (itemId === "delete") {
+                        this.props.deleteChatModal.show();
+                        this.props.chatActionsMenu.hide();
+                        return;
+                    }
+                },
             }),
 
             smilesButton: new IconButton({
@@ -93,7 +112,7 @@ class ChatsPage extends Block<ChatsPageProps> {
             deleteChatModal: new Modal({
                 contentClassName: "chats-page__delete-chat",
                 content: new DeleteChatBlock({
-                    chatName: "test-chat",
+                    getChatName: () => "test-chat",
                     onDeleteClick: () => {
                         console.log("delete chat");
                         this.props.deleteChatModal.hide();

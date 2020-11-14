@@ -4,13 +4,13 @@ import Button from "../../../../common/ui/components/button/button.js";
 import deleteChatTemplate from "./delete-chat.template.js";
 
 interface DeleteChatProps {
-    chatName?: string;
+    getChatName?: () => string;
     onDeleteClick?: () => void;
     onCancelClick?: () => void;
 }
 
 const DEFAULT_PROPS: Required<DeleteChatProps> = {
-    chatName: "",
+    getChatName: () => "",
     onDeleteClick: noop,
     onCancelClick: noop,
 };
@@ -22,13 +22,15 @@ interface DeleteChatInnerProps {
 }
 
 class DeleteChatBlock extends Block<DeleteChatInnerProps> {
+    private readonly _getChatName: () => string;
+
     constructor({
-        chatName = DEFAULT_PROPS.chatName,
+        getChatName = DEFAULT_PROPS.getChatName,
         onDeleteClick = DEFAULT_PROPS.onDeleteClick,
         onCancelClick = DEFAULT_PROPS.onCancelClick,
     }: DeleteChatProps) {
         super("div", deleteChatTemplate, {
-            chatName,
+            chatName: getChatName(),
 
             deleteButton: new Button({
                 label: "Удалить чат",
@@ -46,6 +48,13 @@ class DeleteChatBlock extends Block<DeleteChatInnerProps> {
                 },
             }),
         });
+
+        this._getChatName = getChatName;
+    }
+
+    show() {
+        this.props.chatName = this._getChatName();
+        super.show();
     }
 }
 
