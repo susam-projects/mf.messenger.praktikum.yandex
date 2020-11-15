@@ -47,11 +47,13 @@ class Modal extends Block<ModalProps> {
     }
 
     show() {
+        this.props.content.show();
         (this.element as HTMLElement).style.display = "flex";
         this._isShown = true;
     }
 
     hide() {
+        this.props.content.hide();
         super.hide();
         this._isShown = false;
         this.props.onClose!();

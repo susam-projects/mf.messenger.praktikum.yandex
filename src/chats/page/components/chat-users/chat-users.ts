@@ -1,8 +1,20 @@
 import Block from "../../../../common/ui/component-system/block.js";
 import chatUsersTemplate from "./chat-users.template.js";
 
+interface ChatUsersProps {
+    onAddUser: (userId: number) => Promise<boolean>;
+    onRemoveUser: (userId: number) => Promise<boolean>;
+    getUsers: (search: string) => Promise<ChatUser[]>;
+}
+
+interface ChatUser {
+    id: number;
+    name: string;
+}
+
 class ChatUsersBlock extends Block {
-    constructor() {
+    constructor(props: ChatUsersProps) {
+        console.log(props);
         super("div", chatUsersTemplate, {
             onUserClick: () => {
                 console.log("user click");
@@ -35,6 +47,11 @@ class ChatUsersBlock extends Block {
                 },
             ],
         });
+    }
+
+    show() {
+        // this.props.searchField.clear();
+        super.show();
     }
 }
 

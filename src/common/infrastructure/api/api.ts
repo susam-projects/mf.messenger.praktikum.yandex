@@ -21,8 +21,12 @@ class Api {
         return this._transport.delete(`${this._basePath}${url}`, { data });
     }
 
-    upload(url: string, fileOrFiles: File | File[]) {
-        return this._transport.upload(`${this._basePath}${url}`, { data: fileOrFiles });
+    uploadFile(url: string, fileOrFiles: File | File[]) {
+        return this._transport.uploadFile(`${this._basePath}${url}`, { data: fileOrFiles });
+    }
+
+    uploadForm(url: string, data: FormData) {
+        return this._transport.uploadForm(`${this._basePath}${url}`, { data });
     }
 }
 

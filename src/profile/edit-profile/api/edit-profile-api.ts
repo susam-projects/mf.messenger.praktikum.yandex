@@ -21,7 +21,7 @@ class EditProfileApi {
 
     uploadAvatar(avatar: File) {
         return this._api
-            .upload("profile/avatar", avatar)
+            .uploadFile("profile/avatar", avatar)
             .then(response => response.status === 200)
             .catch(() => false);
     }

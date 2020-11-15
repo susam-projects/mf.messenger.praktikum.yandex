@@ -140,7 +140,7 @@ describe("HttpTransport", () => {
                 return res.status(200);
             });
 
-            await transport.upload("/upload", { data: TEST_FILE });
+            await transport.uploadFile("/upload", { data: TEST_FILE });
         });
     });
 });

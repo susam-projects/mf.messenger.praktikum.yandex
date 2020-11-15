@@ -1,7 +1,7 @@
 @import "./variables";
 @import "./components/components";
 @import "./chat";
-@import "./chat-list";
+@import "src/chats/page/components/chat-list/chat-list";
 
 .chats-page {
   align-items: stretch;

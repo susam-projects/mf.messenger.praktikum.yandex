@@ -49,6 +49,11 @@ class CreateChatBlock extends Block<CreateChatInnerProps> {
             }),
         });
     }
+
+    show() {
+        this.props.chatNameField.clear();
+        super.show();
+    }
 }
 
 export default CreateChatBlock;

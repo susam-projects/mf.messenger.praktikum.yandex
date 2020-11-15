@@ -39,14 +39,19 @@ class HttpTransport {
         return this._request(url, { ...options, method: RequestMethod.PUT });
     }
 
-    async upload(url: string, options: PublicRequestOptions<File | File[]>): Promise<Response> {
+    async uploadFile(url: string, options: PublicRequestOptions<File | File[]>): Promise<Response> {
         if (!options.data) throw new Error("specify the file to upload!");
         const formData = new FormData();
         const files = ensureArray(options.data);
         files.forEach((file, i) => {
             formData.append(`${file}${i}`, file);
         });
-        return this._request(url, { ...options, data: formData, method: RequestMethod.POST });
+        return this.uploadForm(url, { ...options, data: formData });
+    }
+
+    uploadForm(url: string, options: PublicRequestOptions<FormData>): Promise<Response> {
+        if (!options.data) throw new Error("specify data to upload!");
+        return this._request(url, { ...options, method: RequestMethod.POST });
     }
 
     private _request(url: string, options: RequestOptions = { method: RequestMethod.GET }): Promise<Response> {

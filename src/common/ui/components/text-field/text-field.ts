@@ -41,7 +41,7 @@ class TextField extends Block<TextFieldProps> {
     }
 
     protected bindContent() {
-        const input = findNode<HTMLInputElement>(this.element, "input");
+        const input = this._getInput();
 
         input?.addEventListener("change", event => this.props.onChange!(event));
         input?.addEventListener("blur", event => this.props.onBlur!(event));
@@ -67,13 +67,22 @@ class TextField extends Block<TextFieldProps> {
     }
 
     get value(): string {
-        const input = this.element.querySelector("input");
+        const input = this._getInput();
         return (input && input.value) ?? "";
     }
 
     get name(): string {
-        const input = this.element.querySelector("input");
+        const input = this._getInput();
         return (input && input.name) ?? "";
+    }
+
+    clear() {
+        const input = this._getInput();
+        input && (input.value = "");
+    }
+
+    private _getInput() {
+        return findNode<HTMLInputElement>(this.element, "input");
     }
 }
 
