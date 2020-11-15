@@ -4,6 +4,23 @@
   position: relative;
 }
 
+.chat__no-content {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.chat_no-content {
+  .chat__no-content {
+    display: flex;
+  }
+  .chat__content {
+    display: none;
+  }
+}
+
 .chat__header__top {
   display: flex;
   justify-content: space-between;
