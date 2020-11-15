@@ -1,7 +1,7 @@
-import Block from "../../../../common/ui/component-system/block.js";
+import Block from "../../../../common/component-system/block.js";
 import createChatTemplate from "./create-chat.template.js";
-import TextField from "../../../../common/ui/components/text-field/text-field.js";
-import Button from "../../../../common/ui/components/button/button.js";
+import TextField from "../../../../common/components/text-field/text-field.js";
+import Button from "../../../../common/components/button/button.js";
 
 interface CreateChatProps {
     onCreateClick?: (chatName: string) => void;

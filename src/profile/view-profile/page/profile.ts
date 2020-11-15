@@ -1,5 +1,5 @@
-import Button from "../../../common/ui/components/button/button.js";
-import Block from "../../../common/ui/component-system/block.js";
+import Button from "../../../common/components/button/button.js";
+import Block from "../../../common/component-system/block.js";
 import profilePageTemplate from "./profile.template.js";
 import ViewProfileController from "../controller/view-profile-controller.js";
 import ProfileField from "./components/profile-field.js";

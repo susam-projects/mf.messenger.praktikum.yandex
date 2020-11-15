@@ -1,6 +1,6 @@
 import AppUserApi from "../api/app-user-api.js";
 import ChatsApi from "../api/chats-api.js";
-import { toIdMap } from "../../common/infrastructure/utils/converters.js";
+import { toIdMap } from "../../common/utils/converters.js";
 import UsersApi from "../api/users-api.js";
 
 interface AppUserInfo {

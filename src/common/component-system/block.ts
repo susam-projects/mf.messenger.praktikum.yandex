@@ -1,7 +1,7 @@
-import EventBus from "../../infrastructure/events/event-bus.js";
+import EventBus from "../utils/event-bus.js";
 import Router from "./router.js";
-import idGenerator from "../utils/id-generator.js";
-import { removeAllChildren, addAttribute, createElement } from "../utils/dom-utils.js";
+import idGenerator from "../ui-utils/id-generator.js";
+import { removeAllChildren, addAttribute, createElement } from "../ui-utils/dom-utils.js";
 
 interface BlockMeta {
     tagName: string;

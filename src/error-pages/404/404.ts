@@ -1,5 +1,5 @@
-import Button from "../../common/ui/components/button/button.js";
-import Block from "../../common/ui/component-system/block.js";
+import Button from "../../common/components/button/button.js";
+import Block from "../../common/component-system/block.js";
 import page404Template from "./404.template.js";
 
 interface Page404Props {

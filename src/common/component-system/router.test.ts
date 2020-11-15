@@ -3,7 +3,7 @@ import Block from "./block";
 import { queryByTestId } from "@testing-library/dom";
 import "@testing-library/jest-dom";
 import createRedirect from "./redirect";
-import { wait } from "../../infrastructure/utils/async-utils";
+import { wait } from "../utils/async-utils";
 
 describe("Router", () => {
     class NonSingletonRouter extends Router {

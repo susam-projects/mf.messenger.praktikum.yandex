@@ -1,4 +1,4 @@
-import Api from "../../common/infrastructure/api/api.js";
+import Api from "../../common/http/api.js";
 
 interface UserInfo {
     id: number;

@@ -1,8 +1,8 @@
-import Block from "../../../../common/ui/component-system/block.js";
+import Block from "../../../../common/component-system/block.js";
 import chatUsersTemplate from "./chat-users.template.js";
-import TextFieldWithIcon from "../../../../common/ui/components/text-field-with-icon/text-field-with-icon.js";
+import TextFieldWithIcon from "../../../../common/components/text-field-with-icon/text-field-with-icon.js";
 import { ChatUserInfo } from "../../../controller/chats-controller.js";
-import { findClosest, findNode } from "../../../../common/ui/utils/dom-utils.js";
+import { findClosest, findNode } from "../../../../common/ui-utils/dom-utils.js";
 
 interface ChatUsersPublicProps {
     onAddUser: (oldUsers: ChatUserInfo[], userId: number) => Promise<boolean>;

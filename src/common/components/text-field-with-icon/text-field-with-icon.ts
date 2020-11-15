@@ -1,17 +1,15 @@
 import Block from "../../component-system/block.js";
-import textFieldTemplate from "./text-field.template.js";
-import { noop } from "../../../infrastructure/utils/func-utils.js";
-import { findNode } from "../../utils/dom-utils.js";
+import textFieldWithIconTemplate from "./text-field-with-icon.template.js";
+import { noop } from "../../utils/func-utils.js";
+import { findNode } from "../../ui-utils/dom-utils.js";
 
-interface TextFieldProps {
-    isRequired?: boolean;
-    isError?: boolean;
-    type?: "text" | "email" | "password";
-    label?: string;
+interface TextFieldWithIconProps {
+    className?: string;
+    iconClassName?: string;
     placeholder?: string;
-    errorText?: string;
     name?: string;
     defaultValue?: string | number;
+    onIconClick?: () => void;
     onChange?: (event: Event) => void;
     onBlur?: (event: FocusEvent) => void;
     onFocus?: (event: FocusEvent) => void;
@@ -19,15 +17,11 @@ interface TextFieldProps {
     onPressEscape?: (event: KeyboardEvent) => void;
 }
 
-const DEFAULT_PROPS: Partial<TextFieldProps> = {
-    isRequired: false,
-    isError: false,
-    type: "text",
-    label: "",
-    placeholder: "",
-    errorText: "",
+const DEFAULT_PROPS: Partial<TextFieldWithIconProps> = {
+    className: "",
+    iconClassName: "",
     name: "",
-    defaultValue: "",
+    onIconClick: noop,
     onChange: noop,
     onBlur: noop,
     onFocus: noop,
@@ -35,9 +29,9 @@ const DEFAULT_PROPS: Partial<TextFieldProps> = {
     onPressEscape: noop,
 };
 
-class TextField extends Block<TextFieldProps> {
-    constructor(props: TextFieldProps) {
-        super("div", textFieldTemplate, Object.assign({}, DEFAULT_PROPS, props));
+class TextFieldWithIcon extends Block<TextFieldWithIconProps> {
+    constructor(props: TextFieldWithIconProps) {
+        super("div", textFieldWithIconTemplate, Object.assign({}, DEFAULT_PROPS, props));
     }
 
     protected bindContent() {
@@ -86,4 +80,4 @@ class TextField extends Block<TextFieldProps> {
     }
 }
 
-export default TextField;
+export default TextFieldWithIcon;

@@ -1,4 +1,4 @@
-import Block from "../../../../common/ui/component-system/block.js";
+import Block from "../../../../common/component-system/block.js";
 import profileFieldTemplate from "./profile-field.template.js";
 
 interface ProfileFieldProps {

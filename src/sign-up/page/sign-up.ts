@@ -1,7 +1,7 @@
-import Button from "../../common/ui/components/button/button.js";
-import Block from "../../common/ui/component-system/block.js";
+import Button from "../../common/components/button/button.js";
+import Block from "../../common/component-system/block.js";
 import signUpPageTemplate from "./sign-up.template.js";
-import TextField from "../../common/ui/components/text-field/text-field.js";
+import TextField from "../../common/components/text-field/text-field.js";
 import TextFieldsValidator, {
     createConfirmPasswordValidator,
     createTextFieldInfo,
@@ -10,7 +10,7 @@ import TextFieldsValidator, {
     REQUIRED_PHONE_VALIDATOR,
     REQUIRED_EMAIL_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
-} from "../../common/ui/component-utils/text-fields-validator.js";
+} from "../../common/component-utils/text-fields-validator.js";
 import SignUpController from "../controller/sign-up-controller.js";
 
 interface SignUpPageProps {

@@ -1,7 +1,7 @@
 import Block from "../../component-system/block.js";
 import iconButtonTemplate from "./icon-button.template.js";
-import { noop } from "../../../infrastructure/utils/func-utils.js";
-import { findNode } from "../../utils/dom-utils.js";
+import { noop } from "../../utils/func-utils.js";
+import { findNode } from "../../ui-utils/dom-utils.js";
 
 interface IconButtonProps {
     className?: string;
