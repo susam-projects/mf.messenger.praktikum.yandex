@@ -1,7 +1,8 @@
 import Block from "../../../../common/ui/component-system/block.js";
 import chatUsersTemplate from "./chat-users.template.js";
+import TextFieldWithIcon from "../../../../common/ui/components/text-field-with-icon/text-field-with-icon.js";
 
-interface ChatUsersProps {
+interface ChatUsersPublicProps {
     onAddUser: (userId: number) => Promise<boolean>;
     onRemoveUser: (userId: number) => Promise<boolean>;
     getUsers: (search: string) => Promise<ChatUser[]>;
@@ -10,16 +11,22 @@ interface ChatUsersProps {
 interface ChatUser {
     id: number;
     name: string;
+    avatar: string | null;
+    role: string | null;
+    canRemove: boolean;
+    canAdd: boolean;
 }
 
-class ChatUsersBlock extends Block {
-    constructor(props: ChatUsersProps) {
+interface ChatUsersInternalProps {
+    onUserClick: () => void;
+    searchField: Block;
+    users: ChatUser[];
+}
+
+class ChatUsersBlock extends Block<ChatUsersInternalProps> {
+    constructor(props: ChatUsersPublicProps) {
         console.log(props);
         super("div", chatUsersTemplate, {
-            onUserClick: () => {
-                console.log("user click");
-            },
-
             users: [
                 {
                     id: 1,
@@ -46,6 +53,16 @@ class ChatUsersBlock extends Block {
                     canAdd: true,
                 },
             ],
+
+            onUserClick: () => {
+                console.log("user click");
+            },
+
+            searchField: new TextFieldWithIcon({
+                className: "search-field",
+                iconClassName: "search-field__icon",
+                placeholder: "Поиск",
+            }),
         });
     }
 

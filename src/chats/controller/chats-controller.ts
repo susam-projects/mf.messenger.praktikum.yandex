@@ -1,6 +1,7 @@
 import AppUserApi from "../api/app-user-api.js";
 import ChatsApi from "../api/chats-api.js";
 import { toIdMap } from "../../common/infrastructure/utils/converters.js";
+import UsersApi, { UserInfo } from "../api/users-api.js";
 
 interface AppUserInfo {
     displayName: string;
@@ -19,6 +20,7 @@ export interface ChatInfo {
 class ChatsController {
     private readonly _appUserApi = new AppUserApi();
     private readonly _chatsApi = new ChatsApi();
+    private readonly _usersApi = new UsersApi();
 
     async getAppUserInfo(): Promise<AppUserInfo> {
         const userInfo = await this._appUserApi.getUserInfo();
@@ -69,6 +71,10 @@ class ChatsController {
 
     uploadAvatar(chatId: number, avatar: File): Promise<boolean> {
         return this._chatsApi.uploadAvatar(chatId, avatar);
+    }
+
+    findUsers(searchString: string): Promise<UserInfo[] | null> {
+        return this._usersApi.searchUsers(searchString);
     }
 }
 

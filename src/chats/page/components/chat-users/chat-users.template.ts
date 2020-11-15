@@ -1,12 +1,7 @@
 const chatUsersTemplate = `
   <div class="chat-users">
     <section class="chat-users__search">
-      <article class="text-field-with-icon search-field">
-        <input class="text-field-with-icon__input" placeholder="Поиск" name="search" />
-        <div id="search" class="text-field-with-icon__icon-container">
-          <div class="text-field-with-icon__icon search-field__icon"></div>
-        </div>
-      </article>
+      {{{searchField}}}
     </section>
     <hr class="divider margin-top-16" />
     <section class="chat-users__user-list">
