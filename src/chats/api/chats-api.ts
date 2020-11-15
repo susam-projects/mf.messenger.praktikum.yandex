@@ -23,6 +23,17 @@ class ChatsApi {
             .catch(() => []);
     }
 
+    async getUnreadMessagesCount(chatId: number): Promise<number | null> {
+        try {
+            const response = await this._api.get(`/new/${chatId}`);
+            if (response.status !== 200) return null;
+            const data = JSON.parse(response.response as string);
+            return data.unread_count;
+        } catch {
+            return null;
+        }
+    }
+
     create(title: string): Promise<boolean> {
         return this._api
             .post("", { title })

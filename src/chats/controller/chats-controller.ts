@@ -1,5 +1,6 @@
 import AppUserApi from "../api/app-user-api.js";
 import ChatsApi from "../api/chats-api.js";
+import { toIdMap } from "../../common/infrastructure/utils/converters.js";
 
 interface AppUserInfo {
     displayName: string;
@@ -11,6 +12,7 @@ export interface ChatInfo {
     title: string;
     avatar: string;
     unreadMessagesCount: number;
+    haveUnreadMessages: boolean;
     selected: boolean;
 }
 
@@ -36,9 +38,23 @@ class ChatsController {
 
     async getChats(): Promise<ChatInfo[]> {
         const chats = await this._chatsApi.getAll();
+
+        const unreadInfo = await Promise.all(
+            chats.map(async chat => {
+                const count = await this._chatsApi.getUnreadMessagesCount(chat.id);
+                return {
+                    id: chat.id,
+                    count,
+                };
+            }),
+        );
+
+        const unreadInfoMap = toIdMap(unreadInfo);
+
         return chats.map(chatInfo => ({
             ...chatInfo,
-            unreadMessagesCount: 3,
+            unreadMessagesCount: unreadInfoMap[chatInfo.id].count ?? 0,
+            haveUnreadMessages: !!unreadInfoMap[chatInfo.id].count,
             selected: false,
         }));
     }

@@ -21,7 +21,9 @@ const chatListTemplate = `
               <div class="chat-info {{#if this.selected}} selected {{/if}}">
                 <section class="chat-info__image-section badge-parent">
                   <div class="avatar avatar-24" style="url('{{this.avatar}}')">&nbsp;</div>
-                  <div class="badge badge-top-right badge-danger-circle">{{this.unreadMessagesCount}}</div>
+                  {{#if this.haveUnreadMessages}}
+                    <div class="badge badge-top-right badge-danger-circle">{{this.unreadMessagesCount}}</div>
+                  {{/if}}
                 </section>
                 <section class="chat-info__text-section">
                   <div class="chat-info__text-section__first-line">
