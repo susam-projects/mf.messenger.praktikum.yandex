@@ -7,8 +7,13 @@ class ViewProfileController {
         return this._appUserApi.logout();
     }
 
-    getUserInfo(): Promise<UserInfo | null> {
-        return this._appUserApi.getUserInfo();
+    async getUserInfo(): Promise<UserInfo | null> {
+        const info = await this._appUserApi.getUserInfo();
+        if (!info) return null;
+        return {
+            ...info,
+            avatar: info.avatar ? `https://ya-praktikum.tech${info.avatar}` : null,
+        };
     }
 }
 

@@ -15,8 +15,10 @@ import TextFieldsValidator, {
 } from "../../../common/ui/component-utils/text-fields-validator.js";
 import TextField from "../../../common/ui/components/text-field/text-field.js";
 import EditProfileController from "../controller/edit-profile-controller.js";
+import { findNode } from "../../../common/ui/utils/dom-utils.js";
 
 interface EditProfilePageProps {
+    avatar: string | null;
     loginField: TextField;
     displayNameField: TextField;
     emailField: TextField;
@@ -36,6 +38,8 @@ class EditProfilePage extends Block<EditProfilePageProps> {
 
     constructor() {
         super("div", editProfilePageTemplate, {
+            avatar: null,
+
             loginField: new TextField({
                 label: "Логин",
                 placeholder: "username",
@@ -109,9 +113,12 @@ class EditProfilePage extends Block<EditProfilePageProps> {
                 label: "Сохранить",
                 onClick: async () => {
                     if (this._validator.validate()) {
+                        const avatarInput = findNode<HTMLInputElement>(this.element, "#avatar-input");
+                        const avatar = avatarInput?.files![0] ?? undefined;
+
                         if (
                             await this._controller.update({
-                                avatar: undefined,
+                                avatar,
                                 login: this.props.loginField.value,
                                 displayName: this.props.displayNameField.value,
                                 firstName: this.props.firstNameField.value,
@@ -182,6 +189,7 @@ class EditProfilePage extends Block<EditProfilePageProps> {
         this.props.secondNameField.setProps({ defaultValue: profileData.secondName });
         this.props.phoneField.setProps({ defaultValue: profileData.phone });
         this.props.emailField.setProps({ defaultValue: profileData.email });
+        this.setProps({ avatar: profileData.avatar });
     }
 }
 

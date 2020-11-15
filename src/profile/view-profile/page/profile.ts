@@ -5,6 +5,7 @@ import ViewProfileController from "../controller/view-profile-controller.js";
 import ProfileField from "./components/profile-field.js";
 
 interface ProfilePageProps {
+    avatar: string | null;
     loginField: Block;
     displayNameField: Block;
     firstNameField: Block;
@@ -22,6 +23,8 @@ class ProfilePage extends Block<ProfilePageProps> {
 
     constructor() {
         super("div", profilePageTemplate, {
+            avatar: null,
+
             loginField: new ProfileField({
                 label: "Логин",
                 value: NO_DATA,
@@ -104,6 +107,7 @@ class ProfilePage extends Block<ProfilePageProps> {
         this.props.secondNameField.setProps({ value: userInfo?.second_name || NO_DATA });
         this.props.phoneField.setProps({ value: userInfo?.phone || NO_DATA });
         this.props.emailField.setProps({ value: userInfo?.email || NO_DATA });
+        this.setProps({ avatar: userInfo?.avatar });
     }
 }
 

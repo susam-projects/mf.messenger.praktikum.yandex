@@ -32,7 +32,7 @@ class ChatsController {
 
         return {
             displayName,
-            avatar: userInfo?.avatar ?? "",
+            avatar: userInfo?.avatar ? `https://ya-praktikum.tech${userInfo.avatar}` : "",
         };
     }
 

@@ -31,7 +31,7 @@ class EditProfileController {
         const userInfo = await this._appUserApi.getUserInfo();
         if (userInfo) {
             return {
-                avatar: userInfo.avatar,
+                avatar: userInfo.avatar ? `https://ya-praktikum.tech${userInfo.avatar}` : null,
                 firstName: userInfo.first_name,
                 secondName: userInfo.second_name,
                 displayName: userInfo.display_name ?? "",

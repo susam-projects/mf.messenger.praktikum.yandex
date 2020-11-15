@@ -20,8 +20,11 @@ class EditProfileApi {
     }
 
     uploadAvatar(avatar: File) {
+        const data = new FormData();
+        data.append("avatar", avatar);
+
         return this._api
-            .uploadFile("profile/avatar", avatar)
+            .uploadForm("profile/avatar", data)
             .then(response => response.status === 200)
             .catch(() => false);
     }

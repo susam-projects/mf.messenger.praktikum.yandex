@@ -20,7 +20,7 @@ const chatListTemplate = `
             <li data-id="{{this.id}}">
               <div class="chat-info {{#if this.selected}} selected {{/if}}">
                 <section class="chat-info__image-section badge-parent">
-                  <div class="avatar avatar-24" style="url('{{this.avatar}}')">&nbsp;</div>
+                  <div class="avatar avatar-24" style="background-image:url('{{this.avatar}}')">&nbsp;</div>
                   {{#if this.haveUnreadMessages}}
                     <div class="badge badge-top-right badge-danger-circle">{{this.unreadMessagesCount}}</div>
                   {{/if}}
@@ -45,7 +45,7 @@ const chatListTemplate = `
       <hr class="divider" />
       <div id="user-info" class="user-info">
         <h2 class="user-info__name">{{userName}}</h2>
-        <div class="user-info__avatar avatar avatar-48" style="url('{{userAvatar}}')"></div>
+        <div class="user-info__avatar avatar avatar-48" style="background-image:url('{{userAvatar}}')"></div>
       </div>
     </footer>
   </section>

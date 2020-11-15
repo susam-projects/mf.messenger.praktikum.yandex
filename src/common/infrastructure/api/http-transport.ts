@@ -51,7 +51,7 @@ class HttpTransport {
 
     uploadForm(url: string, options: PublicRequestOptions<FormData>): Promise<Response> {
         if (!options.data) throw new Error("specify data to upload!");
-        return this._request(url, { ...options, method: RequestMethod.POST });
+        return this._request(url, { ...options, method: RequestMethod.PUT });
     }
 
     private _request(url: string, options: RequestOptions = { method: RequestMethod.GET }): Promise<Response> {

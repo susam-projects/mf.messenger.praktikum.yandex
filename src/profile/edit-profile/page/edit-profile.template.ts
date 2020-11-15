@@ -3,10 +3,13 @@ const editProfilePageTemplate = `
     <article class="card edit-profile-page__content-wrapper">
       <form class="edit-profile-page__form-wrapper">
         <label>
-          <article class="avatar avatar-empty avatar-120 margin-top-40 edit-profile-page__avatar">
-            <article class="icon icon-96 icon-upload">&nbsp;</article>
+          <article
+           class="avatar avatar-empty avatar-120 margin-top-40 edit-profile-page__avatar"
+           style="background-image: url('{{avatar}}')"
+         >
+            {{#if (isNull avatar)}}<article class="icon icon-96 icon-upload">&nbsp;</article>{{/if}}
           </article>
-          <input type="file" class="edit-profile-page__avatar-input" name="avatar" />
+          <input id="avatar-input" type="file" class="edit-profile-page__avatar-input" name="avatar" />
         </label>
 
         <section class="edit-profile-page__inputs margin-top-24">

@@ -1,11 +1,11 @@
 const profilePageTemplate = `
-  <main class="profile-page root">
+  <main class="profile-page">
     <section id="back-line" class="profile-page__back">
       <div class="profile-page__back__icon icon-back"></div>
     </section>
     <section class="profile-page__content">
       <article class="card profile-page__content-wrapper">
-        <article class="avatar avatar-120 margin-top-40">ВТ</article>
+        <article class="avatar avatar-120 margin-top-40" style="background-image:url('{{avatar}}')"></article>
 
         <div class="margin-top-24">
             {{{loginField}}}

@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $COLOR_PRIMARY;
   color: $COLOR_PRIMARY_CONTRAST;
+  background: $COLOR_PRIMARY center center / cover no-repeat;
 }
 
 .avatar-empty {

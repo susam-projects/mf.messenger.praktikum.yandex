@@ -99,7 +99,7 @@ class Block<TProps extends {} = {}> {
     }
 
     show(): void {
-        (this.element as HTMLElement).style.display = "block";
+        (this.element as HTMLElement).style.display = "";
     }
 
     hide(): void {
