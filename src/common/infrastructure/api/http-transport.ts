@@ -1,6 +1,6 @@
 import { ensureArray } from "../utils/array-utils.js";
 
-enum RequestMethod {
+export enum RequestMethod {
     GET = "GET",
     POST = "POST",
     DELETE = "DELETE",
@@ -14,7 +14,7 @@ type RequestOptions<TData = unknown> = {
     onProgress?: (progress: number) => void;
 };
 
-type PublicRequestOptions<TData = unknown> = Omit<RequestOptions<TData>, "method">;
+export type PublicRequestOptions<TData = unknown> = Omit<RequestOptions<TData>, "method">;
 
 export type Response = {
     status: number;

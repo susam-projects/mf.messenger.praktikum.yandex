@@ -33,7 +33,7 @@ async function start() {
     if (isStartPage && isAuthorized) {
         router.go("/chats");
     }
-    if (!isStartPage && !isAuthorized) {
+    if (!isAuthorized) {
         router.go("/");
     }
 }

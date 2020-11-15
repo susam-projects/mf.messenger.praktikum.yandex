@@ -133,7 +133,7 @@ describe("HttpTransport", () => {
                 return files;
             }
 
-            xhrMock.post("/upload", (req, res) => {
+            xhrMock.put("/upload", (req, res) => {
                 expect(req.header("Content-Type")).toContain("multipart/form-data");
                 expect(req.body()).toBeInstanceOf(FormData);
                 expect(getFiles(req.body())).toContain(TEST_FILE);
@@ -141,6 +141,19 @@ describe("HttpTransport", () => {
             });
 
             await transport.uploadFile("/upload", { data: TEST_FILE });
+        });
+
+        it("can upload form", async () => {
+            const TEST_FORM_DATA = new FormData();
+            TEST_FORM_DATA.append("something", "str-value");
+
+            xhrMock.put("/upload", (req, res) => {
+                expect(req.header("Content-Type")).toContain("multipart/form-data");
+                expect(req.body()).toBe(TEST_FORM_DATA);
+                return res.status(200);
+            });
+
+            await transport.uploadForm("/upload", { data: TEST_FORM_DATA });
         });
     });
 });
