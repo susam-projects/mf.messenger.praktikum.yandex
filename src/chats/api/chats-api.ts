@@ -6,6 +6,20 @@ interface ChatInfo {
     avatar: string;
 }
 
+interface ChatUserInfo {
+    id: number;
+    first_name: string;
+    second_name: string;
+    display_name: string;
+    login: string;
+    email: string;
+    phone: string;
+    avatar: string;
+    role: ChatUserRole;
+}
+
+type ChatUserRole = "admin" | "regular";
+
 class ChatsApi {
     private readonly _api = new Api("https://ya-praktikum.tech/api/v2/chats/");
 
@@ -24,14 +38,18 @@ class ChatsApi {
     }
 
     async getUnreadMessagesCount(chatId: number): Promise<number | null> {
-        try {
-            const response = await this._api.get(`/new/${chatId}`);
-            if (response.status !== 200) return null;
-            const data = JSON.parse(response.response as string);
-            return data.unread_count;
-        } catch {
-            return null;
-        }
+        return this._api
+            .get(`/new/${chatId}`)
+            .then(response => {
+                if (response.status !== 200) return null;
+                try {
+                    const data = JSON.parse(response.response as string);
+                    return data.unread_count;
+                } catch {
+                    return null;
+                }
+            })
+            .catch(() => null);
     }
 
     create(title: string): Promise<boolean> {
@@ -55,6 +73,34 @@ class ChatsApi {
 
         return this._api
             .uploadForm("avatar", data)
+            .then(response => response.status === 200)
+            .catch(() => false);
+    }
+
+    async getChatUsers(chatId: number): Promise<ChatUserInfo[]> {
+        return this._api
+            .get(`${chatId}/users`)
+            .then(response => {
+                if (response.status !== 200) return [];
+                try {
+                    return JSON.parse(response.response as string);
+                } catch {
+                    return [];
+                }
+            })
+            .catch(() => []);
+    }
+
+    async setChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
+        return this._api
+            .put(`${chatId}/users`, { chatId, users: userIds })
+            .then(response => response.status === 200)
+            .catch(() => false);
+    }
+
+    async removeChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
+        return this._api
+            .delete(`${chatId}/users`, { chatId, users: userIds })
             .then(response => response.status === 200)
             .catch(() => false);
     }

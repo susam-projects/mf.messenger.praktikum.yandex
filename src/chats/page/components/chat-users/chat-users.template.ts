@@ -7,22 +7,26 @@ const chatUsersTemplate = `
     <section class="chat-users__user-list">
       <ul>
         {{#each users}}
-          <li>
+          <li data-id="{{this.id}}" data-role="{{this.role}}">
             <div class="chat-user">
               <section class="chat-user__image-section">
-                <div class="avatar avatar-24">&nbsp;</div>
+                <div class="avatar avatar-24" style="background-image: url('{{this.avatar}}')">&nbsp;</div>
               </section>
               <section class="chat-user__text-section">
                 <h3>{{this.name}}</h3>
                 <div class="chat-user__role">
-                  {{this.role}}
+                  {{#if (isNull this.role)}}
+                    &nbsp;
+                  {{else}}
+                    {{this.role}}
+                  {{/if}}
                 </div>
               </section>
               <section class="chat-user__action-button">
-                {{#if this.canRemove}}
+                {{#if (equals this.role 'regular')}}
                   <div class="chat-user__action-icon icon-remove-chat-user"></div>
                 {{/if}}
-                {{#if this.canAdd}}
+                {{#if (isNull this.role)}}
                   <div class="chat-user__action-icon icon-add-chat-user"></div>
                 {{/if}}
               </section>

@@ -106,9 +106,6 @@ class ChatsPage extends Block<ChatsPageProps> {
                         return;
                     }
                     if (itemId === "delete") {
-                        // this.props.deleteChatModal.onConfirm = () => {
-                        //     this._controller.delete(0);
-                        // }
                         this.props.deleteChatModal.show();
                         this.props.chatActionsMenu.hide();
                         return;
@@ -179,21 +176,26 @@ class ChatsPage extends Block<ChatsPageProps> {
 
             chatUsersModal: new Modal({
                 content: new ChatUsersBlock({
-                    onAddUser: async (userId: number) => {
-                        // add user to chat
-                        return !!userId && false;
-                    },
-                    onRemoveUser: async (userId: number) => {
-                        // remove user from chat
-                        return !!userId && false;
-                    },
-                    getUsers: async (search: string) => {
+                    onAddUser: async (oldUsers, userId) => {
                         if (!this.props.chatId) {
+                            alert("Не выбран чат!");
+                            return false;
+                        }
+                        return this._controller.addUser(this.props.chatId, oldUsers, userId);
+                    },
+                    onRemoveUser: async userId => {
+                        if (!this.props.chatId) {
+                            alert("Не выбран чат!");
+                            return false;
+                        }
+                        return this._controller.removeUser(this.props.chatId, userId);
+                    },
+                    getUsers: async search => {
+                        if (!this.props.chatId) {
+                            alert("Не выбран чат!");
                             return [];
                         }
-                        // search users
-                        console.log(search);
-                        return [];
+                        return this._controller.findUsers(this.props.chatId, search);
                     },
                 }),
             }),
@@ -267,10 +269,12 @@ class ChatsPage extends Block<ChatsPageProps> {
         if (chats) {
             const chatId = chats[0]?.id ?? null;
             const chatTitle = chats[0]?.title ?? null;
+            const chatAvatar = chats[0]?.avatar ?? null;
 
             this.setProps({
                 chatId,
                 chatTitle,
+                chatAvatar,
                 chats: chats.map(it => ({
                     ...it,
                     selected: it.id === chatId,

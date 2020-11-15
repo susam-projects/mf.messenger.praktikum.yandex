@@ -14,18 +14,18 @@ export interface UserInfo {
 class UsersApi {
     private readonly _api = new Api("https://ya-praktikum.tech/api/v2/user/");
 
-    searchUsers(login: string): Promise<UserInfo[] | null> {
+    searchUsers(login: string): Promise<UserInfo[]> {
         return this._api
             .post("search", { login })
             .then(response => {
-                if (response.status !== 200) return null;
+                if (response.status !== 200) return [];
                 try {
                     return JSON.parse(response.response as string);
                 } catch {
-                    return null;
+                    return [];
                 }
             })
-            .catch(() => null);
+            .catch(() => []);
     }
 }
 

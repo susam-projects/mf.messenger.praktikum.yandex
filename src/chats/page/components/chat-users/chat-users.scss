@@ -31,7 +31,7 @@
 .chat-user__role {
   font-size: 12px;
   line-height: 15px;
-  margin: 4px 0;
+  margin: 4px 0 0;
   color: $COLOR_TEXT_SECONDARY;
   overflow: hidden;
   white-space: nowrap;
@@ -42,6 +42,7 @@
   width: 32px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .chat-user__action-icon {
@@ -51,9 +52,11 @@
 }
 
 .icon-remove-chat-user {
-  background-image: url("./chats/page/components/chat-users/add.svg");
+  width: 32px;
+  height: 32px;
+  background-image: url("./chats/page/components/chat-users/remove.svg");
 }
 
 .icon-add-chat-user {
-  background-image: url("./chats/page/components/chat-users/remove.svg");
+  background-image: url("./chats/page/components/chat-users/add.svg");
 }

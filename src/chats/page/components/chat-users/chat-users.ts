@@ -1,74 +1,72 @@
 import Block from "../../../../common/ui/component-system/block.js";
 import chatUsersTemplate from "./chat-users.template.js";
 import TextFieldWithIcon from "../../../../common/ui/components/text-field-with-icon/text-field-with-icon.js";
+import { ChatUserInfo } from "../../../controller/chats-controller.js";
+import { findClosest, findNode } from "../../../../common/ui/utils/dom-utils.js";
 
 interface ChatUsersPublicProps {
-    onAddUser: (userId: number) => Promise<boolean>;
+    onAddUser: (oldUsers: ChatUserInfo[], userId: number) => Promise<boolean>;
     onRemoveUser: (userId: number) => Promise<boolean>;
-    getUsers: (search: string) => Promise<ChatUser[]>;
+    getUsers: (search: string) => Promise<ChatUserInfo[]>;
 }
 
-interface ChatUser {
-    id: number;
-    name: string;
-    avatar: string | null;
-    role: string | null;
-    canRemove: boolean;
-    canAdd: boolean;
-}
-
-interface ChatUsersInternalProps {
-    onUserClick: () => void;
-    searchField: Block;
-    users: ChatUser[];
+interface ChatUsersInternalProps extends ChatUsersPublicProps {
+    searchField: TextFieldWithIcon;
+    users: ChatUserInfo[];
 }
 
 class ChatUsersBlock extends Block<ChatUsersInternalProps> {
-    constructor(props: ChatUsersPublicProps) {
-        console.log(props);
+    constructor(publicProps: ChatUsersPublicProps) {
         super("div", chatUsersTemplate, {
-            users: [
-                {
-                    id: 1,
-                    name: "Имя пользователя",
-                    avatar: "",
-                    role: "Админ",
-                    canRemove: false,
-                    canAdd: false,
-                },
-                {
-                    id: 2,
-                    name: "Пользователь 2",
-                    avatar: "",
-                    role: "Пользователь",
-                    canRemove: true,
-                    canAdd: false,
-                },
-                {
-                    id: 3,
-                    name: "Пользователь 3",
-                    avatar: "",
-                    role: "",
-                    canRemove: false,
-                    canAdd: true,
-                },
-            ],
+            ...publicProps,
 
-            onUserClick: () => {
-                console.log("user click");
-            },
+            users: [],
 
             searchField: new TextFieldWithIcon({
                 className: "search-field",
                 iconClassName: "search-field__icon",
                 placeholder: "Поиск",
+                onIconClick: () => this._updateUsers(),
+                onPressEnter: () => this._updateUsers(),
+                onBlur: () => this._updateUsers(),
             }),
         });
     }
 
-    show() {
-        // this.props.searchField.clear();
+    protected bindContent() {
+        const list = findNode(this.element, "ul");
+
+        list?.addEventListener("click", async event => {
+            const listItem = findClosest<HTMLLIElement>(event.target as Element, "li");
+            const id = Number.parseInt(listItem?.dataset?.id ?? "", 10);
+            const role = listItem?.dataset?.role || null;
+
+            if (role === "regular") {
+                if (!(await this.props.onRemoveUser(id))) {
+                    alert("Ошибка удаления пользователя!");
+                }
+                return this._updateUsers();
+            }
+
+            if (role === "null" || role === null) {
+                if (!(await this.props.onAddUser(this.props.users, id))) {
+                    alert("Ошибка добавления пользователя!");
+                }
+                return this._updateUsers();
+            }
+        });
+    }
+
+    async show() {
+        this.props.searchField.clear();
+        await this._updateUsers();
         super.show();
+    }
+
+    private async _updateUsers(): Promise<void> {
+        const searchValue = this.props.searchField.value;
+        const users = await this.props.getUsers(searchValue);
+        this.setProps({ users });
     }
 }
 

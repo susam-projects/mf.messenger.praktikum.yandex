@@ -11,7 +11,7 @@ const chatPageTemplate = `
         <header class="chat__header">
           <section class="chat__header__top">
             <section class="chat__header__chat-info">
-              <article class="avatar avatar-48"></article>
+              <article class="avatar avatar-48" style="background-image: url('{{chatAvatar}}')"></article>
               <h1>{{chatTitle}}</h1>
             </section>
             <section class="chat__header__actions">
