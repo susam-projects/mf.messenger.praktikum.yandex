@@ -13,5 +13,9 @@ https://susam-ya-messenger.netlify.app/
 
 http://localhost:4000
 
+## Сборка
+- `npm build` — результат сборки - директория /static 
+
+
 ## Макеты
 https://www.figma.com/file/Dh9jt0lumRSAkBrvIhAPcs/YaMessenger?node-id=6%3A2
