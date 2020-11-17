@@ -2,6 +2,7 @@ import AppUserApi from "../api/app-user-api.js";
 import ChatsApi from "../api/chats-api.js";
 import { toIdMap } from "../../common/utils/converters.js";
 import UsersApi from "../api/users-api.js";
+import config from "../../config/config.js";
 
 interface AppUserInfo {
     displayName: string;
@@ -34,8 +35,8 @@ class ChatsController {
     async getAppUserInfo(): Promise<AppUserInfo> {
         const userInfo = await this._appUserApi.getUserInfo();
         return {
-            displayName: userInfo ? getUserName(userInfo) : "",
-            avatar: userInfo?.avatar ? `https://ya-praktikum.tech${userInfo.avatar}` : "",
+            displayName: getUserName(userInfo),
+            avatar: getUserAvatar(userInfo),
         };
     }
 
@@ -66,11 +67,11 @@ class ChatsController {
         return this._chatsApi.create(title);
     }
 
-    delete(chatId: number): Promise<boolean> {
+    deleteChat(chatId: number): Promise<boolean> {
         return this._chatsApi.delete(chatId);
     }
 
-    uploadAvatar(chatId: number, avatar: File): Promise<boolean> {
+    uploadChatAvatar(chatId: number, avatar: File): Promise<boolean> {
         return this._chatsApi.uploadAvatar(chatId, avatar);
     }
 
@@ -81,9 +82,8 @@ class ChatsController {
         return this._getChatUsers(chatId);
     }
 
-    addUser(chatId: number, oldUsers: ChatUserInfo[], newUserId: number): Promise<boolean> {
-        const userIds = oldUsers.map(getId).concat([newUserId]);
-        return this._chatsApi.setChatUsers(chatId, userIds);
+    async addUser(chatId: number, newUserId: number): Promise<boolean> {
+        return this._chatsApi.addChatUsers(chatId, [newUserId]);
     }
 
     removeUser(chatId: number, userId: number): Promise<boolean> {
@@ -95,7 +95,7 @@ class ChatsController {
         return foundUsers.map(user => ({
             id: user.id,
             name: getUserName(user),
-            avatar: user.avatar,
+            avatar: getUserAvatar(user),
             role: null,
         }));
     }
@@ -106,19 +106,25 @@ class ChatsController {
             return {
                 id: user.id,
                 name: getUserName(user),
-                avatar: user.avatar,
+                avatar: getUserAvatar(user),
                 role: user.role,
             };
         });
     }
 }
 
-function getUserName(user: {
-    display_name?: string | null;
-    first_name?: string | null;
-    second_name?: string | null;
-    login?: string | null;
-}): string {
+function getUserName(
+    user?: {
+        display_name?: string | null;
+        first_name?: string | null;
+        second_name?: string | null;
+        login?: string | null;
+    } | null,
+): string {
+    if (!user) {
+        return "";
+    }
+
     if (user.display_name) {
         return user.display_name;
     }
@@ -134,8 +140,8 @@ function getUserName(user: {
     return "";
 }
 
-function getId<TId>(item: { id: TId }): TId {
-    return item.id;
+function getUserAvatar(user?: { avatar?: string | null } | null) {
+    return user?.avatar ? `${config.imageStorageUrl}${user?.avatar}` : "";
 }
 
 export default ChatsController;

@@ -23,11 +23,10 @@ const router = new Router("#app")
     .use("/500", Page500 as typeof Block)
     .use("/*", createRedirect("/404"));
 
-start();
+router.start();
 
-async function start() {
-    router.start();
-
+// give router some time to go to initial page
+setTimeout(async () => {
     const isStartPage = router.currentRoute === "/" || router.currentRoute === "/sign-up";
     const isAuthorized = await controller.isAuthorized();
     if (isStartPage && isAuthorized) {
@@ -36,7 +35,7 @@ async function start() {
     if (!isAuthorized) {
         router.go("/");
     }
-}
+}, 100);
 
 // for dev
 // @ts-ignore

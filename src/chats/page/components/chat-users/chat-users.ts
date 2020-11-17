@@ -5,7 +5,7 @@ import { ChatUserInfo } from "../../../controller/chats-controller.js";
 import { findClosest, findNode } from "../../../../common/ui-utils/dom-utils.js";
 
 interface ChatUsersPublicProps {
-    onAddUser: (oldUsers: ChatUserInfo[], userId: number) => Promise<boolean>;
+    onAddUser: (userId: number) => Promise<boolean>;
     onRemoveUser: (userId: number) => Promise<boolean>;
     getUsers: (search: string) => Promise<ChatUserInfo[]>;
 }
@@ -49,7 +49,7 @@ class ChatUsersBlock extends Block<ChatUsersInternalProps> {
             }
 
             if (role === "null" || role === null) {
-                if (!(await this.props.onAddUser(this.props.users, id))) {
+                if (!(await this.props.onAddUser(id))) {
                     alert("Ошибка добавления пользователя!");
                 }
                 return this._updateUsers();

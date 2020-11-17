@@ -1,4 +1,5 @@
 import Api from "../../common/http/api.js";
+import config from "../../config/config.js";
 
 interface ChatInfo {
     id: number;
@@ -21,7 +22,7 @@ interface ChatUserInfo {
 type ChatUserRole = "admin" | "regular";
 
 class ChatsApi {
-    private readonly _api = new Api("https://ya-praktikum.tech/api/v2/chats/");
+    private readonly _api = new Api(`${config.apiUrl}/chats/`);
 
     getAll(): Promise<ChatInfo[]> {
         return this._api
@@ -91,16 +92,16 @@ class ChatsApi {
             .catch(() => []);
     }
 
-    async setChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
+    async addChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
         return this._api
-            .put(`${chatId}/users`, { chatId, users: userIds })
+            .put(`users`, { chatId, users: userIds })
             .then(response => response.status === 200)
             .catch(() => false);
     }
 
     async removeChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
         return this._api
-            .delete(`${chatId}/users`, { chatId, users: userIds })
+            .delete(`users`, { chatId, users: userIds })
             .then(response => response.status === 200)
             .catch(() => false);
     }

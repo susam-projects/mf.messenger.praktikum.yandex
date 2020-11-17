@@ -1,4 +1,5 @@
 import Api from "../../common/http/api.js";
+import config from "../../config/config.js";
 
 interface UserInfo {
     id: number;
@@ -12,7 +13,7 @@ interface UserInfo {
 }
 
 class AppUserApi {
-    private readonly _api = new Api("https://ya-praktikum.tech/api/v2/auth/");
+    private readonly _api = new Api(`${config.apiUrl}/auth/`);
 
     getUserInfo(): Promise<UserInfo | null> {
         return this._api

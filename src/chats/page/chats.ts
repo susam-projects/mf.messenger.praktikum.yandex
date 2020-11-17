@@ -162,7 +162,7 @@ class ChatsPage extends Block<ChatsPageProps> {
                             alert("Не выбран чат!");
                             return;
                         }
-                        if (!(await this._controller.delete(this.props.chatId))) {
+                        if (!(await this._controller.deleteChat(this.props.chatId))) {
                             alert("Не получилось удалить чат!");
                         }
                         await this._updateChatsInfo();
@@ -176,12 +176,12 @@ class ChatsPage extends Block<ChatsPageProps> {
 
             chatUsersModal: new Modal({
                 content: new ChatUsersBlock({
-                    onAddUser: async (oldUsers, userId) => {
+                    onAddUser: async userId => {
                         if (!this.props.chatId) {
                             alert("Не выбран чат!");
                             return false;
                         }
-                        return this._controller.addUser(this.props.chatId, oldUsers, userId);
+                        return this._controller.addUser(this.props.chatId, userId);
                     },
                     onRemoveUser: async userId => {
                         if (!this.props.chatId) {

@@ -1,4 +1,5 @@
 import Api from "../../../common/http/api.js";
+import config from "../../../config/config.js";
 
 export interface UpdateProfileRequestData {
     first_name: string;
@@ -10,7 +11,7 @@ export interface UpdateProfileRequestData {
 }
 
 class EditProfileApi {
-    private readonly _api = new Api("https://ya-praktikum.tech/api/v2/user/");
+    private readonly _api = new Api(`${config.apiUrl}/user/`);
 
     update(data: UpdateProfileRequestData): Promise<boolean> {
         return this._api

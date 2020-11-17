@@ -1,5 +1,6 @@
 import EditProfileApi from "../api/edit-profile-api.js";
 import AppUserApi from "../api/app-user-api.js";
+import config from "../../../config/config.js";
 
 export interface UserProfileGetData {
     avatar: string | null;
@@ -31,7 +32,7 @@ class EditProfileController {
         const userInfo = await this._appUserApi.getUserInfo();
         if (userInfo) {
             return {
-                avatar: userInfo.avatar ? `https://ya-praktikum.tech${userInfo.avatar}` : null,
+                avatar: userInfo.avatar ? `${config.imageStorageUrl}${userInfo.avatar}` : null,
                 firstName: userInfo.first_name,
                 secondName: userInfo.second_name,
                 displayName: userInfo.display_name ?? "",

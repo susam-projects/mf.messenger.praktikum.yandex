@@ -1,3 +1,4 @@
+import config from "../../../config/config.js";
 import AppUserApi, { UserInfo } from "../api/app-user-api.js";
 
 class ViewProfileController {
@@ -12,7 +13,7 @@ class ViewProfileController {
         if (!info) return null;
         return {
             ...info,
-            avatar: info.avatar ? `https://ya-praktikum.tech${info.avatar}` : null,
+            avatar: info.avatar ? `${config.imageStorageUrl}${info.avatar}` : null,
         };
     }
 }
