@@ -1,5 +1,3 @@
-FROM nginx:1.19.4-alpine
-
 FROM node:14-alpine as builder
 RUN mkdir /app
 WORKDIR /app
