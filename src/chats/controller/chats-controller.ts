@@ -1,8 +1,8 @@
-import AppUserApi from "../api/app-user-api.js";
-import ChatsApi from "../api/chats-api.js";
-import { toIdMap } from "../../common/utils/converters.js";
-import UsersApi from "../api/users-api.js";
-import config from "../../config/config.js";
+import AppUserApi from "../api/app-user-api";
+import ChatsApi from "../api/chats-api";
+import { toIdMap } from "../../common/utils/converters";
+import UsersApi from "../api/users-api";
+import config from "../../config/config";
 
 interface AppUserInfo {
     displayName: string;

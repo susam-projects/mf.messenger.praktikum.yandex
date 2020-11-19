@@ -1,4 +1,4 @@
-import { checkAll } from "../utils/array-utils.js";
+import { checkAll } from "../utils/array-utils";
 
 export type InputValidators = Record<string, InputValidator>;
 export type InputValidator = RegExp | ValidatorFunction;

@@ -1,7 +1,7 @@
-import Block from "../../component-system/block.js";
-import textFieldTemplate from "./text-field.template.js";
-import { noop } from "../../utils/func-utils.js";
-import { findNode } from "../../ui-utils/dom-utils.js";
+import Block from "../../component-system/block";
+import textFieldTemplate from "./text-field.template";
+import { noop } from "../../utils/func-utils";
+import { findNode } from "../../ui-utils/dom-utils";
 
 interface TextFieldProps {
     isRequired?: boolean;

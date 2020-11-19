@@ -1,5 +1,5 @@
-import Block from "../../component-system/block.js";
-import modalTemplate from "./modal.template.js";
+import Block from "../../component-system/block";
+import modalTemplate from "./modal.template";
 
 interface ModalProps {
     content: Block;

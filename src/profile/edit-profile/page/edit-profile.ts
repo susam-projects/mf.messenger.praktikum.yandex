@@ -1,6 +1,7 @@
-import Button from "../../../common/components/button/button.js";
-import Block from "../../../common/component-system/block.js";
-import editProfilePageTemplate from "./edit-profile.template.js";
+import "./edit-profile.scss";
+import Button from "../../../common/components/button/button";
+import Block from "../../../common/component-system/block";
+import editProfilePageTemplate from "./edit-profile.template";
 import TextFieldsValidator, {
     createConfirmPasswordValidator,
     createTextFieldInfo,
@@ -12,10 +13,10 @@ import TextFieldsValidator, {
     REQUIRED_PASSWORD_VALIDATOR,
     PHONE_VALIDATOR,
     REQUIRED_EMAIL_VALIDATOR,
-} from "../../../common/component-utils/text-fields-validator.js";
-import TextField from "../../../common/components/text-field/text-field.js";
-import EditProfileController from "../controller/edit-profile-controller.js";
-import { findNode } from "../../../common/ui-utils/dom-utils.js";
+} from "../../../common/component-utils/text-fields-validator";
+import TextField from "../../../common/components/text-field/text-field";
+import EditProfileController from "../controller/edit-profile-controller";
+import { findNode } from "../../../common/ui-utils/dom-utils";
 
 interface EditProfilePageProps {
     avatar: string | null;

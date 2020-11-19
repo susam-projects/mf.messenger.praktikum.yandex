@@ -1,12 +1,13 @@
-import Button from "../../common/components/button/button.js";
-import Block from "../../common/component-system/block.js";
-import loginPageTemplate from "./login.template.js";
-import TextField from "../../common/components/text-field/text-field.js";
+import "./login.scss";
+import loginPageTemplate from "./login.hbs";
+import Button from "../../common/components/button/button";
+import Block from "../../common/component-system/block";
+import TextField from "../../common/components/text-field/text-field";
 import TextFieldsValidator, {
     REQUIRED_LOGIN_VALIDATOR,
     REQUIRED_PASSWORD_VALIDATOR,
-} from "../../common/component-utils/text-fields-validator.js";
-import LoginController from "../controller/login-controller.js";
+} from "../../common/component-utils/text-fields-validator";
+import LoginController from "../controller/login-controller";
 
 interface LoginPageProps {
     userNameField: TextField;

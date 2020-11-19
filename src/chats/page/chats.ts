@@ -1,14 +1,14 @@
-import Block from "../../common/component-system/block.js";
-import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../common/component-utils/form-validator.js";
-import chatPageTemplate from "./chats.template.js";
-import IconButton from "../../common/components/icon-button/icon-button.js";
-import ChatsController, { ChatInfo } from "../controller/chats-controller.js";
-import Modal from "../../common/components/modal/modal.js";
-import ChatUsersBlock from "./components/chat-users/chat-users.js";
-import DeleteChatBlock from "./components/delete-chat/delete-chat.js";
-import Menu from "../../common/components/menu/menu.js";
-import ChatList, { ChatListPublicProps } from "./components/chat-list/chat-list.js";
-import CreateChatBlock from "./components/create-chat/create-chat.js";
+import Block from "../../common/component-system/block";
+import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../common/component-utils/form-validator";
+import chatPageTemplate from "./chats.template";
+import IconButton from "../../common/components/icon-button/icon-button";
+import ChatsController, { ChatInfo } from "../controller/chats-controller";
+import Modal from "../../common/components/modal/modal";
+import ChatUsersBlock from "./components/chat-users/chat-users";
+import DeleteChatBlock from "./components/delete-chat/delete-chat";
+import Menu from "../../common/components/menu/menu";
+import ChatList, { ChatListPublicProps } from "./components/chat-list/chat-list";
+import CreateChatBlock from "./components/create-chat/create-chat";
 
 interface ChatsPageProps {
     chatId: number | null;

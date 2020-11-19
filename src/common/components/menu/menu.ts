@@ -1,6 +1,6 @@
-import Block from "../../component-system/block.js";
-import menuTemplate from "./menu.template.js";
-import { findClosest, findNode, toggleClass } from "../../ui-utils/dom-utils.js";
+import Block from "../../component-system/block";
+import menuTemplate from "./menu.template";
+import { findClosest, findNode, toggleClass } from "../../ui-utils/dom-utils";
 
 interface MenuProps {
     className?: string;

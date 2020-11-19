@@ -1,8 +1,8 @@
-import Block from "../../../../common/component-system/block.js";
-import chatListTemplate from "./chat-list.template.js";
-import IconButton from "../../../../common/components/icon-button/icon-button.js";
-import { ChatInfo } from "../../../controller/chats-controller.js";
-import { findClosest, findNode } from "../../../../common/ui-utils/dom-utils.js";
+import Block from "../../../../common/component-system/block";
+import chatListTemplate from "./chat-list.template";
+import IconButton from "../../../../common/components/icon-button/icon-button";
+import { ChatInfo } from "../../../controller/chats-controller";
+import { findClosest, findNode } from "../../../../common/ui-utils/dom-utils";
 
 export interface ChatListPublicProps {
     className?: string;

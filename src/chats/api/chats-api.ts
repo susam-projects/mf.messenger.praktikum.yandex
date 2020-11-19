@@ -1,5 +1,5 @@
-import Api from "../../common/http/api.js";
-import config from "../../config/config.js";
+import Api from "../../common/http/api";
+import config from "../../config/config";
 
 interface ChatInfo {
     id: number;

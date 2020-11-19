@@ -1,4 +1,4 @@
-import LoginApi from "../api/login-api.js";
+import LoginApi from "../api/login-api";
 
 class LoginController {
     private _api = new LoginApi();

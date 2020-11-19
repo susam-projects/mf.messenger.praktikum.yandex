@@ -1,11 +1,7 @@
-@import "variables";
+@import "./variables";
 @import "./common/ui-utils/reset";
 @import "./common/fonts/latofonts";
 @import "./common/components/components";
-@import "./login/page/login";
-@import "./sign-up/page/sign-up";
 @import "./chats/page/chats";
-@import "./profile/view-profile/page/profile";
-@import "./profile/edit-profile/page/edit-profile";
 @import "./error-pages/404/404";
 @import "./error-pages/500/500";

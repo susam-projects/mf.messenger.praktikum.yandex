@@ -1,5 +1,5 @@
-import HttpTransport from "./http-transport.js";
-import RequestQueue from "./request-queue.js";
+import HttpTransport from "./http-transport";
+import RequestQueue from "./request-queue";
 
 class Api {
     private _queue = new RequestQueue(new HttpTransport());

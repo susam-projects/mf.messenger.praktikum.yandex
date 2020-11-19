@@ -1,4 +1,4 @@
-import HttpTransport, { PublicRequestOptions, Response } from "./http-transport.js";
+import HttpTransport, { PublicRequestOptions, Response } from "./http-transport";
 
 interface QueueItem {
     method: TransportMethod;

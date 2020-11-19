@@ -1,5 +1,5 @@
-import config from "../../../config/config.js";
-import AppUserApi, { UserInfo } from "../api/app-user-api.js";
+import config from "../../../config/config";
+import AppUserApi, { UserInfo } from "../api/app-user-api";
 
 class ViewProfileController {
     private readonly _appUserApi = new AppUserApi();

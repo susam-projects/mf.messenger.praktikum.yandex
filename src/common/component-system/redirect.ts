@@ -1,5 +1,5 @@
-import Block from "./block.js";
-import Router from "./router.js";
+import Block from "./block";
+import Router from "./router";
 
 function createRedirect(destination: string, router?: Router): typeof Block {
     return class Redirect extends Block {

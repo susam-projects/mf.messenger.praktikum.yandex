@@ -1,15 +1,16 @@
-import "./common/component-system/handlebars-helpers.js";
-import Page404 from "./error-pages/404/404.js";
-import Page500 from "./error-pages/500/500.js";
-import ChatsPage from "./chats/page/chats.js";
-import EditProfilePage from "./profile/edit-profile/page/edit-profile.js";
-import ProfilePage from "./profile/view-profile/page/profile.js";
-import SignUpPage from "./sign-up/page/sign-up.js";
-import LoginPage from "./login/page/login.js";
-import Router from "./common/component-system/router.js";
-import Block from "./common/component-system/block.js";
-import createRedirect from "./common/component-system/redirect.js";
-import IndexController from "./index-controller.js";
+import "./index.scss";
+import "./common/component-system/handlebars-helpers";
+import Page404 from "./error-pages/404/404";
+import Page500 from "./error-pages/500/500";
+import ChatsPage from "./chats/page/chats";
+import EditProfilePage from "./profile/edit-profile/page/edit-profile";
+import ProfilePage from "./profile/view-profile/page/profile";
+import SignUpPage from "./sign-up/page/sign-up";
+import LoginPage from "./login/page/login";
+import Router from "./common/component-system/router";
+import Block from "./common/component-system/block";
+import createRedirect from "./common/component-system/redirect";
+import IndexController from "./index-controller";
 
 const controller = new IndexController();
 

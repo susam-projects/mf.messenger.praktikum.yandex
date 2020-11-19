@@ -1,5 +1,5 @@
-import TextField from "../components/text-field/text-field.js";
-import { checkAll } from "../utils/array-utils.js";
+import TextField from "../components/text-field/text-field";
+import { checkAll } from "../utils/array-utils";
 
 export interface TextFieldInfo {
     textField: TextField;

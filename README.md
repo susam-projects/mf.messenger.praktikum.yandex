@@ -3,6 +3,9 @@
 
 https://susam-ya-messenger.netlify.app/
 
+## Heroku
+https://susam-ya-messenger.herokuapp.com/
+
 ## Установка
 `npm install`
 

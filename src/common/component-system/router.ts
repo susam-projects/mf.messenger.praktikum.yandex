@@ -1,5 +1,5 @@
-import Block from "./block.js";
-import Route from "./route.js";
+import Block from "./block";
+import Route from "./route";
 
 class Router {
     static __instance: Router;

@@ -1,4 +1,4 @@
-import SignUpApi, { ISignUpData } from "../api/sign-up-api.js";
+import SignUpApi, { ISignUpData } from "../api/sign-up-api";
 
 class SignUpController {
     private _api = new SignUpApi();

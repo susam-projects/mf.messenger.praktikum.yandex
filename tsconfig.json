@@ -1,7 +1,7 @@
 {
   "include": [
     "./src",
-    "./vendor/handlebars/index.d.ts",
+    "./global.d.ts",
     "node_modules/@types/jest/index.d.ts"
   ],
   "compilerOptions": {

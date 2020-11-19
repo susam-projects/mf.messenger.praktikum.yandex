@@ -1,6 +1,6 @@
-import Button from "../../common/components/button/button.js";
-import Block from "../../common/component-system/block.js";
-import page404Template from "./404.template.js";
+import Button from "../../common/components/button/button";
+import Block from "../../common/component-system/block";
+import page404Template from "./404.template";
 
 interface Page404Props {
     goToChatsButton: Block;

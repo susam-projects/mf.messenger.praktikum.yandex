@@ -1,7 +1,7 @@
-import { noop } from "../../../../common/utils/func-utils.js";
-import Block from "../../../../common/component-system/block.js";
-import Button from "../../../../common/components/button/button.js";
-import deleteChatTemplate from "./delete-chat.template.js";
+import { noop } from "../../../../common/utils/func-utils";
+import Block from "../../../../common/component-system/block";
+import Button from "../../../../common/components/button/button";
+import deleteChatTemplate from "./delete-chat.template";
 
 interface DeleteChatProps {
     getChatTitle?: () => string;

@@ -1,6 +1,6 @@
-import Button from "../../common/components/button/button.js";
-import Block from "../../common/component-system/block.js";
-import page500Template from "./500.template.js";
+import Button from "../../common/components/button/button";
+import Block from "../../common/component-system/block";
+import page500Template from "./500.template";
 
 interface Page500Props {
     goToChatsButton: Block;

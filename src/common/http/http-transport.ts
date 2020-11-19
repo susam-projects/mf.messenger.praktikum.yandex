@@ -1,4 +1,4 @@
-import { ensureArray } from "../utils/array-utils.js";
+import { ensureArray } from "../utils/array-utils";
 
 export enum RequestMethod {
     GET = "GET",

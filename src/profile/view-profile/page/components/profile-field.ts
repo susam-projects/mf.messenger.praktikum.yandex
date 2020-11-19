@@ -1,5 +1,5 @@
-import Block from "../../../../common/component-system/block.js";
-import profileFieldTemplate from "./profile-field.template.js";
+import Block from "../../../../common/component-system/block";
+import profileFieldTemplate from "./profile-field.template";
 
 interface ProfileFieldProps {
     label: string;

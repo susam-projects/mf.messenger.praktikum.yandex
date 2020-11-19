@@ -1,6 +1,6 @@
-import Api from "../../common/http/api.js";
-import { Response } from "../../common/http/http-transport.js";
-import config from "../../config/config.js";
+import Api from "../../common/http/api";
+import { Response } from "../../common/http/http-transport";
+import config from "../../config/config";
 
 class LoginApi {
     private readonly _api = new Api(`${config.apiUrl}/auth/`);

@@ -1,4 +1,4 @@
-import IndexApi from "./index-api.js";
+import IndexApi from "./index-api";
 
 class IndexController {
     private readonly _indexApi = new IndexApi();

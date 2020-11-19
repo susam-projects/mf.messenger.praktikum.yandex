@@ -1,6 +1,6 @@
-import EditProfileApi from "../api/edit-profile-api.js";
-import AppUserApi from "../api/app-user-api.js";
-import config from "../../../config/config.js";
+import EditProfileApi from "../api/edit-profile-api";
+import AppUserApi from "../api/app-user-api";
+import config from "../../../config/config";
 
 export interface UserProfileGetData {
     avatar: string | null;

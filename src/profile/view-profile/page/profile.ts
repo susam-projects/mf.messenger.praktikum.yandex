@@ -1,8 +1,9 @@
-import Button from "../../../common/components/button/button.js";
-import Block from "../../../common/component-system/block.js";
-import profilePageTemplate from "./profile.template.js";
-import ViewProfileController from "../controller/view-profile-controller.js";
-import ProfileField from "./components/profile-field.js";
+import "./profile.scss";
+import Button from "../../../common/components/button/button";
+import Block from "../../../common/component-system/block";
+import profilePageTemplate from "./profile.template";
+import ViewProfileController from "../controller/view-profile-controller";
+import ProfileField from "./components/profile-field";
 
 interface ProfilePageProps {
     avatar: string | null;

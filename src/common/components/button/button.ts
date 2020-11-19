@@ -1,7 +1,7 @@
-import Block from "../../component-system/block.js";
-import { noop } from "../../utils/func-utils.js";
-import buttonTemplate from "./button.template.js";
-import { findNode } from "../../ui-utils/dom-utils.js";
+import Block from "../../component-system/block";
+import { noop } from "../../utils/func-utils";
+import buttonTemplate from "./button.template";
+import { findNode } from "../../ui-utils/dom-utils";
 
 interface ButtonProps {
     className?: string;

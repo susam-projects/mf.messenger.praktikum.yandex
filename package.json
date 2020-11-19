@@ -4,25 +4,8 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "prestart": "npm run build",
-    "start": "run-p server watch",
-    "test": "jest",
-    "server": "node ./server/server.js",
-    "clean": "rimraf ./static",
-    "copy": "run-s copy:html copy:images",
-    "copy:html": "copyfiles -u 1 ./src/index.html ./static",
-    "copy:images": "copyfiles -u 1 \"./src/**/*.{svg,jpg,png}\" ./static",
-    "css:dev": "node-sass ./src/index.scss > ./static/styles.css",
-    "css:prod": "node-sass ./src/index.scss | postcss -u autoprefixer -b 'last 2 versions' > ./static/styles.css",
-    "js:main": "tsc -p .",
-    "js:vendor": "copyfiles \"vendor/**/*.js\" ./static",
-    "watch": "run-p watch:css watch:js watch:html",
-    "watch:vendor": "onchange './vendor/**/*.js' -- npm run js:vendor",
-    "watch:html": "onchange './src/**/*.html' -- npm run copy:html",
-    "watch:css": "onchange './src/**/*.scss' -- npm run css:dev",
-    "watch:js": "onchange './src/**/*.{ts,js,template.ts}' -- npm run js:main",
-    "prebuild": "run-s clean copy",
-    "build": "run-s css:dev js:main js:vendor"
+    "start": "webpack serve",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -34,15 +17,20 @@
     "url": "https://github.com/susam-projects/mf.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/susam-projects/mf.messenger.praktikum.yandex#readme",
-  "dependencies": {},
+  "dependencies": {
+    "handlebars": "4.7.6"
+  },
   "devDependencies": {
-    "@testing-library/dom": "^7.26.4",
-    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/dom": "7.26.4",
+    "@testing-library/jest-dom": "5.11.5",
     "@types/jest": "26.0.15",
     "@types/jest-in-case": "1.0.3",
     "autoprefixer": "10.0.1",
+    "clean-webpack-plugin": "3.0.0",
     "copyfiles": "2.4.0",
+    "css-loader": "5.0.1",
     "express": "4.17.1",
+    "html-webpack-plugin": "4.5.0",
     "jest": "26.6.1",
     "jest-in-case": "1.0.2",
     "node-sass": "4.14.1",
@@ -50,10 +38,20 @@
     "onchange": "7.1.0",
     "postcss": "8.1.4",
     "postcss-cli": "8.1.0",
+    "postcss-loader": "4.0.4",
+    "postcss-preset-env": "6.7.0",
     "prettier": "2.1.2",
     "rimraf": "3.0.2",
+    "sass": "1.29.0",
+    "sass-loader": "10.1.0",
+    "style-loader": "2.0.0",
     "ts-jest": "26.4.3",
+    "ts-loader": "8.0.11",
     "typescript": "4.0.3",
-    "xhr-mock": "^2.5.1"
+    "webpack": "5.5.1",
+    "webpack-cli": "4.2.0",
+    "webpack-dev-server": "3.11.0",
+    "webpackbar": "5.0.0-3",
+    "xhr-mock": "2.5.1"
   }
 }
