@@ -7,9 +7,11 @@
     "start": "webpack serve",
     "build": "webpack",
     "test": "jest",
-    "lint": "eslint ./src --ext .ts,.tsx --cache",
-    "pretty-check": "prettier --check src//*.{ts,css,scss}",
-    "pretty-write": "prettier --write src//*.{ts,css,scss}"
+    "lint": "run-p lint:js lint:css lint:pretty",
+    "lint:js": "eslint ./src --ext .ts,.tsx --cache",
+    "lint:css": "stylelint ./src/**/*.{css,scss}",
+    "lint:pretty": "prettier --check src/**/*.{ts,css,scss}",
+    "pretty": "prettier --write src/**/*.{ts,css,scss}"
   },
   "repository": {
     "type": "git",
@@ -57,6 +59,9 @@
     "sass": "1.29.0",
     "sass-loader": "10.1.0",
     "style-loader": "2.0.0",
+    "stylelint": "13.8.0",
+    "stylelint-config-prettier": "8.0.2",
+    "stylelint-config-standard": "20.0.0",
     "ts-jest": "26.4.3",
     "ts-loader": "8.0.11",
     "typescript": "4.0.3",

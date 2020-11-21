@@ -1,52 +1,58 @@
+$COLOR_MY_MESSAGE: #081832;
+$COLOR_MY_MESSAGE_CONTRAST: #fff;
+$COLOR_OTHER_MESSAGE: #fff;
+$COLOR_OTHER_MESSAGE_BORDER: $COLOR_INPUT_BORDER;
+$COLOR_OTHER_MESSAGE_CONTRAST: $COLOR_TEXT_PRIMARY;
+$COLOR_MESSAGE_DATE: #dadada;
+
 .message-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 0 24px;
-  --color-my-message: #081832;
-  --color-my-message-contrast: #fff;
-  --color-other-message: #fff;
-  --color-other-message-border: $COLOR_INPUT_BORDER;
-  --color-other-message-contrast: $COLOR_TEXT_PRIMARY;
 }
 
 .message-list li {
   margin-top: 8px;
+  position: relative;
 }
+
 .message-list li:first-child {
   margin-top: unset;
 }
 
-.message-list li {
-  position: relative;
-}
 .message-list .avatar {
   position: absolute;
   bottom: 0;
 }
+
 .message-list .message,
 .message-list .message-footer {
   margin-left: 30px;
 }
 
 .message-container-my .message__bubble {
-  background: var(--color-my-message);
+  background: $COLOR_MY_MESSAGE;
+
+  &::after {
+    border-right-color: $COLOR_MY_MESSAGE;
+  }
 }
-.message-container-my .message__bubble:after {
-  border-right-color: var(--color-my-message);
-}
+
 .message-container-my .message__text {
-  color: var(--color-my-message-contrast);
+  color: $COLOR_MY_MESSAGE_CONTRAST;
 }
 
 .message-container-other .message__bubble {
-  background: var(--color-other-message);
+  background: $COLOR_OTHER_MESSAGE;
+
+  &::after {
+    border-right-color: $COLOR_OTHER_MESSAGE;
+  }
 }
-.message-container-other .message__bubble:after {
-  border-right-color: var(--color-other-message);
-}
+
 .message-container-other .message__text {
-  color: var(--color-other-message-contrast);
+  color: $COLOR_OTHER_MESSAGE_CONTRAST;
 }
 
 .message-container-my .message-footer .right,
@@ -55,7 +61,7 @@
 }
 
 .message-list__date {
-  color: #dadada;
+  color: $COLOR_MESSAGE_DATE;
 }
 
 .message-list__date__text {
@@ -70,6 +76,7 @@
     margin-left: unset;
     margin-right: 30px;
   }
+
   .message-container-other .avatar {
     right: 0;
   }

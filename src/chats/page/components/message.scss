@@ -1,7 +1,9 @@
+/* stylelint-disable comment-empty-line-before, at-rule-no-unknown */
 /* hack to be able to use min function with arguments of different type */
 @function min($numbers...) {
   @return m#{i}n(#{$numbers});
 }
+/* stylelint-enable comment-empty-line-before, at-rule-no-unknown */
 
 .message {
   display: flex;
@@ -18,7 +20,7 @@
   display: inline-block;
   padding: 8px 16px;
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     left: 7px;
@@ -59,7 +61,7 @@
     padding-left: unset;
     padding-right: 20px;
 
-    .message__bubble:after {
+    .message__bubble::after {
       left: unset;
       right: 7px;
       border: 18px solid transparent;

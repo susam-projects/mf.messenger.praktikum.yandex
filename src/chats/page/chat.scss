@@ -16,6 +16,7 @@
   .chat__no-content {
     display: flex;
   }
+
   .chat__content {
     display: none;
   }
@@ -67,8 +68,8 @@
   width: calc(100% - 24px * 2);
   padding: 8px;
   background-color: #fff;
-  border: 1px solid var(--color-chat-control-border);
-  box-shadow: 0 1px 2px var(--color-chat-control-border);
+  border: 1px solid $COLOR_CHAT_CONTROL_BORDER;
+  box-shadow: 0 1px 2px $COLOR_CHAT_CONTROL_BORDER;
   border-radius: 14px;
 }
 
