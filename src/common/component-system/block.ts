@@ -1,22 +1,19 @@
 import Handlebars from "handlebars";
 import EventBus from "../utils/event-bus";
-import Router from "./router";
 import idGenerator from "../ui-utils/id-generator";
 import { removeAllChildren, addAttribute, createElement } from "../ui-utils/dom-utils";
+import Router from "./router";
+import { Block as IBlock, Router as IRouter } from "./common-interfaces";
 
-interface BlockMeta {
+interface BlockMeta<TProps> {
     tagName: string;
-    props: object;
+    props: TProps;
     template: Handlebars.Template;
-}
-
-interface BaseProps {
-    [key: string]: unknown;
 }
 
 type TemplateProps = Record<string, string | number>;
 
-class Block<TProps extends {} = {}> {
+class Block<TProps = unknown> implements IBlock<TProps> {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -29,13 +26,13 @@ class Block<TProps extends {} = {}> {
 
     private _eventBus = new EventBus();
     private _element: Element | null = null;
-    private readonly _meta: BlockMeta | null = null;
+    private readonly _meta: BlockMeta<TProps> | null = null;
     private readonly _template: HandlebarsTemplateDelegate<TemplateProps> | null = null;
-    protected readonly _router: Router;
+    protected readonly _router: IRouter;
     private _isRendering = false;
     private _renderId = idGenerator.getNewId();
 
-    constructor(tagName = "div", template = "", props = {} as TProps, router?: Router) {
+    constructor(tagName = "div", template = "", props = {} as TProps, router?: IRouter) {
         this._meta = {
             tagName,
             props,
@@ -84,7 +81,7 @@ class Block<TProps extends {} = {}> {
 
     render(): string {
         const templateProps = {} as TemplateProps;
-        for (let key in this.props) {
+        for (const key in this.props) {
             const value = this.props[key];
             if (value instanceof Block) {
                 templateProps[key] = value.render();
@@ -114,12 +111,13 @@ class Block<TProps extends {} = {}> {
     }
 
     private _makePropsProxy(props: TProps): TProps {
-        return (new Proxy(props, {
-            set: (target: BaseProps, prop: string, value: unknown) => {
+        return (new Proxy(props as Record<string, unknown>, {
+            set: (target, prop: string, value: unknown) => {
                 if (target[prop] === value) {
                     return true;
                 }
-                const oldTarget = Object.assign({}, target);
+                const oldTarget = { ...target };
+                // eslint-disable-next-line no-param-reassign
                 target[prop] = value;
                 this._eventBus.emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
                 return true;

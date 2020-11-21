@@ -1,7 +1,7 @@
 const idGenerator = {
     _ids: new Set<string>(),
 
-    getNewId() {
+    getNewId(): string {
         let id: string;
         do {
             id = this.generateId(20);
@@ -11,7 +11,7 @@ const idGenerator = {
         return id;
     },
 
-    generateId(length: number) {
+    generateId(length: number): string {
         let result = "";
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         const charactersLength = characters.length;
@@ -21,7 +21,7 @@ const idGenerator = {
         return result;
     },
 
-    clear() {
+    clear(): void {
         this._ids.clear();
     },
 };

@@ -167,16 +167,16 @@ class EditProfilePage extends Block<EditProfilePageProps> {
         ]);
     }
 
-    init() {
+    init(): void {
         this._controller = new EditProfileController();
         super.init();
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         this._updateProfileData();
     }
 
-    async show() {
+    async show(): Promise<void> {
         await this._updateProfileData();
         super.show();
     }

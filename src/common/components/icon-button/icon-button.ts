@@ -17,10 +17,10 @@ const DEFAULT_PROPS: Partial<IconButtonProps> = {
 
 class IconButton extends Block<IconButtonProps> {
     constructor(props: IconButtonProps) {
-        super("div", iconButtonTemplate, Object.assign({}, DEFAULT_PROPS, props));
+        super("div", iconButtonTemplate, { ...DEFAULT_PROPS, ...props });
     }
 
-    protected bindContent() {
+    protected bindContent(): void {
         const button = findNode(this.element, "button");
 
         button?.addEventListener("click", event => {

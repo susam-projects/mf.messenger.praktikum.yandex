@@ -150,6 +150,7 @@ describe("Block", () => {
 
         it("binds inner block to it's node", () => {
             const inner = new TestBlock(undefined, "<p>Inner</p>");
+            // eslint-disable-next-line no-new
             new TestBlock(undefined, "<div>{{{inner}}}</div>", { inner });
 
             expect(inner.element).toHaveTextContent("Inner");
@@ -179,8 +180,8 @@ describe("Block", () => {
                 this.render = jest.fn(() => super.render());
                 this.bindContent = jest.fn();
                 this.componentDidUpdate = jest.fn((oldProps: T, newProps: T) => {
-                    this.oldProps = Object.assign({}, oldProps);
-                    this.newProps = Object.assign({}, newProps);
+                    this.oldProps = { ...oldProps };
+                    this.newProps = { ...newProps };
                     return super.componentDidUpdate(oldProps, newProps);
                 });
                 super.init();
@@ -238,8 +239,8 @@ describe("Block", () => {
         it("calls componentDidUpdate with old and new props", () => {
             const INITIAL_PROPS = { prop1: "value1" };
             const CHANGED_PROPS = { prop1: "newValue" };
-            const block = new TestBlock(undefined, undefined, Object.assign({}, INITIAL_PROPS));
-            block.setProps(Object.assign({}, CHANGED_PROPS));
+            const block = new TestBlock(undefined, undefined, { ...INITIAL_PROPS });
+            block.setProps({ ...CHANGED_PROPS });
             expect(block.oldProps).toStrictEqual(INITIAL_PROPS);
             expect(block.newProps).toStrictEqual(CHANGED_PROPS);
         });

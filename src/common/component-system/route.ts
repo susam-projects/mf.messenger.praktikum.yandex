@@ -1,12 +1,12 @@
-import Block from "./block";
+import { Block, BlockConstructor, Route as IRoute } from "./common-interfaces";
 
-class Route {
+class Route<TProps> implements IRoute {
     _pathname: string;
-    _blockClass: typeof Block;
-    _block: Block | null;
+    _blockClass: BlockConstructor<TProps>;
+    _block: Block<TProps> | null;
     _props: { rootQuery: string };
 
-    constructor(pathname: string, view: typeof Block, props: { rootQuery: string }) {
+    constructor(pathname: string, view: BlockConstructor<TProps>, props: { rootQuery: string }) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
@@ -54,7 +54,7 @@ function checkPath(path: string, pattern: string): boolean {
         return false;
     }
 
-    for (let pathPart of pathParts) {
+    for (const pathPart of pathParts) {
         const patternPart = patternParts[patternPartIndex];
 
         if (patternPart === "*") {
@@ -71,7 +71,7 @@ function checkPath(path: string, pattern: string): boolean {
     return true;
 }
 
-function render(query: string, block: Block) {
+function render(query: string, block: Block<unknown>) {
     const root = document.querySelector(query);
     if (!root) return;
     block.init();

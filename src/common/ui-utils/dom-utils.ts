@@ -1,5 +1,5 @@
 export function toggleClass(element: Element, className: string): void {
-    const classList = element.classList;
+    const { classList } = element;
     if (classList.contains(className)) {
         classList.remove(className);
     } else {

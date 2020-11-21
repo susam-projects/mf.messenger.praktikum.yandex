@@ -1,7 +1,7 @@
 import Block from "./block";
-import Router from "./router";
+import { BlockConstructor, Router } from "./common-interfaces";
 
-function createRedirect(destination: string, router?: Router): typeof Block {
+function createRedirect(destination: string, router?: Router): BlockConstructor {
     return class Redirect extends Block {
         init() {
             super.init();

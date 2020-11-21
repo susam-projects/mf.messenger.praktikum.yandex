@@ -15,7 +15,7 @@ class RequestQueue {
 
     constructor(private _transport: HttpTransport) {}
 
-    start() {
+    start(): void {
         this._next();
     }
 

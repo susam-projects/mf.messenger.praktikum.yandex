@@ -52,7 +52,7 @@ class DeleteChatBlock extends Block<DeleteChatInnerProps> {
         this._getChatName = getChatTitle;
     }
 
-    show() {
+    show(): void {
         this.props.chatTitle = this._getChatName();
         super.show();
     }

@@ -31,10 +31,10 @@ const DEFAULT_PROPS: Partial<TextFieldWithIconProps> = {
 
 class TextFieldWithIcon extends Block<TextFieldWithIconProps> {
     constructor(props: TextFieldWithIconProps) {
-        super("div", textFieldWithIconTemplate, Object.assign({}, DEFAULT_PROPS, props));
+        super("div", textFieldWithIconTemplate, { ...DEFAULT_PROPS, ...props });
     }
 
-    protected bindContent() {
+    protected bindContent(): void {
         const input = this._getInput();
 
         input?.addEventListener("change", event => this.props.onChange!(event));
@@ -42,6 +42,7 @@ class TextFieldWithIcon extends Block<TextFieldWithIconProps> {
         input?.addEventListener("focus", event => this.props.onFocus!(event));
 
         input?.addEventListener("keydown", event => {
+            // eslint-disable-next-line default-case
             switch (event.key) {
                 case "Enter":
                     this.props.onPressEnter!(event);
@@ -53,7 +54,7 @@ class TextFieldWithIcon extends Block<TextFieldWithIconProps> {
         });
     }
 
-    render() {
+    render(): string {
         if (this.value) {
             this.props.defaultValue = this.value;
         }
@@ -70,9 +71,9 @@ class TextFieldWithIcon extends Block<TextFieldWithIconProps> {
         return (input && input.name) ?? "";
     }
 
-    clear() {
+    clear(): void {
         const input = this._getInput();
-        input && (input.value = "");
+        if (input) input.value = "";
     }
 
     private _getInput() {

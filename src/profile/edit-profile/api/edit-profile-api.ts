@@ -20,7 +20,7 @@ class EditProfileApi {
             .catch(() => false);
     }
 
-    uploadAvatar(avatar: File) {
+    uploadAvatar(avatar: File): Promise<boolean> {
         const data = new FormData();
         data.append("avatar", avatar);
 
@@ -30,7 +30,7 @@ class EditProfileApi {
             .catch(() => false);
     }
 
-    changePassword(oldPassword: string, newPassword: string) {
+    changePassword(oldPassword: string, newPassword: string): Promise<boolean> {
         return this._api
             .put("password", { oldPassword, newPassword })
             .then(response => response.status === 200)

@@ -50,7 +50,7 @@ class CreateChatBlock extends Block<CreateChatInnerProps> {
         });
     }
 
-    show() {
+    show(): void {
         this.props.chatNameField.clear();
         super.show();
     }

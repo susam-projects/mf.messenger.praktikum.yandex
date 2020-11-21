@@ -9,11 +9,11 @@ class FormValidator {
         private inputValidators: Record<string, InputValidator> = {},
         private inputs: NodeListOf<HTMLInputElement>,
     ) {
-        inputs && bindValidators(inputs, this.inputValidators);
+        if (inputs) bindValidators(inputs, this.inputValidators);
     }
 
     validate(): boolean {
-        const inputs = this.inputs;
+        const { inputs } = this;
         return !!inputs && checkAll(inputs, input => processValidation(input, this.inputValidators, inputs));
     }
 }

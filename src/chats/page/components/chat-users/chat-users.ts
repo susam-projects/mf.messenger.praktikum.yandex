@@ -33,7 +33,7 @@ class ChatUsersBlock extends Block<ChatUsersInternalProps> {
         });
     }
 
-    protected bindContent() {
+    protected bindContent(): void {
         const list = findNode(this.element, "ul");
 
         list?.addEventListener("click", async event => {
@@ -57,7 +57,7 @@ class ChatUsersBlock extends Block<ChatUsersInternalProps> {
         });
     }
 
-    async show() {
+    async show(): Promise<void> {
         this.props.searchField.clear();
         await this._updateUsers();
         super.show();

@@ -1,18 +1,18 @@
-import Block from "./block";
+import { BlockConstructor, Route as IRoute, Router as IRouter } from "./common-interfaces";
 import Route from "./route";
 
-class Router {
+class Router implements IRouter {
     static __instance: Router;
 
     private readonly _history = window.history;
-    private _routes: Route[] = [];
-    private _currentRoute: Route | null = null;
+    private _routes: IRoute[] = [];
+    private _currentRoute: IRoute | null = null;
 
     constructor(private readonly _rootQuery: string) {
         return this.init();
     }
 
-    protected init() {
+    protected init(): Router {
         if (Router.__instance) return Router.__instance;
         return (Router.__instance = this);
     }
@@ -24,13 +24,13 @@ class Router {
         return null;
     }
 
-    use(pathname: string, block: typeof Block) {
-        const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+    use<TProps extends unknown>(pathname: string, block: BlockConstructor<TProps>): Router {
+        const route = new Route<TProps>(pathname, block, { rootQuery: this._rootQuery });
         this._routes.push(route);
         return this;
     }
 
-    start() {
+    start(): void {
         window.onpopstate = (event: PopStateEvent) => {
             this._onRoute((event.currentTarget as Window)?.location?.pathname);
         };
@@ -38,16 +38,16 @@ class Router {
         this._onRoute(window.location.pathname);
     }
 
-    go(pathname: string) {
+    go(pathname: string): void {
         this._history.pushState({}, "", pathname);
         this._onRoute(pathname);
     }
 
-    back() {
+    back(): void {
         this._history.back();
     }
 
-    forward() {
+    forward(): void {
         this._history.forward();
     }
 

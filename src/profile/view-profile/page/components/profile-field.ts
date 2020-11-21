@@ -13,7 +13,7 @@ const DEFAULT_PROPS: ProfileFieldProps = {
 
 class ProfileField extends Block<ProfileFieldProps> {
     constructor(props: ProfileFieldProps) {
-        super("div", profileFieldTemplate, Object.assign({}, DEFAULT_PROPS, props));
+        super("div", profileFieldTemplate, { ...DEFAULT_PROPS, ...props });
     }
 }
 

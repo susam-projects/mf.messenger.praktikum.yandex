@@ -1,7 +1,7 @@
 import xhrMock from "xhr-mock";
-import HttpTransport from "./http-transport";
 import cases from "jest-in-case";
 import { Mock } from "xhr-mock/lib/types";
+import HttpTransport from "./http-transport";
 
 describe("HttpTransport", () => {
     type SendRequestCase = {
@@ -56,7 +56,11 @@ describe("HttpTransport", () => {
     type SendDataCase = {
         name: string;
         prepare: (xhr: typeof xhrMock, url: string, mock: Mock) => unknown;
-        request: (transport: HttpTransport, url: string, data: object) => ReturnType<typeof transport.get>;
+        request: (
+            transport: HttpTransport,
+            url: string,
+            data: Record<string, unknown>,
+        ) => ReturnType<typeof transport.get>;
         isQuery?: boolean;
     };
 
@@ -127,7 +131,7 @@ describe("HttpTransport", () => {
 
             function getFiles(form: FormData) {
                 const files: File[] = [];
-                for (let key of form.keys()) {
+                for (const key of form.keys()) {
                     files.push(form.get(key) as File);
                 }
                 return files;

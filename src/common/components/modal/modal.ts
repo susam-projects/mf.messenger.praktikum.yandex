@@ -18,7 +18,7 @@ class Modal extends Block<ModalProps> {
     _isShown = false;
 
     constructor(props: ModalProps) {
-        super("div", modalTemplate, Object.assign({}, DEFAULT_PROPS, props));
+        super("div", modalTemplate, { ...DEFAULT_PROPS, ...props });
 
         window.addEventListener("keydown", event => {
             if (event.key === "Escape") {
@@ -27,7 +27,7 @@ class Modal extends Block<ModalProps> {
         });
     }
 
-    protected bindContent() {
+    protected bindContent(): void {
         const root = this.element;
         const content = this.element.querySelector(".modal-content");
 
@@ -46,13 +46,13 @@ class Modal extends Block<ModalProps> {
         }
     }
 
-    show() {
+    show(): void {
         this.props.content.show();
         (this.element as HTMLElement).style.display = "flex";
         this._isShown = true;
     }
 
-    hide() {
+    hide(): void {
         this.props.content.hide();
         super.hide();
         this._isShown = false;

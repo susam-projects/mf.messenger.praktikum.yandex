@@ -29,6 +29,7 @@ class TextFieldsValidator {
 
     private _processInput(textField: TextField, validator: InputValidator): boolean {
         const isPassed = this._checkField(textField, validator);
+        // eslint-disable-next-line no-param-reassign
         textField.props.isError = !isPassed;
         return isPassed;
     }
@@ -41,7 +42,7 @@ class TextFieldsValidator {
     }
 }
 
-export function createTextFieldInfo(textField: TextField, validator: InputValidator) {
+export function createTextFieldInfo(textField: TextField, validator: InputValidator): TextFieldInfo {
     return {
         textField,
         validator,

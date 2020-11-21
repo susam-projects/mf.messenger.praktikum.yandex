@@ -25,10 +25,10 @@ const CLASS_OPEN = "open";
 
 class Menu extends Block<MenuProps> {
     constructor(props: MenuProps) {
-        super("div", menuTemplate, Object.assign({}, DEFAULT_PROPS, props));
+        super("div", menuTemplate, { ...DEFAULT_PROPS, ...props });
     }
 
-    protected bindContent() {
+    protected bindContent(): void {
         const menu = findNode(this.element, ".menu");
 
         menu?.addEventListener("click", event => {
@@ -39,15 +39,15 @@ class Menu extends Block<MenuProps> {
         });
     }
 
-    show() {
+    show(): void {
         this.element.classList.add(CLASS_OPEN);
     }
 
-    hide() {
+    hide(): void {
         this.element.classList.remove(CLASS_OPEN);
     }
 
-    toggle() {
+    toggle(): void {
         toggleClass(this.element, CLASS_OPEN);
     }
 }

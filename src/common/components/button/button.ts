@@ -18,10 +18,10 @@ const DEFAULT_PROPS: Partial<ButtonProps> = {
 
 class Button extends Block<ButtonProps> {
     constructor(props: ButtonProps) {
-        super("span", buttonTemplate, Object.assign({}, DEFAULT_PROPS, props));
+        super("span", buttonTemplate, { ...DEFAULT_PROPS, ...props });
     }
 
-    bindContent() {
+    bindContent(): void {
         const button = findNode<HTMLButtonElement>(this.element, "button");
 
         button?.addEventListener("click", event => {

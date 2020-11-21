@@ -1,6 +1,6 @@
+import { queryByTestId } from "@testing-library/dom";
 import Router from "./router";
 import Block from "./block";
-import { queryByTestId } from "@testing-library/dom";
 import "@testing-library/jest-dom";
 import createRedirect from "./redirect";
 import { wait } from "../utils/async-utils";
@@ -47,7 +47,7 @@ describe("Router", () => {
 
     function clearDocument() {
         const children = document.body.childNodes;
-        for (let child of children) {
+        for (const child of children) {
             document.body.removeChild(child);
         }
     }
@@ -126,13 +126,92 @@ describe("Router", () => {
     });
 
     describe("traverse", () => {
-        it("shows current location page on start (root by default)", async () => {
+        class RoutesTraverseTester {
+            private _router = new NonSingletonRouter("#app");
+
+            init() {
+                const router = this._router;
+                router.use("/", TestBlock as typeof Block);
+                router.use("/first", TestBlock1 as typeof Block);
+                router.use("/second", TestBlock2 as typeof Block);
+                router.start();
+            }
+
+            goFirst() {
+                this._router.go("/first");
+            }
+
+            goSecond() {
+                this._router.go("/second");
+            }
+
+            async goBack() {
+                this._router.back();
+                await wait(300);
+            }
+
+            async goForward() {
+                this._router.forward();
+                await wait(300);
+            }
+
+            checkStart() {
+                expect(this._router.currentRoute).toEqual("/");
+                expect(queryByTestId(document.body, "test-block")).toBeVisible();
+                expect(queryByTestId(document.body, "test-block1")).toBeNull();
+                expect(queryByTestId(document.body, "test-block2")).toBeNull();
+            }
+
+            checkStartFromFirst() {
+                expect(this._router.currentRoute).toEqual("/first");
+                expect(queryByTestId(document.body, "test-block")).toBeNull();
+                expect(queryByTestId(document.body, "test-block1")).toBeVisible();
+                expect(queryByTestId(document.body, "test-block2")).toBeNull();
+            }
+
+            checkStartFromUnknown() {
+                expect(this._router.currentRoute).toBeNull();
+                expect(queryByTestId(document.body, "test-block")).toBeNull();
+                expect(queryByTestId(document.body, "test-block1")).toBeNull();
+                expect(queryByTestId(document.body, "test-block2")).toBeNull();
+            }
+
+            checkFirstFirst() {
+                expect(this._router.currentRoute).toEqual("/first");
+                expect(queryByTestId(document.body, "test-block")).not.toBeVisible();
+                expect(queryByTestId(document.body, "test-block1")).toBeVisible();
+                expect(queryByTestId(document.body, "test-block2")).toBeNull();
+            }
+
+            checkSecondSecond() {
+                expect(this._router.currentRoute).toEqual("/second");
+                expect(queryByTestId(document.body, "test-block")).not.toBeVisible();
+                expect(queryByTestId(document.body, "test-block1")).not.toBeVisible();
+                expect(queryByTestId(document.body, "test-block2")).toBeVisible();
+            }
+
+            checkBackToStart() {
+                expect(this._router.currentRoute).toEqual("/");
+                expect(queryByTestId(document.body, "test-block")).toBeVisible();
+                expect(queryByTestId(document.body, "test-block1")).not.toBeVisible();
+                expect(queryByTestId(document.body, "test-block2")).not.toBeVisible();
+            }
+
+            checkBackToStartWithoutSecond() {
+                expect(this._router.currentRoute).toEqual("/");
+                expect(queryByTestId(document.body, "test-block")).toBeVisible();
+                expect(queryByTestId(document.body, "test-block1")).not.toBeVisible();
+                expect(queryByTestId(document.body, "test-block2")).toBeNull();
+            }
+        }
+
+        it("shows current location page on start (root by default)", () => {
             const tester = new RoutesTraverseTester();
             tester.init();
             tester.checkStart();
         });
 
-        it("shows current location page on start (other pages)", async () => {
+        it("shows current location page on start (other pages)", () => {
             window.history.pushState({}, "", "/first");
 
             const tester = new RoutesTraverseTester();
@@ -148,7 +227,7 @@ describe("Router", () => {
             tester.checkStartFromUnknown();
         });
 
-        it("can go to another page", async () => {
+        it("can go to another page", () => {
             const tester = new RoutesTraverseTester();
             tester.init();
             tester.checkStart();
@@ -157,7 +236,7 @@ describe("Router", () => {
             tester.checkFirstFirst();
         });
 
-        it("can go to other pages several times", async () => {
+        it("can go to other pages several times", () => {
             const tester = new RoutesTraverseTester();
             tester.init();
             tester.checkStart();
@@ -271,84 +350,5 @@ describe("Router", () => {
             await tester.goForward();
             tester.checkSecondSecond();
         });
-
-        class RoutesTraverseTester {
-            private _router = new NonSingletonRouter("#app");
-
-            init() {
-                const router = this._router;
-                router.use("/", TestBlock as typeof Block);
-                router.use("/first", TestBlock1 as typeof Block);
-                router.use("/second", TestBlock2 as typeof Block);
-                router.start();
-            }
-
-            goFirst() {
-                this._router.go("/first");
-            }
-
-            goSecond() {
-                this._router.go("/second");
-            }
-
-            async goBack() {
-                this._router.back();
-                await wait(300);
-            }
-
-            async goForward() {
-                this._router.forward();
-                await wait(300);
-            }
-
-            checkStart() {
-                expect(this._router.currentRoute).toEqual("/");
-                expect(queryByTestId(document.body, "test-block")).toBeVisible();
-                expect(queryByTestId(document.body, "test-block1")).toBeNull();
-                expect(queryByTestId(document.body, "test-block2")).toBeNull();
-            }
-
-            checkStartFromFirst() {
-                expect(this._router.currentRoute).toEqual("/first");
-                expect(queryByTestId(document.body, "test-block")).toBeNull();
-                expect(queryByTestId(document.body, "test-block1")).toBeVisible();
-                expect(queryByTestId(document.body, "test-block2")).toBeNull();
-            }
-
-            checkStartFromUnknown() {
-                expect(this._router.currentRoute).toBeNull();
-                expect(queryByTestId(document.body, "test-block")).toBeNull();
-                expect(queryByTestId(document.body, "test-block1")).toBeNull();
-                expect(queryByTestId(document.body, "test-block2")).toBeNull();
-            }
-
-            checkFirstFirst() {
-                expect(this._router.currentRoute).toEqual("/first");
-                expect(queryByTestId(document.body, "test-block")).not.toBeVisible();
-                expect(queryByTestId(document.body, "test-block1")).toBeVisible();
-                expect(queryByTestId(document.body, "test-block2")).toBeNull();
-            }
-
-            checkSecondSecond() {
-                expect(this._router.currentRoute).toEqual("/second");
-                expect(queryByTestId(document.body, "test-block")).not.toBeVisible();
-                expect(queryByTestId(document.body, "test-block1")).not.toBeVisible();
-                expect(queryByTestId(document.body, "test-block2")).toBeVisible();
-            }
-
-            checkBackToStart() {
-                expect(this._router.currentRoute).toEqual("/");
-                expect(queryByTestId(document.body, "test-block")).toBeVisible();
-                expect(queryByTestId(document.body, "test-block1")).not.toBeVisible();
-                expect(queryByTestId(document.body, "test-block2")).not.toBeVisible();
-            }
-
-            checkBackToStartWithoutSecond() {
-                expect(this._router.currentRoute).toEqual("/");
-                expect(queryByTestId(document.body, "test-block")).toBeVisible();
-                expect(queryByTestId(document.body, "test-block1")).not.toBeVisible();
-                expect(queryByTestId(document.body, "test-block2")).toBeNull();
-            }
-        }
     });
 });

@@ -23,8 +23,8 @@ export type Response = {
 
 class HttpTransport {
     get(url: string, { data, ...opts }: PublicRequestOptions = {}): Promise<Response> {
-        url += toQuery(data);
-        return this._request(url, { ...opts, method: RequestMethod.GET });
+        const urlWithQuery = url + toQuery(data);
+        return this._request(urlWithQuery, { ...opts, method: RequestMethod.GET });
     }
 
     post(url: string, options: PublicRequestOptions = {}): Promise<Response> {
@@ -62,7 +62,7 @@ class HttpTransport {
             xhr.open(method, url);
             xhr.withCredentials = true;
 
-            for (let header in headers) {
+            for (const header in headers) {
                 xhr.setRequestHeader(header, headers[header]);
             }
 
@@ -75,7 +75,7 @@ class HttpTransport {
                 dataToSend = JSON.stringify(data);
                 xhr.setRequestHeader("Content-Type", "application/json");
             } else {
-                dataToSend = data + "";
+                dataToSend = `${data}`;
                 xhr.setRequestHeader("Content-Type", "text/plain");
             }
 
@@ -100,7 +100,7 @@ function toQuery(data: unknown) {
 
     let result = "";
     let isFirst = true;
-    for (let key in data) {
+    for (const key in data) {
         const prefix = isFirst ? "?" : "&";
         result += `${prefix}${key}=${(data as { [index: string]: unknown })[key]}`;
         isFirst = false;

@@ -34,7 +34,8 @@ interface ChatListInnerProps {
 class ChatList extends Block<ChatListPublicProps & ChatListInnerProps> {
     constructor(props: ChatListPublicProps) {
         super("div", chatListTemplate, {
-            ...Object.assign({}, DEFAULT_PROPS, props),
+            ...DEFAULT_PROPS,
+            ...props,
 
             createChatButton: new IconButton({
                 iconClassName: "icon-plus",
@@ -45,7 +46,7 @@ class ChatList extends Block<ChatListPublicProps & ChatListInnerProps> {
         });
     }
 
-    protected bindContent() {
+    protected bindContent(): void {
         const list = findNode(this.element, "ul");
 
         list?.addEventListener("click", event => {

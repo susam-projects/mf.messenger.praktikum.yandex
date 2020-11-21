@@ -77,16 +77,16 @@ class ProfilePage extends Block<ProfilePageProps> {
         });
     }
 
-    async init() {
+    init(): void {
         this._controller = new ViewProfileController();
         super.init();
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         this._updateUserInfo();
     }
 
-    bindContent() {
+    bindContent(): void {
         const backLine = this.element?.querySelector("#back-line");
 
         backLine?.addEventListener("click", event => {
@@ -95,7 +95,7 @@ class ProfilePage extends Block<ProfilePageProps> {
         });
     }
 
-    async show() {
+    async show(): Promise<void> {
         await this._updateUserInfo();
         super.show();
     }

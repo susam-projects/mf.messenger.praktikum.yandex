@@ -205,7 +205,7 @@ class ChatsPage extends Block<ChatsPageProps> {
         this._updateChatsInfo();
     }
 
-    bindContent() {
+    bindContent(): void {
         const userInfo = this.element.querySelector("#user-info");
         const messageField = this.element.querySelector("#message-field");
         const messageInput = messageField?.querySelectorAll("input");
@@ -238,13 +238,13 @@ class ChatsPage extends Block<ChatsPageProps> {
         });
     }
 
-    async show() {
+    async show(): Promise<void> {
         await this._updateAppUserInfo();
         await this._updateChatsInfo();
         (this.element as HTMLElement).style.display = "flex";
     }
 
-    setProps(props: Partial<ChatsPageProps>) {
+    setProps(props: Partial<ChatsPageProps>): void {
         const chatListProps: Partial<ChatListPublicProps> = {};
         if ("chatId" in props) chatListProps.chatId = props.chatId;
         if ("chatTitle" in props) chatListProps.chatTitle = props.chatTitle ?? null;

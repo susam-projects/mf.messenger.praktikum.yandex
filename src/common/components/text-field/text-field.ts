@@ -37,10 +37,10 @@ const DEFAULT_PROPS: Partial<TextFieldProps> = {
 
 class TextField extends Block<TextFieldProps> {
     constructor(props: TextFieldProps) {
-        super("div", textFieldTemplate, Object.assign({}, DEFAULT_PROPS, props));
+        super("div", textFieldTemplate, { ...DEFAULT_PROPS, ...props });
     }
 
-    protected bindContent() {
+    protected bindContent(): void {
         const input = this._getInput();
 
         input?.addEventListener("change", event => this.props.onChange!(event));
@@ -48,6 +48,7 @@ class TextField extends Block<TextFieldProps> {
         input?.addEventListener("focus", event => this.props.onFocus!(event));
 
         input?.addEventListener("keydown", event => {
+            // eslint-disable-next-line default-case
             switch (event.key) {
                 case "Enter":
                     this.props.onPressEnter!(event);
@@ -59,7 +60,7 @@ class TextField extends Block<TextFieldProps> {
         });
     }
 
-    render() {
+    render(): string {
         if (this.value) {
             this.props.defaultValue = this.value;
         }
@@ -76,9 +77,9 @@ class TextField extends Block<TextFieldProps> {
         return (input && input.name) ?? "";
     }
 
-    clear() {
+    clear(): void {
         const input = this._getInput();
-        input && (input.value = "");
+        if (input) input.value = "";
     }
 
     private _getInput() {
