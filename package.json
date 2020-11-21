@@ -8,10 +8,23 @@
     "build": "webpack",
     "test": "jest",
     "lint": "run-p lint:js lint:css lint:pretty",
+    "lint-write": "run-s lint:pretty-write, lint:js-write, lint:css",
     "lint:js": "eslint ./src --ext .ts,.tsx --cache",
+    "lint:js-write": "eslint ./src --ext .ts,.tsx --cache --fix",
     "lint:css": "stylelint ./src/**/*.{css,scss}",
     "lint:pretty": "prettier --check src/**/*.{ts,css,scss}",
-    "pretty": "prettier --write src/**/*.{ts,css,scss}"
+    "lint:pretty-write": "prettier --write src/**/*.{ts,css,scss}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(ts|tsx|css|scss)": [
+      "npm run lint:write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -45,8 +58,10 @@
     "eslint-plugin-prettier": "3.1.4",
     "express": "4.17.1",
     "html-webpack-plugin": "4.5.0",
+    "husky": "4.3.0",
     "jest": "26.6.1",
     "jest-in-case": "1.0.2",
+    "lint-staged": "10.5.1",
     "node-sass": "4.14.1",
     "npm-run-all": "4.1.5",
     "onchange": "7.1.0",
