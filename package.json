@@ -8,7 +8,7 @@
     "build": "webpack",
     "test": "jest",
     "lint": "run-p lint:js lint:css lint:pretty",
-    "lint-write": "run-s lint:pretty-write, lint:js-write, lint:css",
+    "lint-write": "run-s lint:pretty-write lint:js-write lint:css",
     "lint:js": "eslint ./src --ext .ts,.tsx --cache",
     "lint:js-write": "eslint ./src --ext .ts,.tsx --cache --fix",
     "lint:css": "stylelint ./src/**/*.{css,scss}",
@@ -17,13 +17,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
     }
   },
   "lint-staged": {
     "*.(ts|tsx|css|scss)": [
-      "npm run lint:write",
-      "git add"
+      "npm run lint:pretty-write",
+      "npm run lint:js-write",
+      "npm run lint:css"
     ]
   },
   "repository": {
