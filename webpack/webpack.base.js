@@ -1,23 +1,9 @@
-const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const webpack = require("webpack");
 const WebpackBar = require("webpackbar");
-
-function rootDir(extraPath = "") {
-    return path.resolve(__dirname, extraPath);
-}
-
-function srcDir(extraPath = "") {
-    return rootDir(`./src${extraPath}`);
-}
-
-function distDir(extraPath = "") {
-    return rootDir(`./static${extraPath}`);
-}
+const { distDir, srcDir } = require("./utils");
 
 module.exports = {
-    mode: "development",
     entry: {
         main: srcDir("/index.ts"),
     },
@@ -25,19 +11,11 @@ module.exports = {
         path: distDir(),
         filename: "[name].js",
     },
-    devServer: {
-        historyApiFallback: true,
-        open: false,
-        compress: true,
-        hot: true,
-        port: 4000,
-    },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "./src/index.html",
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new WebpackBar(),
     ],
     resolve: {
@@ -51,17 +29,29 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: ["ts-loader"],
+                use: [
+                    {
+                        loader: "ts-loader",
+                        options: {},
+                    },
+                ],
             },
             {
                 test: /\.s?css$/,
                 use: [
                     "style-loader",
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 2,
+                            sourceMap: true,
+                        },
+                    },
                     "postcss-loader",
                     {
                         loader: "sass-loader",
                         options: {
+                            sourceMap: true,
                             sassOptions: {
                                 includePaths: [srcDir()],
                             },
