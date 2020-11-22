@@ -3,6 +3,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY ./* ./
 COPY ./src ./src
+COPY ./webpack ./webpack
 RUN npm ci && npm run build
 
 FROM nginx:1.19.4-alpine
