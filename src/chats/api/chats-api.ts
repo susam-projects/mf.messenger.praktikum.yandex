@@ -38,7 +38,7 @@ class ChatsApi {
             .catch(() => []);
     }
 
-    async getUnreadMessagesCount(chatId: number): Promise<number | null> {
+    getUnreadMessagesCount(chatId: number): Promise<number | null> {
         return this._api
             .get(`/new/${chatId}`)
             .then(response => {
@@ -78,7 +78,7 @@ class ChatsApi {
             .catch(() => false);
     }
 
-    async getChatUsers(chatId: number): Promise<ChatUserInfo[]> {
+    getChatUsers(chatId: number): Promise<ChatUserInfo[]> {
         return this._api
             .get(`${chatId}/users`)
             .then(response => {
