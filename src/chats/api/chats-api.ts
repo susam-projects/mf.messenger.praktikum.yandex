@@ -83,7 +83,7 @@ class ChatsApi {
         return this._api
             .get(`${chatId}/users`)
             .then(response => {
-                if (!isOkResponseStatus) return [];
+                if (!isOkResponseStatus(response)) return [];
                 try {
                     return JSON.parse(response.response as string);
                 } catch {
@@ -93,14 +93,14 @@ class ChatsApi {
             .catch(() => []);
     }
 
-    async addChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
+    addChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
         return this._api
             .put(`users`, { chatId, users: userIds })
             .then(isOkResponseStatus)
             .catch(() => false);
     }
 
-    async removeChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
+    removeChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
         return this._api
             .delete(`users`, { chatId, users: userIds })
             .then(isOkResponseStatus)
