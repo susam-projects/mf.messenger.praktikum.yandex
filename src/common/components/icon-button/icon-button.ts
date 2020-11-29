@@ -1,5 +1,5 @@
 import Block from "../../component-system/block";
-import iconButtonTemplate from "./icon-button.template";
+import iconButtonTemplate from "./icon-button.hbs";
 import { noop } from "../../utils/func-utils";
 import { findNode } from "../../ui-utils/dom-utils";
 

@@ -1,5 +1,5 @@
 import Block from "../../component-system/block";
-import textFieldTemplate from "./text-field.template";
+import textFieldTemplate from "./text-field.hbs";
 import { noop } from "../../utils/func-utils";
 import { findNode } from "../../ui-utils/dom-utils";
 

@@ -1,7 +1,7 @@
 import "./sign-up.scss";
 import Button from "../../common/components/button/button";
 import Block from "../../common/component-system/block";
-import signUpPageTemplate from "./sign-up.template";
+import signUpPageTemplate from "./sign-up.hbs";
 import TextField from "../../common/components/text-field/text-field";
 import TextFieldsValidator, {
     createConfirmPasswordValidator,

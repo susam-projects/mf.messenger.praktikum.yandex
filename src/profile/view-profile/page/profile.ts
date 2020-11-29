@@ -1,7 +1,7 @@
 import "./profile.scss";
 import Button from "../../../common/components/button/button";
 import Block from "../../../common/component-system/block";
-import profilePageTemplate from "./profile.template";
+import profilePageTemplate from "./profile.hbs";
 import ViewProfileController from "../controller/view-profile-controller";
 import ProfileField from "./components/profile-field";
 

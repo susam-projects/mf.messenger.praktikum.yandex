@@ -1,6 +1,6 @@
 import Button from "../../common/components/button/button";
 import Block from "../../common/component-system/block";
-import page500Template from "./500.template";
+import page500Template from "./500.hbs";
 
 interface Page500Props {
     goToChatsButton: Block;

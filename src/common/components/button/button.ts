@@ -1,6 +1,6 @@
 import Block from "../../component-system/block";
 import { noop } from "../../utils/func-utils";
-import buttonTemplate from "./button.template";
+import buttonTemplate from "./button.hbs";
 import { findNode } from "../../ui-utils/dom-utils";
 
 interface ButtonProps {

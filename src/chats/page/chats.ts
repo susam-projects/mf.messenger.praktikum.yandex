@@ -1,6 +1,6 @@
 import Block from "../../common/component-system/block";
 import FormValidator, { InputValidators, MESSAGE_VALIDATOR } from "../../common/component-utils/form-validator";
-import chatPageTemplate from "./chats.template";
+import chatPageTemplate from "./chats.hbs";
 import IconButton from "../../common/components/icon-button/icon-button";
 import ChatsController, { ChatInfo } from "../controller/chats-controller";
 import Modal from "../../common/components/modal/modal";

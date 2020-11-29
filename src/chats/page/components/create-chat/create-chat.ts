@@ -1,5 +1,5 @@
 import Block from "../../../../common/component-system/block";
-import createChatTemplate from "./create-chat.template";
+import createChatTemplate from "./create-chat.hbs";
 import TextField from "../../../../common/components/text-field/text-field";
 import Button from "../../../../common/components/button/button";
 

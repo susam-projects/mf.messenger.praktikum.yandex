@@ -1,5 +1,5 @@
 import Block from "../../component-system/block";
-import modalTemplate from "./modal.template";
+import modalTemplate from "./modal.hbs";
 
 interface ModalProps {
     content: Block;

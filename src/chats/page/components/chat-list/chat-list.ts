@@ -1,5 +1,5 @@
 import Block from "../../../../common/component-system/block";
-import chatListTemplate from "./chat-list.template";
+import chatListTemplate from "./chat-list.hbs";
 import IconButton from "../../../../common/components/icon-button/icon-button";
 import { ChatInfo } from "../../../controller/chats-controller";
 import { findClosest, findNode } from "../../../../common/ui-utils/dom-utils";

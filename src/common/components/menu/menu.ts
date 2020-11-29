@@ -1,5 +1,5 @@
 import Block from "../../component-system/block";
-import menuTemplate from "./menu.template";
+import menuTemplate from "./menu.hbs";
 import { findClosest, findNode, toggleClass } from "../../ui-utils/dom-utils";
 
 interface MenuProps {

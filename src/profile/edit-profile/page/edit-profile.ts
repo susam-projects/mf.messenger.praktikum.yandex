@@ -1,7 +1,7 @@
 import "./edit-profile.scss";
 import Button from "../../../common/components/button/button";
 import Block from "../../../common/component-system/block";
-import editProfilePageTemplate from "./edit-profile.template";
+import editProfilePageTemplate from "./edit-profile.hbs";
 import TextFieldsValidator, {
     createConfirmPasswordValidator,
     createTextFieldInfo,

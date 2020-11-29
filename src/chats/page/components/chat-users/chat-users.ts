@@ -1,5 +1,5 @@
 import Block from "../../../../common/component-system/block";
-import chatUsersTemplate from "./chat-users.template";
+import chatUsersTemplate from "./chat-users.hbs";
 import TextFieldWithIcon from "../../../../common/components/text-field-with-icon/text-field-with-icon";
 import { ChatUserInfo } from "../../../controller/chats-controller";
 import { findClosest, findNode } from "../../../../common/ui-utils/dom-utils";

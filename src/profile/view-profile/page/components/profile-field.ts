@@ -1,5 +1,5 @@
 import Block from "../../../../common/component-system/block";
-import profileFieldTemplate from "./profile-field.template";
+import profileFieldTemplate from "./profile-field.hbs";
 
 interface ProfileFieldProps {
     label: string;
