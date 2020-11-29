@@ -1,5 +1,6 @@
 import Api from "../../common/http/api";
 import config from "../../config/config";
+import { isOkResponseStatus } from "../../common/http/utils";
 
 interface ChatInfo {
     id: number;
@@ -28,7 +29,7 @@ class ChatsApi {
         return this._api
             .get("")
             .then(response => {
-                if (response.status !== 200) return [];
+                if (!isOkResponseStatus(response)) return [];
                 try {
                     return JSON.parse(response.response as string);
                 } catch {
@@ -42,7 +43,7 @@ class ChatsApi {
         return this._api
             .get(`/new/${chatId}`)
             .then(response => {
-                if (response.status !== 200) return null;
+                if (!isOkResponseStatus(response)) return null;
                 try {
                     const data = JSON.parse(response.response as string);
                     return data.unread_count;
@@ -56,14 +57,14 @@ class ChatsApi {
     create(title: string): Promise<boolean> {
         return this._api
             .post("", { title })
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 
     delete(chatId: number): Promise<boolean> {
         return this._api
             .delete("", { chatId })
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 
@@ -74,7 +75,7 @@ class ChatsApi {
 
         return this._api
             .uploadForm("avatar", data)
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 
@@ -82,7 +83,7 @@ class ChatsApi {
         return this._api
             .get(`${chatId}/users`)
             .then(response => {
-                if (response.status !== 200) return [];
+                if (!isOkResponseStatus) return [];
                 try {
                     return JSON.parse(response.response as string);
                 } catch {
@@ -95,14 +96,14 @@ class ChatsApi {
     async addChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
         return this._api
             .put(`users`, { chatId, users: userIds })
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 
     async removeChatUsers(chatId: number, userIds: number[]): Promise<boolean> {
         return this._api
             .delete(`users`, { chatId, users: userIds })
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 }

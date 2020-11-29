@@ -1,4 +1,5 @@
 import SignUpApi, { ISignUpData } from "../api/sign-up-api";
+import { isOkResponseStatus } from "../../common/http/utils";
 
 class SignUpController {
     private _api = new SignUpApi();
@@ -6,7 +7,7 @@ class SignUpController {
     signUp(data: ISignUpData): Promise<boolean> {
         return this._api
             .signUp(data)
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 }

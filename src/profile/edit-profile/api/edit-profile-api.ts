@@ -1,5 +1,6 @@
 import Api from "../../../common/http/api";
 import config from "../../../config/config";
+import { isOkResponseStatus } from "../../../common/http/utils";
 
 export interface UpdateProfileRequestData {
     first_name: string;
@@ -16,7 +17,7 @@ class EditProfileApi {
     update(data: UpdateProfileRequestData): Promise<boolean> {
         return this._api
             .put("profile", data)
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 
@@ -26,14 +27,14 @@ class EditProfileApi {
 
         return this._api
             .uploadForm("profile/avatar", data)
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 
     changePassword(oldPassword: string, newPassword: string): Promise<boolean> {
         return this._api
             .put("password", { oldPassword, newPassword })
-            .then(response => response.status === 200)
+            .then(isOkResponseStatus)
             .catch(() => false);
     }
 }

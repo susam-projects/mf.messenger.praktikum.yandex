@@ -75,14 +75,14 @@ class ChatsController {
         return this._chatsApi.uploadAvatar(chatId, avatar);
     }
 
-    async findUsers(chatId: number, searchString: string): Promise<ChatUserInfo[]> {
+    findUsers(chatId: number, searchString: string): Promise<ChatUserInfo[]> {
         if (searchString) {
             return this._searchUsers(searchString);
         }
         return this._getChatUsers(chatId);
     }
 
-    async addUser(chatId: number, newUserId: number): Promise<boolean> {
+    addUser(chatId: number, newUserId: number): Promise<boolean> {
         return this._chatsApi.addChatUsers(chatId, [newUserId]);
     }
 

@@ -1,5 +1,6 @@
 import Api from "../../../common/http/api";
 import config from "../../../config/config";
+import { isOkResponseStatus } from "../../../common/http/utils";
 
 export interface UserInfo {
     id: number;
@@ -26,7 +27,7 @@ class AppUserApi {
         return this._api
             .get("user")
             .then(response => {
-                if (response.status !== 200) return null;
+                if (!isOkResponseStatus(response)) return null;
                 try {
                     return JSON.parse(response.response as string);
                 } catch {
